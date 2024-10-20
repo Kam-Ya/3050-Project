@@ -2,10 +2,17 @@
 <ProjectsViewInfo>
 	<DiagramOpenInfos activeDiagramId="1iqKZUmD.AACAQam">
 		<Info bounds="Re:0.0,0.0,0.0,0.0" diagramId="o48SZUmD.AACAQWo" maximized="true" offsetX="0" offsetY="0"/>
-		<Info bounds="Re:0.0,0.0,2533.0,1270.0" diagramId="1iqKZUmD.AACAQam" maximized="true" offsetX="0" offsetY="0"/>
+		<Info bounds="Re:0.0,0.0,1893.0,990.0" diagramId="1iqKZUmD.AACAQam" maximized="true" offsetX="0" offsetY="0"/>
+		<Info bounds="Re:0.0,0.0,0.0,0.0" diagramId="QGxaZUmD.AACAQep" maximized="true" offsetX="0" offsetY="0"/>
 	</DiagramOpenInfos>
 	<DiagramLastActivated>
-		<Diagram id="1iqKZUmD.AACAQam" time="1729367200995"/>
-		<Diagram id="o48SZUmD.AACAQWo" time="1729366651795"/>
+		<Diagram id="1iqKZUmD.AACAQam" time="1729386834383"/>
+		<Diagram id="QGxaZUmD.AACAQep" time="1729386818989"/>
+		<Diagram id="o48SZUmD.AACAQWo" time="1729386726400"/>
+		<Diagram id="Use Case Statement" time="0"/>
+		<Diagram id="Use Case" time="0"/>
+		<Diagram id="User Story" time="0"/>
+		<Diagram id="Sprint" time="0"/>
+		<Diagram id="Agile" time="0"/>
 	</DiagramLastActivated>
 </ProjectsViewInfo>
