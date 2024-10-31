@@ -1,5 +1,6 @@
 *.vpp.bak*
 *.vpp.*
+*.vpp*
 *.jpg
 *.vscode
 .vscode
