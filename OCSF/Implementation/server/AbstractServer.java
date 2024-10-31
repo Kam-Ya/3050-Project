@@ -2,7 +2,7 @@
 // "Object Oriented Software Engineering" and is issued under the open-source
 // license found at www.lloseng.com
 
-package com.lloseng.ocsf.server;
+
 
 import java.net.*;
 import java.util.*;
@@ -65,7 +65,7 @@ import java.io.*;
 * @author Fran&ccedil;ois B&eacute;langer
 * @author Paul Holden
 * @version December 2003 (2.31)
-* @see com.lloseng.ocsf.server.ConnectionToClient
+* @see ConnectionToClient
 * @see com.lloseng.ocsf.server.AbstractConnectionFactory
 */
 public abstract class AbstractServer implements Runnable
