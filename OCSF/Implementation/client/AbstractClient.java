@@ -3,10 +3,9 @@
 // license found at www.lloseng.com
 
 
-
+package client;
 import java.io.*;
 import java.net.*;
-import java.util.*;
 
 /**
 * The <code> AbstractClient </code> contains all the

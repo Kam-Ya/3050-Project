@@ -1,11 +1,4 @@
 package client;
-import java.net.*;
-import java.io.*;
-import com.lloseng.ocsf.server.*;
-
-import server.msgFormat;
-
-import com.lloseng.ocsf.client.*;
 
 public class CTMClient extends AbstractClient{
     CTMClient(String h, int p) {

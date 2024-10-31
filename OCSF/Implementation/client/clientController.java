@@ -1,3 +1,4 @@
+package client;
 public class clientController {
     public void sendMSG(Object obj, String operation, CTMClient client){
 

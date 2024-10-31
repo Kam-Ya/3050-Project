@@ -8,7 +8,6 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import com.lloseng.ocsf.server.AbstractServer;
 
 /**
 * An instance of this class is created by the server when a client
