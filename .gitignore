@@ -5,6 +5,7 @@
 *.vscode
 .vscode
 *.vscode~
-.vpprefdata
-.lock
+*.vpprefdata
+*.lock
 *.tmp
+*/tmp
