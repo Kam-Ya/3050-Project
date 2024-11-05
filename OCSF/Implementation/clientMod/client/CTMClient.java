@@ -1,4 +1,6 @@
 package client;
+import com.format.msgFormat;
+
 
 public class CTMClient extends AbstractClient{
     CTMClient(String h, int p) {

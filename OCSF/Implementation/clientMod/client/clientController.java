@@ -1,4 +1,5 @@
 package client;
+import com.format.msgFormat;
 public class clientController {
     public static void sendMSG(Object obj, String operation, CTMClient client){
 

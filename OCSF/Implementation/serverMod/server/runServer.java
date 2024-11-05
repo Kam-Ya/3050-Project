@@ -1,3 +1,4 @@
+package server;
 public class runServer extends Thread {
 
     public static void main(String[] args) {
@@ -21,7 +22,6 @@ public class runServer extends Thread {
          // Server listens    
          System.out.println("-- Server listens --");
          server.listen();
-         Thread.sleep(1000);
          System.out.println("\n");
          
          // Server closes
