@@ -52,6 +52,10 @@ public class CTMController {
     public void getProjects(Object obj, ConnectionToClient client){}
     public void completeTask(Object obj, ConnectionToClient client){}
     public void completeProject(Object obj, ConnectionToClient client){}
+    public static void messageString(Object obj, ConnectionToClient client){
+        obj=(String)obj;
+        System.out.println(obj);
+    }
 
     
 

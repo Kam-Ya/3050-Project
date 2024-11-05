@@ -57,7 +57,6 @@ public class CTMServer extends AbstractServer {
       protected void handleMessageFromClient(Object msg, ConnectionToClient client){
         //Creates a message object and casts msg to it for further processing
         msgFormat message= (msgFormat) msg;
-
         //Checks for what operation is required to send to the correct CTMController call
         switch(message.type){
         case "createOrg":
@@ -93,6 +92,9 @@ public class CTMServer extends AbstractServer {
         case "completeTask":
         break;
         case "completeProject":
+        break;
+        case "messageString":
+        CTMController.messageString(message.obj,client);
         break;
         default:
         }

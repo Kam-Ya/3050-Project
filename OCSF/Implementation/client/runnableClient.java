@@ -11,7 +11,9 @@ public class runnableClient extends Thread {
     CTMClient client;
     
     public runnableClient() {
-      client= new CTMClient("localhost",12345);  
+      client= new CTMClient("10.100.25.190",12345);  
+      clientController.sendMSG("Test Message It Works!","messageString",client);
+
     }
   
     public void run() {

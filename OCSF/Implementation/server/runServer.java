@@ -26,7 +26,7 @@ public class runServer extends Thread {
          
          // Server closes
          System.out.println("-- Server closes --");
-         server.close();
+         
          
         } catch (Exception ex) {
         

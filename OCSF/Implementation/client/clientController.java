@@ -1,6 +1,6 @@
 package client;
 public class clientController {
-    public void sendMSG(Object obj, String operation, CTMClient client){
+    public static void sendMSG(Object obj, String operation, CTMClient client){
 
         switch(operation){
             case "createOrg":
@@ -36,6 +36,8 @@ public class clientController {
             case "completeTask":
             break;
             case "completeProject":
+            break;
+            case "messageString":
             break;
             case "Error":
             break;
