@@ -19,9 +19,10 @@
 }
 
 /* TextField styling for username input */
-.userNameTextField {
-    -fx-border-color: #FFEB3B;
-    -fx-border-width: 2px;
+.userNameTextField, .passwordTextField {
+    /* -fx-border-color: #FFEB3B;
+    -fx-border-width: 2px; */
+    -fx-padding: 10px;
 }
 
 /* Label styling for login screen title */
@@ -34,4 +35,16 @@
     -fx-font-weight: 500;              /* Font weight */
     -fx-text-transform: uppercase;     /* Uppercase text */
     -fx-line-height: normal;           /* Line height is typically not available in JavaFX */
+    -fx-pref-width: 630px;
+}
+
+.titleStackPane{
+    -fx-pref-width: 630px;
+    -fx-pref-height: 78px;
+    -fx-background-color: #FFEB3B;
+    /* -fx-padding: 20px; */
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
+
 }
