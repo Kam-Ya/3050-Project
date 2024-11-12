@@ -1,3 +1,4 @@
+/* AnchorPane styling */
 .anchorPane {
     -fx-background-color: #D3D3D3;
     -fx-pref-width: 1500px;
@@ -17,18 +18,20 @@
     -fx-pref-height: 430px;
 }
 
-.userNameTextField{
+/* TextField styling for username input */
+.userNameTextField {
     -fx-border-color: #FFEB3B;
     -fx-border-width: 2px;
 }
 
-.loginTitleLabel{
-    color: #1A1A1A;
-    text-align: center;
-    font-family: Inter;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-transform: uppercase;
+/* Label styling for login screen title */
+.loginTitleLabel {
+    -fx-text-fill: #1A1A1A;            /* Equivalent to 'color' */
+    -fx-alignment: center;             /* Center-aligns the text */
+    -fx-font-family: "Inter";          /* Font family */
+    -fx-font-size: 48px;               /* Font size */
+    -fx-font-style: normal;            /* Normal font style */
+    -fx-font-weight: 500;              /* Font weight */
+    -fx-text-transform: uppercase;     /* Uppercase text */
+    -fx-line-height: normal;           /* Line height is typically not available in JavaFX */
 }
