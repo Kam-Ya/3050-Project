@@ -48,3 +48,13 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
 
 }
+
+/* Login Button styling */
+.loginButton {
+    -fx-background-color: #D32F2F;     /* Red background color */
+    -fx-text-fill: #FFFFFF;            /* White text color */
+    -fx-font-weight: bold;             /* Bold font */
+    -fx-pref-width: 150px;             /* Width of button */
+    -fx-pref-height: 54px;             /* Height of button */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);  /* Drop shadow */
+}
