@@ -24,7 +24,7 @@
                      </children>
                   </StackPane>
                   <TextField promptText="USERNAME" styleClass="userNameTextField" />
-                  <TextField promptText="USERNAME" styleClass="passwordTextField" />
+                  <TextField promptText="PASSWORD" styleClass="passwordTextField" />
                </children>
             </VBox>
          </top>
