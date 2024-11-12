@@ -1,0 +1,34 @@
+.anchorPane {
+    -fx-background-color: #D3D3D3;
+    -fx-pref-width: 1500px;
+    -fx-pref-height: 980px;
+    -fx-min-width: 680px;
+    -fx-min-height: 430px;
+}
+
+/* Centered BorderPane styling */
+.borderPane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 680px;
+    -fx-pref-height: 430px;
+}
+
+.userNameTextField{
+    -fx-border-color: #FFEB3B;
+    -fx-border-width: 2px;
+}
+
+.loginTitleLabel{
+    color: #1A1A1A;
+    text-align: center;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
