@@ -11,25 +11,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane layoutX="429.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" styleClass="borderPane">
+      <BorderPane layoutX="429.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" styleClass="borderPane" stylesheets="@../CSS/style.css">
          <top>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="50.0" styleClass="loginVBox" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="50.0" styleClass="loginVBox" stylesheets="@../CSS/style.css" BorderPane.alignment="CENTER">
                <children>
-                  <StackPane styleClass="titleStackPane">
+                  <StackPane styleClass="titleStackPane" stylesheets="@../CSS/style.css">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <Label styleClass="loginTitleLabel" text="Login Screen" />
+                        <Label styleClass="loginTitleLabel" stylesheets="@../CSS/style.css" text="Login Screen" />
                      </children>
                   </StackPane>
-                  <TextField promptText="USERNAME" styleClass="userNameTextField" />
-                  <TextField promptText="PASSWORD" styleClass="passwordTextField" />
+                  <TextField promptText="USERNAME" styleClass="userNameTextField" stylesheets="@../CSS/style.css" />
+                  <TextField promptText="PASSWORD" styleClass="passwordTextField" stylesheets="@../CSS/style.css" />
                </children>
             </VBox>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" styleClass="loginButton" text="Login" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" styleClass="loginButton" stylesheets="@../CSS/style.css" text="Login" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>
