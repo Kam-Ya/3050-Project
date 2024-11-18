@@ -1,7 +1,6 @@
 import java.sql.*;
 
 public class User {
-    private String play;
     private String name;
     private final Role role;
     // SESSION TOKEN TODO
