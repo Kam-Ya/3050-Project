@@ -1,4 +1,7 @@
+import java.sql.*;
+
 public class User {
+    private String play;
     private String name;
     private final Role role;
     // SESSION TOKEN TODO
@@ -23,11 +26,15 @@ public class User {
     }
 
     private int getPermissions() {
-        return role.permissions;
-    }
+        return this.role.permissions;
+    }   
 
     public boolean validateSession() {
         // TODO
         return true;
+    }
+
+    private void addToDatabase() throws SQLException {
+        DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
     }
 }
