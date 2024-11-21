@@ -34,6 +34,14 @@ public class User {
     }
 
     private void addToDatabase() throws SQLException {
-        DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+        try(
+                Connection con = DriverManager.getConnection("jdbc:oracle:thin@localhost", root, 123);
+            Statement state = con.createStatement;
+        ) {
+            String input = String.format("INSERT INTO users VALUES(%s, %d)", this.name, this.role.permissions);
+            state.executeUpdate(input);
+        } catch(SQLException sqle) {
+            // TODO
+        }
     }
 }
