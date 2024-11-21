@@ -5,10 +5,20 @@ public class Project {
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;
+    public String Desc;
     public String manager;
 
     public int addTask() {
-        // TODO
+        try(
+                Connection con = DriverManager.getConnection("jdbc:oracle:thin@localhost", root, 123);
+                Statement state = con.createStatement;
+        ) {
+            DateFormat df = new SimpleDateFormat(pattern);
+            String input = String.format("INSERT INTO project VALUES(%s, %s, %s)", this.name, df.format(this.projectDueDate), this.Desc);
+            state.executeUpdate(input);
+        } catch(SQLException sqle) {
+            // TODO
+        }
         return 1;
     }
 
