@@ -29,7 +29,7 @@
             </VBox>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" styleClass="loginButton" stylesheets="@style2.css" text="Login" BorderPane.alignment="CENTER" />
+            <Button fx:id="loginButton" mnemonicParsing="false" styleClass="loginButton" stylesheets="@style2.css" text="Login" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>

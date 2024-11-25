@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" xmlns:fx="http://javafx.com/fxml" stylesheets="@style2.css" fx:controller="ListOfProjectsController" styleClass="anchorPane">
+    <BorderPane styleClass="borderPane">
+        <!-- Top buttons -->
+        <top>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="LOGOUT" styleClass="loginButton" onAction="#handleLogout"/>
+                <Button text="NEW PROJECT" styleClass="loginButton" onAction="#handleNewProject"/>
+                <Button text="NEW USER" styleClass="loginButton" onAction="#handleNewUser"/>
+            </HBox>
+        </top>
+
+        <!-- Title -->
+        <center>
+            <VBox alignment="TOP_CENTER" spacing="20">
+                <StackPane styleClass="titleStackPane">
+                    <Label text="WELCOME BACK" styleClass="loginTitleLabel"/>
+                </StackPane>
+                <VBox fx:id="projectList" spacing="10">
+                    <!-- Dynamically populated project list -->
+                </VBox>
+            </VBox>
+        </center>
+    </BorderPane>
+</AnchorPane>
