@@ -35,6 +35,7 @@ public class ProjectScreenController {
     @FXML
     private ListView<String> taskListView;
 
+
     @FXML
     private void initialize() {
         // Example task items
@@ -74,6 +75,7 @@ public class ProjectScreenController {
         }
     }
 
+
     public void setProjectName(String projectName) {
         // Set the project name in the title
         projectTitleLabel.setText(projectName);
@@ -90,7 +92,20 @@ public class ProjectScreenController {
     @FXML
     private void handleWriteReport() {
         System.out.println("Write Report button clicked!");
-        // Logic for writing a report
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/WriteReportScreen.fxml"));
+            Parent root = loader.load();
+
+            WriteReportScreenController controller = loader.getController();
+            controller.setProjectName("Project N"); // Pass project name dynamically
+
+            Stage stage = new Stage();
+            stage.setTitle("Write Report");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
