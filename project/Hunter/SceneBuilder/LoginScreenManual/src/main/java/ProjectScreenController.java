@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import main.java.TaskScreenController;
 
 import java.io.IOException;
 
@@ -54,7 +57,7 @@ public class ProjectScreenController {
     private void openTaskScreen(String taskDetails) {
         try {
             // Load TaskScreen FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("main/resources/TaskScreen.fxml"));
             Parent root = loader.load();
 
             // Get the controller for TaskScreen and pass the task details

@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,7 +47,7 @@ public class ListOfProjectsController {
     private void openProjectScreen(String projectName) {
         try {
             // Load the ProjectScreen FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProjectScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("main/java/ProjectScreenController.java"));
             Parent root = loader.load();
 
             // Get the controller for ProjectScreen and pass the project data
