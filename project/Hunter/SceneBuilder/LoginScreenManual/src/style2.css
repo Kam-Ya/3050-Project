@@ -66,3 +66,18 @@
     -fx-text-transform: uppercase;    /* Equivalent to 'text-transform: uppercase;' */
 
 }
+.newProjectButton {
+    -fx-background-color: #D32F2F;     /* Red background color */
+    -fx-text-fill: #FFFFFF;            /* White text color */
+    -fx-font-weight: bold;             /* Bold font */
+    -fx-pref-width: 200px;             /* Width of button */
+    -fx-pref-height: 54px;             /* Height of button */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);  /* Drop shadow */
+    -fx-text-fill: #FFFFFF;           /* Equivalent to 'color: #FFF;' */
+    -fx-alignment: center;            /* Equivalent to 'text-align: center;' */
+    -fx-font-family: "Inter";         /* Equivalent to 'font-family: Inter;' */
+    -fx-font-size: 24px;              /* Equivalent to 'font-size: 24px;' */
+    -fx-font-style: normal;           /* Equivalent to 'font-style: normal;' */
+    -fx-font-weight: 800;             /* Equivalent to 'font-weight: 800;' */
+    -fx-text-transform: uppercase;    /* Equivalent to 'text-transform: uppercase;' */
+}
