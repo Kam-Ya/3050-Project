@@ -35,6 +35,9 @@ public class CredentialsController {
 
         try {
             // Load the new FXML file
+            // Bug testing
+            System.out.println("CredentialScreenController:");
+            System.out.println(getClass().getResource("/ListOfProjectsScreen.fxml"));
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
             Parent root = fxmlLoader.load();
 

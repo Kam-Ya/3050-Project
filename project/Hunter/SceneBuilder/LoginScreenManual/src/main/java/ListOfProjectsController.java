@@ -47,7 +47,10 @@ public class ListOfProjectsController {
     private void openProjectScreen(String projectName) {
         try {
             // Load the ProjectScreen FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("main/java/ProjectScreenController.java"));
+            // Bug testing
+            System.out.println("ListOfProjectsController:");
+            System.out.println(getClass().getResource("/ProjectScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjectScreen.fxml"));
             Parent root = loader.load();
 
             // Get the controller for ProjectScreen and pass the project data

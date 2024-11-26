@@ -57,7 +57,7 @@ public class ProjectScreenController {
     private void openTaskScreen(String taskDetails) {
         try {
             // Load TaskScreen FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("main/resources/TaskScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TaskScreen.fxml"));
             Parent root = loader.load();
 
             // Get the controller for TaskScreen and pass the task details
