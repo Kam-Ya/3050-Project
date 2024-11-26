@@ -15,8 +15,8 @@
                 <HBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
                     <children>
                         <Button fx:id="logoutButton" text="LOGOUT" styleClass="loginButton" onAction="#handleLogout"/>
-                        <Button fx:id="newProjectButton" text="NEW PROJECT" styleClass="loginButton" onAction="#handleNewProject"/>
-                        <Button fx:id="newUserButton" text="NEW USER" styleClass="loginButton" onAction="#handleNewUser"/>
+                        <Button fx:id="newProjectButton" text="NEW PROJECT" styleClass="largeButton" onAction="#handleNewProject"/>
+                        <Button fx:id="newUserButton" text="NEW USER" styleClass="largeButton" onAction="#handleNewUser"/>
                     </children>
                 </HBox>
             </top>

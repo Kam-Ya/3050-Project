@@ -66,7 +66,7 @@
     -fx-text-transform: uppercase;    /* Equivalent to 'text-transform: uppercase;' */
 
 }
-.newProjectButton {
+.largeButton {
     -fx-background-color: #D32F2F;     /* Red background color */
     -fx-text-fill: #FFFFFF;            /* White text color */
     -fx-font-weight: bold;             /* Bold font */
