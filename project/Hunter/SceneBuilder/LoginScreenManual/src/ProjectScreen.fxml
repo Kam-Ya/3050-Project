@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" fx:controller="ProjectScreenController" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <!-- Centered BorderPane -->
+        <BorderPane layoutX="429.0" layoutY="284.0" prefHeight="600.0" prefWidth="800.0" styleClass="borderPane" stylesheets="@style2.css">
+            <top>
+                <!-- Top Buttons -->
+                <HBox alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="writeReportButton" text="WRITE REPORT" styleClass="largeButton" onAction="#handleWriteReport"/>
+                        <Button fx:id="readReportButton" text="READ REPORT" styleClass="largeButton" onAction="#handleReadReport"/>
+                        <Button fx:id="newTaskButton" text="NEW TASK" styleClass="largeButton" onAction="#handleNewTask"/>
+                        <Button fx:id="aboutButton" text="ABOUT" styleClass="largeButton" onAction="#handleAbout"/>
+                        <Button fx:id="closeButton" text="CLOSE" styleClass="largeButton" onAction="#handleClose"/>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <!-- Project Title and Task List -->
+                <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+                    <children>
+                        <StackPane styleClass="titleStackPane">
+                            <Label fx:id="projectTitleLabel" styleClass="loginTitleLabel" text="PROJECT N"/>
+                        </StackPane>
+                        <ListView fx:id="taskListView" styleClass="projectListView"/>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
