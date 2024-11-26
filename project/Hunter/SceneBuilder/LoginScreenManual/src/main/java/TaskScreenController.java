@@ -1,10 +1,16 @@
 package main.java;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class TaskScreenController {
 
@@ -68,7 +74,21 @@ public class TaskScreenController {
     @FXML
     private void handleNotes() {
         System.out.println("Notes button clicked!");
-        // Logic to view or edit task notes
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CommentScreen.fxml"));
+            Parent root = loader.load();
+
+            // Pass task details dynamically if needed
+            CommentScreenController controller = loader.getController();
+            // Example: controller.setTaskName("Task N");
+
+            Stage stage = new Stage();
+            stage.setTitle("Task Comments");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
