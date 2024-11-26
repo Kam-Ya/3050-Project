@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
 
-<AnchorPane fx:id="root" styleClass="anchorPane" stylesheets="@style2.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="ListOfProjectsController">
-    <BorderPane layoutX="429.0" layoutY="284.0" prefHeight="400.0" prefWidth="400.0" styleClass="borderPane" stylesheets="@style2.css">
-        <!-- Top buttons -->
-        <top>
-            <HBox alignment="CENTER" spacing="10">
-                <Button onAction="#handleLogout" styleClass="loginButton" text="LOGOUT" />
-                <Button onAction="#handleNewProject" styleClass="loginButton" text="NEW PROJECT" />
-                <Button onAction="#handleNewUser" styleClass="newProjectButton" text="NEW USER" />
-            </HBox>
-        </top>
-
-        <!-- Title -->
-        <center>
-            <VBox alignment="TOP_CENTER" spacing="20">
-                <StackPane styleClass="titleStackPane">
-                    <Label styleClass="loginTitleLabel" text="WELCOME BACK" />
-                </StackPane>
-                <VBox fx:id="projectList" spacing="10">
-                    <!-- Dynamically populated project list -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" fx:controller="ListOfProjectsController" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <!-- Centered BorderPane -->
+        <BorderPane layoutX="429.0" layoutY="284.0" prefHeight="600.0" prefWidth="800.0" styleClass="borderPane" stylesheets="@style2.css">
+            <top>
+                <!-- Top Buttons -->
+                <HBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="logoutButton" text="LOGOUT" styleClass="loginButton" onAction="#handleLogout"/>
+                        <Button fx:id="newProjectButton" text="NEW PROJECT" styleClass="loginButton" onAction="#handleNewProject"/>
+                        <Button fx:id="newUserButton" text="NEW USER" styleClass="loginButton" onAction="#handleNewUser"/>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <!-- Welcome Back and Project List -->
+                <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+                    <children>
+                        <StackPane styleClass="titleStackPane">
+                            <Label styleClass="loginTitleLabel" text="WELCOME BACK"/>
+                        </StackPane>
+                        <ListView fx:id="projectListView" styleClass="projectListView"/>
+                    </children>
                 </VBox>
-            </VBox>
-        </center>
-    </BorderPane>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>
