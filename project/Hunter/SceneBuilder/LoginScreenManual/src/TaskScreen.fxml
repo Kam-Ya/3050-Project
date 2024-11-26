@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" fx:controller="TaskScreenController" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <!-- Centered BorderPane -->
+        <BorderPane layoutX="278.5" layoutY="30.5" styleClass="borderPaneTaskScreen" stylesheets="@style2.css">
+            <top>
+                <!-- Task Title -->
+                <StackPane styleClass="titleStackPane" BorderPane.alignment="CENTER">
+                    <Label fx:id="taskTitleLabel" styleClass="loginTitleLabel" text="TASK N"/>
+                </StackPane>
+            </top>
+            <center>
+                <!-- Task Details -->
+                <VBox alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;">
+                    <children>
+                        <Label text="Description" />
+                        <TextArea fx:id="descriptionField" promptText="Enter task description..." />
+
+                        <Label text="Due Date" />
+                        <TextField fx:id="dueDateField" text="10-10-24" />
+
+                        <Label text="Assigned To" />
+                        <ComboBox fx:id="assignedToDropdown" promptText="Select User" />
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <!-- Task Action Buttons -->
+                <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+                    <children>
+                        <ComboBox fx:id="priorityDropdown" promptText="Priority" />
+                        <Button fx:id="completeButton" text="COMPLETE" styleClass="largeButton" onAction="#handleComplete"/>
+                        <Button fx:id="notesButton" text="NOTES" styleClass="largeButton" onAction="#handleNotes"/>
+                        <Button fx:id="deleteButton" text="DELETE" styleClass="largeButton" onAction="#handleDelete"/>
+                        <Button fx:id="closeButton" text="CLOSE" styleClass="largeButton" onAction="#handleClose"/>
+                    </children>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

@@ -26,6 +26,16 @@
     -fx-pref-width: 943px;
     -fx-pref-height: 837px;
 }
+.borderPaneTaskScreen {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 943px;
+    -fx-pref-height: 919px;
+}
+
 
 /* TextField styling for username input */
 .userNameTextField, .passwordTextField {

@@ -1,7 +1,13 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ProjectScreenController {
 
@@ -34,6 +40,35 @@ public class ProjectScreenController {
                 "Task 2 - Due: 23-10-24 | 3 notes",
                 "Task 3 - Due: 24-10-24 | 7 notes"
         );
+        // Set click handler for the ListView
+        taskListView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // Detect double-click
+                String selectedTask = taskListView.getSelectionModel().getSelectedItem();
+                if (selectedTask != null) {
+                    openTaskScreen(selectedTask);
+                }
+            }
+        });
+    }
+
+    private void openTaskScreen(String taskDetails) {
+        try {
+            // Load TaskScreen FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskScreen.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller for TaskScreen and pass the task details
+            TaskScreenController controller = loader.getController();
+            controller.setTaskDetails(taskDetails);
+
+            // Create a new stage for TaskScreen
+            Stage stage = new Stage();
+            stage.setTitle("Task Screen");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setProjectName(String projectName) {
