@@ -43,6 +43,10 @@ public class User {
             // adds the actual user information into the database
             String input = String.format("INSERT INTO users VALUES('%s', '%d');", this.name, this.role.permissions);
             state.executeUpdate(input);
+
+            // close the connection
+            state.close();
+            con.close();
         } catch(SQLException sqle) {
             // TODO
         }

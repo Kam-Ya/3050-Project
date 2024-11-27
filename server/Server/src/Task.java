@@ -74,13 +74,18 @@ public class Task {
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
+            // get the taskID from the database
             String input = String.format("SELECT taskID from task WHERE description = '%s';", this.desc);
             ResultSet rs = state.executeQuery(input);
 
+            // insert the comment into the database
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             input = String.format("INSERT INTO comment (content, date, commentor, task) VALUES('%s', '%s', '%s', %d);",
                     com.getContent(), df.format(com.getDateMade()), com.getCommentor(), rs.getInt("taskID"));
             state.executeUpdate(input);
+
+            // close the connection
+            rs.close();
             state.close();
             con.close();
         } catch(SQLException sqle) {
@@ -93,10 +98,13 @@ public class Task {
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
+            // insert the task into the project
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            String input = String.format("INSERT INTO project (name, priority, description, due) VALUES('%s', %d, '%s', '%s');",
+            String input = String.format("INSERT INTO task (name, priority, description, due) VALUES('%s', %d, '%s', '%s');",
                     this.taskName, this.priority, this.desc, df.format(this.taskDueDate));
             state.executeUpdate(input);
+
+            // close connection
             state.close();
             con.close();
         } catch(SQLException sqle) {
