@@ -1,9 +1,15 @@
+package Server.src;
+
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Task {
     private String taskName;
     private Date taskDueDate;
+    private String desc;
     private int priority;
     private boolean completed;
     private ArrayList<Integer> asignees;
@@ -53,7 +59,48 @@ public class Task {
         return this.comments;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     public void addComment(Comment newComment) {
-        this.comments.add(newComment);
+        Comment com = new Comment();
+        this.comments.add(com);
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            String input = String.format("SELECT taskID from task WHERE description = '%s';", this.desc);
+            ResultSet rs = state.executeQuery(input);
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            input = String.format("INSERT INTO comment (content, date, commentor, task) VALUES('%s', '%s', '%s', %d);",
+                    com.getContent(), df.format(com.getDateMade()), com.getCommentor(), rs.getInt("taskID"));
+            state.executeUpdate(input);
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
+    }
+
+    public void addToDB() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            String input = String.format("INSERT INTO project (name, priority, description, due) VALUES('%s', %d, '%s', '%s');",
+                    this.taskName, this.priority, this.desc, df.format(this.taskDueDate));
+            state.executeUpdate(input);
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
     }
 }

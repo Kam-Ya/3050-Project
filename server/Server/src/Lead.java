@@ -1,3 +1,5 @@
+package Server.src;
+
 public class Lead extends Role{
     public int addUser(String name, String role) {
         // TODO

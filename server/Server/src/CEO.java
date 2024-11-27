@@ -1,3 +1,5 @@
+package Server.src;
+
 public class CEO extends Lead{
 
     // constructor sets permissions

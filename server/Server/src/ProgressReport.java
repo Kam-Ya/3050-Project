@@ -1,3 +1,5 @@
+package Server.src;
+
 import java.util.Date;
 
 public class ProgressReport {
@@ -28,4 +30,6 @@ public class ProgressReport {
     public void setUser(String user) {
         this.User = user;
     }
+
+
 }

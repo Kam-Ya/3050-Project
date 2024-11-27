@@ -1,3 +1,5 @@
+package Server.src;
+
 public class Employee extends Role{
 
     // constructor sets permissions

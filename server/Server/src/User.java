@@ -1,3 +1,5 @@
+package Server.src;
+
 import java.sql.*;
 
 public class User {
@@ -35,10 +37,11 @@ public class User {
 
     private void addToDatabase() throws SQLException {
         try(
-                Connection con = DriverManager.getConnection("jdbc:oracle:thin@localhost", root, 123);
-            Statement state = con.createStatement;
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
         ) {
-            String input = String.format("INSERT INTO users VALUES(%s, %d)", this.name, this.role.permissions);
+            // adds the actual user information into the database
+            String input = String.format("INSERT INTO users VALUES('%s', '%d');", this.name, this.role.permissions);
             state.executeUpdate(input);
         } catch(SQLException sqle) {
             // TODO
