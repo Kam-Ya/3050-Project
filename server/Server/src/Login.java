@@ -36,7 +36,7 @@ public class Login implements Serializable {
             md.update(rs.getBytes("salt"));
             byte[] hashedPassword = md.digest(this.password.getBytes(StandardCharsets.UTF_8));
 
-            input = String.format("SELECT user FROM login WHERE username = 's';", this.username);
+            input = String.format("SELECT user FROM login WHERE username = '%s';", this.username);
             ResultSet token = state.executeQuery(input);
 
             // compare to see if the passwords are the same
