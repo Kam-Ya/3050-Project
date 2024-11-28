@@ -28,6 +28,10 @@ public class Project {
             String input = String.format("INSERT INTO project (name, date, description) VALUES('%s', '%s', '%s');",
                     this.projectName, df.format(this.projectDueDate), this.Desc);
             state.executeUpdate(input);
+
+            // close connection
+            state.close();
+            con.close();
         } catch (SQLException sqle) {
             return;
         }
