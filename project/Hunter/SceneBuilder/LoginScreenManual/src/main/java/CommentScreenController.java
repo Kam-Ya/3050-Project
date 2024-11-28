@@ -1,10 +1,15 @@
 package main.java;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class CommentScreenController {
@@ -41,7 +46,24 @@ public class CommentScreenController {
     @FXML
     private void handleWrite() {
         System.out.println("Write button clicked.");
-        // TODO: Open a dialog or screen for writing a new comment
+        try {
+            // Load the ListReportsScreen FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateCommentScreen.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller for ListReportsScreen (if you need to pass any data)
+            CreateCommentController controller = loader.getController();
+            // Example: Pass data to the controller if needed
+            // controller.setSomeData(someData);
+
+            // Create a new stage for ListReportsScreen
+            Stage stage = new Stage();
+            stage.setTitle("Leave A Note");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
