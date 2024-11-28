@@ -1,5 +1,6 @@
 package Server.src;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,10 +9,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Comment {
+public class Comment implements Serializable {
     private String content;
     private Date dateMade;
     private String commentor;
+
+    public Comment(String cont, Date made, String com) {
+        this.content = cont;
+        this.dateMade = made;
+        this.commentor = com;
+    }
 
     public void addComment() {
 

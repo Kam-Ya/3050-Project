@@ -1,11 +1,12 @@
 package Server.src;
 
+import java.io.Serializable;
 import java.sql.*;
 import java.text.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Project {
+public class Project implements Serializable {
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;
@@ -76,8 +77,8 @@ public class Project {
         this.employees.add(employee);
     }
 
-    public void addTask() {
-        Task t = new Task();
+    public void addTask(String name, Date due, String desc) {
+        Task t = new Task(name, due, desc);
         t.addToDB();
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");

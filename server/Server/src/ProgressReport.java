@@ -1,8 +1,9 @@
 package Server.src;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProgressReport {
+public class ProgressReport implements Serializable {
     private String reportDetails;
     private String User;
     private Date timestamp;

@@ -1,8 +1,9 @@
 package Server.src;
 
+import java.io.Serializable;
 import java.sql.*;
 
-public class User {
+public class User implements Serializable {
     private String name;
     private final Role role;
     // SESSION TOKEN TODO

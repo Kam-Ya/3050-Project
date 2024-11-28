@@ -1,12 +1,14 @@
 package Server.src;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Task {
+public class Task implements Serializable {
     private String taskName;
     private Date taskDueDate;
     private String desc;
@@ -14,6 +16,12 @@ public class Task {
     private boolean completed;
     private ArrayList<Integer> asignees;
     private ArrayList<Comment> comments;
+
+    public Task(String name, Date due, String Description) {
+        this.taskName = name;
+        this.taskDueDate = due;
+        this.desc = Description;
+    }
 
     public String getTaskName() {
         return this.taskName;
@@ -67,8 +75,8 @@ public class Task {
         this.desc = desc;
     }
 
-    public void addComment(Comment newComment) {
-        Comment com = new Comment();
+    public void addComment(String name, Date due, String comm) {
+        Comment com = new Comment(name, due, comm);
         this.comments.add(com);
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");

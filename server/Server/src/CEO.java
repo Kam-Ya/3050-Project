@@ -12,7 +12,7 @@ public class CEO extends Lead{
         return;
     }
 
-    public int deleteORG() {
+    public int deleteOrg() {
         // TODO
         return 1;
     }

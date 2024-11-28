@@ -1,5 +1,6 @@
 package Server.src;
 
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,9 +10,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
-public class Login {
-    private String username;
-    private String password;
+public class Login implements Serializable {
+    private final String username;
+    private final String password;
 
     public Login(String user, String pass) {
         this.username = user;
@@ -60,7 +61,7 @@ public class Login {
         }
     }
 
-    public boolean register(int ID) {
+    public void register(int ID) {
         try {
             // generate salt
             SecureRandom rand = new SecureRandom();
@@ -89,10 +90,8 @@ public class Login {
                 System.out.println(sqle.getMessage());
             }
 
-            return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
         }
     }
 }
