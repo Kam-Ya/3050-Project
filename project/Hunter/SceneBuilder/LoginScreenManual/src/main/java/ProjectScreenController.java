@@ -111,7 +111,26 @@ public class ProjectScreenController {
     @FXML
     private void handleReadReport() {
         System.out.println("Read Report button clicked!");
-        // Logic for reading a report
+        System.out.println("Read Report button clicked!");
+
+        try {
+            // Load the ListReportsScreen FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListReportsScreen.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller for ListReportsScreen (if you need to pass any data)
+            ListReportsController controller = loader.getController();
+            // Example: Pass data to the controller if needed
+            // controller.setSomeData(someData);
+
+            // Create a new stage for ListReportsScreen
+            Stage stage = new Stage();
+            stage.setTitle("List Reports");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
