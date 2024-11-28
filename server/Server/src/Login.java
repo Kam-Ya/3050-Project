@@ -19,7 +19,7 @@ public class Login implements Serializable {
         this.password = pass;
     }
 
-    public boolean authenticate() {
+    public int authenticate() {
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
@@ -36,19 +36,22 @@ public class Login implements Serializable {
             md.update(rs.getBytes("salt"));
             byte[] hashedPassword = md.digest(this.password.getBytes(StandardCharsets.UTF_8));
 
+            input = String.format("SELECT user FROM login WHERE username = 's';", this.username);
+            ResultSet token = state.executeQuery(input);
+
             // compare to see if the passwords are the same
             if(Arrays.equals(pass.getBytes("pass"), hashedPassword)) {
                 rs.close();
                 pass.close();
                 state.close();
                 con.close();
-                return true;
+                return token.getInt("user");
             } else {
                 rs.close();
                 pass.close();
                 state.close();
                 con.close();
-                return false;
+                return -1;
             }
 
             // close the connection
@@ -56,7 +59,7 @@ public class Login implements Serializable {
 
         } catch(SQLException | NoSuchAlgorithmException sqle) {
             System.out.println(sqle.getMessage());
-            return false;
+            return -1;
         }
     }
 
