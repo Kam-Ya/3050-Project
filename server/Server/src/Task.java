@@ -15,6 +15,7 @@ public class Task implements Serializable {
     private int priority;
     private boolean completed;
     private ArrayList<Integer> asignees;
+    private int ID;
     private ArrayList<Comment> comments;
 
     public Task(String name, Date due, String Description) {
@@ -134,6 +135,26 @@ public class Task implements Serializable {
             con.close();
         } catch(SQLException sqle) {
             System.out.println(sqle.getMessage());
+        }
+    }
+
+    public void getID() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the task ID from the database
+            String input = String.format("SELECT taskID FROM task WHERE description = '%s';", this.desc);
+            ResultSet rs = state.executeQuery(input);
+
+            this.ID = rs.getInt("taskID");
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
         }
     }
 }

@@ -1,10 +1,7 @@
 package Server.src;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +10,7 @@ public class ProgressReport implements Serializable {
     private String reportDetails;
     private String User;
     private Date timestamp;
+    private int ID;
 
     public Date getTimestamp() {
         return this.timestamp;
@@ -56,5 +54,23 @@ public class ProgressReport implements Serializable {
         }
     }
 
+    public void getID() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the report ID from the database
+            String input = String.format("SELECT ID FROM report WHERE content = '%s';", this.reportDetails);
+            ResultSet rs = state.executeQuery(input);
 
+            this.ID = rs.getInt("ID");
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
+    }
 }

@@ -12,6 +12,7 @@ public class Project implements Serializable {
     public ArrayList<Integer> employees;
     public String Desc;
     public String manager;
+    private int ID;
 
     public Project(String name, Date dueDate, String desc) {
         this.Desc = desc;
@@ -143,6 +144,26 @@ public class Project implements Serializable {
             con.close();
         } catch(SQLException sqle) {
             System.out.println(sqle.getMessage());
+        }
+    }
+
+    public void getID() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the project ID from the database
+            String input = String.format("SELECT projectID FROM project WHERE description = '%s';", this.Desc);
+            ResultSet rs = state.executeQuery(input);
+
+            this.ID = rs.getInt("projectID");
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
         }
     }
 }
