@@ -6,7 +6,6 @@ import java.sql.*;
 public class User implements Serializable {
     private String name;
     private final Role role;
-    // SESSION TOKEN TODO
     private Integer userID;
 
     // constructor
@@ -58,10 +57,6 @@ public class User implements Serializable {
         return this.role.permissions;
     }   
 
-    public boolean validateSession() {
-        // TODO
-        return true;
-    }
 
     private void addToDatabase() throws SQLException {
         try(
@@ -70,6 +65,23 @@ public class User implements Serializable {
         ) {
             // adds the actual user information into the database
             String input = String.format("INSERT INTO users VALUES('%s', %d);", this.name, this.role.permissions);
+            state.executeUpdate(input);
+
+            // close the connection
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+    }
+
+    public void deleteFromDatabase() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // deletes user from database
+            String input = String.format("DELETE FROM users WHERE employeeID = '%s';", this.userID);
             state.executeUpdate(input);
 
             // close the connection

@@ -20,7 +20,6 @@ public class Login implements Serializable {
     }
 
     public boolean authenticate() {
-        ProgressReport report = new ProgressReport();
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
