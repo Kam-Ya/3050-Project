@@ -111,8 +111,6 @@ public class ProjectScreenController {
     @FXML
     private void handleReadReport() {
         System.out.println("Read Report button clicked!");
-        System.out.println("Read Report button clicked!");
-
         try {
             // Load the ListReportsScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListReportsScreen.fxml"));
