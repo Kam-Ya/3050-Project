@@ -24,9 +24,9 @@ public class CredentialsController {
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        
+
         if (username.isEmpty() || password.isEmpty()) {
-            System.out.println("Please enter both username and password.");
+            showSystemMessage("Empty Fields", "Please enter both username and password.");
             return;
         }
 
@@ -34,22 +34,33 @@ public class CredentialsController {
         // Add actual login logic here
 
         try {
-            // Load the new FXML file
-            // Bug testing
-            System.out.println("CredentialScreenController:");
-            System.out.println(getClass().getResource("/ListOfProjectsScreen.fxml"));
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
             Parent root = fxmlLoader.load();
 
-            // Create a new stage
             Stage stage = new Stage();
             stage.setTitle("Dashboard");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Close the current login window
             Stage currentStage = (Stage) loginButton.getScene().getWindow();
             currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showSystemMessage(String title, String body) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            MessageFromSystemController controller = fxmlLoader.getController();
+            controller.setMessage(title, body);
+
+            Stage stage = new Stage();
+            stage.setTitle("System Message");
+            stage.setScene(new Scene(root));
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
