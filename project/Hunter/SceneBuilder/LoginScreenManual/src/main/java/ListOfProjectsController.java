@@ -89,6 +89,22 @@ public class ListOfProjectsController {
     @FXML
     private void handleNewUser() {
         System.out.println("New User button clicked!");
-        // Logic to create a new user
+        try {
+            // Load the new FXML file
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CreateUserScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage
+            Stage stage = new Stage();
+            stage.setTitle("Dashboard");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Close the current login window
+            Stage currentStage = (Stage) newUserButton.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
