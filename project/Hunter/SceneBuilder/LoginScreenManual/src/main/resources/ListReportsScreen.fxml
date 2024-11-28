@@ -4,36 +4,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-            fx:id="listReportsScreen" fx:controller="main.java.ListReportsController"
-            prefWidth="943.0" prefHeight="837.0" stylesheets="@style2.css" styleClass="borderPaneProjectScreen">
-    <!-- Top section with Close button -->
-    <top>
-        <HBox spacing="10.0" alignment="CENTER_LEFT">
-            <Button text="CLOSE" styleClass="largeButton" onAction="#handleClose"/>
-        </HBox>
-    </top>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:id="listReportsAnchorPane" fx:controller="main.java.ListReportsController"
+            styleClass="anchorPane" prefWidth="1500.0" prefHeight="980.0">
+    <BorderPane fx:id="listReportsScreen" prefWidth="943.0" prefHeight="837.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+                stylesheets="@style2.css" styleClass="borderPaneProjectScreen">
+        <!-- Top section with Close button -->
+        <top>
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Button fx:id="closeButton" text="CLOSE" styleClass="largeButton" onAction="#handleClose"/>
+            </HBox>
+        </top>
 
-    <!-- Center section with title and reports -->
-    <center>
-        <VBox spacing="20.0" alignment="TOP_CENTER">
-            <!-- Title -->
-            <StackPane styleClass="titleStackPane">
-                <Label text="REPORTS" styleClass="loginTitleLabel"/>
-            </StackPane>
+        <!-- Center section with Reports List -->
+        <center>
+            <VBox spacing="20.0" alignment="TOP_CENTER">
+                <!-- Title -->
+                <StackPane styleClass="titleStackPane">
+                    <Label text="REPORTS" styleClass="loginTitleLabel"/>
+                </StackPane>
 
-            <!-- Reports List -->
-            <VBox spacing="10.0" alignment="CENTER" maxWidth="800">
-                <Separator/>
-                <VBox fx:id="reportsContainer" spacing="10.0">
-                    <!-- Example report entry -->
-                    <HBox spacing="10.0" alignment="CENTER_LEFT">
-                        <Label text="Do we need this?"/>
-                        <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
-                        <Label text="Date: 22-10-24 | Hunter"/>
-                    </HBox>
-                </VBox>
+                <!-- ListView for Reports -->
+                <ListView fx:id="reportsListView" prefHeight="600" />
             </VBox>
-        </VBox>
-    </center>
-</BorderPane>
+        </center>
+    </BorderPane>
+</AnchorPane>
