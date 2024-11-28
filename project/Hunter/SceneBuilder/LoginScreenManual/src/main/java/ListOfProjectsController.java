@@ -84,6 +84,23 @@ public class ListOfProjectsController {
     private void handleNewProject() {
         System.out.println("New Project button clicked!");
         // Logic to create a new project
+        try {
+            // Load the new FXML file
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/NewProjectScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage
+            Stage stage = new Stage();
+            stage.setTitle("Dashboard");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Close the current login window
+            Stage currentStage = (Stage) newProjectButton.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

@@ -2,6 +2,7 @@ package main.java;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -15,13 +16,19 @@ public class CreateUserController {
     private PasswordField passwordField;
 
     @FXML
-    private TextField roleField;
+    private ComboBox<String> roleComboBox;
 
     @FXML
     private Button cancelButton;
 
     @FXML
     private Button createButton;
+
+    @FXML
+    public void initialize() {
+        // Populate the ComboBox with roles
+        roleComboBox.getItems().addAll("Admin", "Manager", "Employee", "Viewer");
+    }
 
     /**
      * Handles the action for the Cancel button.
@@ -44,8 +51,10 @@ public class CreateUserController {
         System.out.println("Create button clicked.");
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
+        String role = roleComboBox.getValue();
+
         // Validate input fields
-        if (username.isEmpty() || password.isEmpty()){
+        if (username.isEmpty() || password.isEmpty() || role == null || role.isEmpty()) {
             System.out.println("All fields are required!");
             // Show error message or dialog (not implemented here)
             return;
@@ -55,6 +64,8 @@ public class CreateUserController {
         System.out.println("Creating user...");
         System.out.println("Username: " + username);
         System.out.println("Password: " + password);
+        System.out.println("Role: " + role);
+
         // Logic to save the user details (e.g., to a database or a file) can be added here
 
         // Close the screen after user creation
