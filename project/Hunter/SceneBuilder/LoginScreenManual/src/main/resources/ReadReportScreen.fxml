@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:id="readReportScreen" fx:controller="main.java.ReadReportController"
+            prefWidth="943.0" prefHeight="759.0" stylesheets="@style2.css" styleClass="borderPaneWriteReportScreen">
+    <!-- Top section with Title -->
+    <top>
+        <StackPane styleClass="titleStackPane">
+            <Label text="REPORT BY USER" styleClass="loginTitleLabel"/>
+        </StackPane>
+    </top>
+
+    <!-- Center section with Title and Body -->
+    <center>
+        <VBox spacing="20.0" alignment="TOP_CENTER" padding="20">
+            <VBox spacing="10.0" alignment="TOP_LEFT" maxWidth="800">
+                <Label text="Title" />
+                <TextField fx:id="titleTextField" promptText="read report title here..." />
+            </VBox>
+
+            <VBox spacing="10.0" alignment="TOP_LEFT" maxWidth="800">
+                <Label text="Body" />
+                <TextArea fx:id="bodyTextArea" promptText="read report here..." wrapText="true" prefRowCount="10" />
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Bottom section with Close Button -->
+    <bottom>
+        <HBox spacing="10.0" alignment="CENTER" padding="20">
+            <Button text="CLOSE" styleClass="largeButton" onAction="#handleClose"/>
+        </HBox>
+    </bottom>
+</BorderPane>
