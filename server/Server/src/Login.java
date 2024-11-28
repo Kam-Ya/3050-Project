@@ -13,6 +13,11 @@ public class Login {
     private String username;
     private String password;
 
+    public Login(String user, String pass) {
+        this.username = user;
+        this.password = pass;
+    }
+
     public boolean authenticate() {
         ProgressReport report = new ProgressReport();
         try(
@@ -55,7 +60,7 @@ public class Login {
         }
     }
 
-    public boolean register() {
+    public boolean register(int ID) {
         try {
             // generate salt
             SecureRandom rand = new SecureRandom();
@@ -74,7 +79,7 @@ public class Login {
                 // deletes the project from the database
                 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 String input = String.format("INSERT INTO login VALUES ('%s', '%s', '%s', %d);",
-                        this.username, Arrays.toString(hashedPassword), Arrays.toString(salt), 1); // TODO
+                        this.username, Arrays.toString(hashedPassword), Arrays.toString(salt), ID); // TODO
                 state.executeUpdate(input);
 
                 // close connection

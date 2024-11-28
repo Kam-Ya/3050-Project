@@ -7,6 +7,11 @@ public class CEO extends Lead{
         permissions = 3;
     }
 
+    public void createOrg() {
+        // TODO
+        return;
+    }
+
     public int deleteORG() {
         // TODO
         return 1;
