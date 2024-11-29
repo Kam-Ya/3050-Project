@@ -13,6 +13,13 @@ public class ProgressReport implements Serializable {
     private Date timestamp;
     private int ID;
 
+    public ProgressReport(String title, String content, String user, Date made) {
+        this.title = title;
+        this.reportDetails = content;
+        this.User = user;
+        this.timestamp = made;
+    }
+
     public Date getTimestamp() {
         return this.timestamp;
     }
@@ -35,6 +42,10 @@ public class ProgressReport implements Serializable {
 
     public void setUser(String user) {
         this.User = user;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void deleteFromDatabase() {
