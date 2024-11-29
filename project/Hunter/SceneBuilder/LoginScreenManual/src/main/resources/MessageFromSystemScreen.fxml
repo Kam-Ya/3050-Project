@@ -20,8 +20,9 @@
         <center>
             <VBox spacing="20.0" alignment="CENTER" styleClass="centerVBox">
                 <children>
-                    <TextField fx:id="messageTitleField" promptText="message title..." editable="false" styleClass="textFieldInput"/>
-                    <TextArea fx:id="messageBodyArea" promptText="message body..." editable="false" styleClass="textFieldInput" prefHeight="200.0"/>
+                    <Label fx:id="messageTitleLabel" styleClass="textFieldInput"/>
+                    <Label fx:id="messageBodyLabel" styleClass="textFieldInput"/>
+                    <!--<TextField fx:id="messageTitleField" promptText="message title..." editable="false" styleClass="textFieldInput"/> -->
                 </children>
                 <VBox.margin>
                     <Insets top="20" right="20" bottom="20" left="20"/>

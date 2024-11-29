@@ -8,15 +8,20 @@ import javafx.scene.control.TextField;
 
 public class MessageFromSystemController {
 
-    public TextField messageTitleField;
-    public TextArea messageBodyArea;
+    //public TextField messageTitleField;
+    //public TextArea messageBodyArea;
+    @FXML
+    public Label messageTitleLabel;
+    @FXML
+    public Label messageBodyLabel;
+    @FXML
     public Button closeButton;
     @FXML
     private Label bodyLabel;
 
     public void setMessage(String title, String body) {
-        messageTitleField.setText(title);
-        messageBodyArea.setText(body);
+        messageTitleLabel.setText(title);
+        messageBodyLabel.setText(body);
     }
 
     @FXML
