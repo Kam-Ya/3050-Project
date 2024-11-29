@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProgressReport implements Serializable {
+    private String title;
     private String reportDetails;
     private String User;
     private Date timestamp;

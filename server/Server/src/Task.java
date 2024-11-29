@@ -18,10 +18,11 @@ public class Task implements Serializable {
     private int ID;
     private ArrayList<Comment> comments;
 
-    public Task(String name, Date due, String Description) {
+    public Task(String name, Date due, String Description, int priority) {
         this.taskName = name;
         this.taskDueDate = due;
         this.desc = Description;
+        this.priority = priority;
     }
 
     public String getTaskName() {
@@ -65,6 +66,7 @@ public class Task implements Serializable {
     }
 
     public ArrayList<Comment> getComments() {
+        //TODO
         return this.comments;
     }
 

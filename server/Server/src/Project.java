@@ -71,15 +71,60 @@ public class Project implements Serializable {
     }
 
     public ArrayList<Integer> getEmployees() {
-        return this.employees;
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get task and project ID's from database
+            String input = String.format("SELECT emp FROM projassign WHERE proj = %d;", this.ID);
+            ResultSet rs = state.executeQuery(input);
+
+            while(rs.next()) {
+                this.employees.add(rs.getInt("emp"));
+            }
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+            return this.employees;
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+            return null;
+        }
     }
 
-    public void setEmployees(Integer employee) {
-        this.employees.add(employee);
+    public ArrayList<Integer> addEmployee(Integer employee) {
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            ArrayList<Integer> possible = new ArrayList<Integer>();
+            // get task and project ID's from database
+            String input = String.format("SELECT employee FROM inORG WHERE org = %d;", employee);
+            ResultSet rs = state.executeQuery(input);
+
+            while(rs.next()) {
+                possible.add(rs.getInt("emp"));
+            }
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+            return possible;
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+            return null;
+        }
     }
 
-    public void addTask(String name, Date due, String desc) {
-        Task t = new Task(name, due, desc);
+    public void insertEmp(Integer hid, ArrayList<Integer>selected) {
+        // TODO
+    }
+
+    public void addTask(String name, Date due, String desc, int prio) {
+        Task t = new Task(name, due, desc, prio);
         t.addToDB();
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
@@ -165,5 +210,17 @@ public class Project implements Serializable {
         } catch(SQLException sqle) {
             return;
         }
+    }
+
+    public void getTaskList() {
+        //TODO
+    }
+
+    public void writeReport(String title, String details, int ID) {
+        //TODO
+    }
+
+    public void listReports() {
+        // TODO: title, date, writer
     }
 }
