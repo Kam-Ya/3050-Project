@@ -67,6 +67,7 @@ public class CommentScreenController {
     }
 
     @FXML
+    //TODO: Remove Edit
     private void handleEdit() {
         String selectedComment = commentsListView.getSelectionModel().getSelectedItem();
         if (selectedComment == null) {

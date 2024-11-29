@@ -130,11 +130,23 @@ public class ProjectScreenController {
             e.printStackTrace();
         }
     }
-
+//TODO: Make a new class for Creating Task
     @FXML
     private void handleNewTask() {
         System.out.println("New Task button clicked!");
-        // Logic for creating a new task
+        try {
+            // Load the ListReportsScreen FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TaskScreen.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage for ListReportsScreen
+            Stage stage = new Stage();
+            stage.setTitle("List Reports");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

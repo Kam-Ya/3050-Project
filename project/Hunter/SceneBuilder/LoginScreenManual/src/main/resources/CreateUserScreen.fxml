@@ -15,6 +15,7 @@
                 <Label text="CREATE USER" styleClass="loginTitleLabel"/>
             </StackPane>
         </top>
+        // TO DO: Add textField for Name
 
         <!-- Center Section: Input Fields -->
         <center>

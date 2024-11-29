@@ -15,6 +15,7 @@ public class CredentialsController {
 
     public Button loginButton;
     @FXML
+    //TODO: Add a button to Signup
     private TextField usernameField;
 
     @FXML

@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CreateUserController {
-
+    //TODO: Add name field
     @FXML
     private TextField usernameField;
 
