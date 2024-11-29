@@ -63,9 +63,9 @@ public class ListOfProjectsController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // close the current screen
-            Stage currentStage = (Stage) projectListView.getScene().getWindow();
-            currentStage.close();
+//            // close the current screen
+//            Stage currentStage = (Stage) projectListView.getScene().getWindow();
+//            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,9 +95,9 @@ public class ListOfProjectsController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Close the current login window
-            Stage currentStage = (Stage) newProjectButton.getScene().getWindow();
-            currentStage.close();
+//            // Close the current login window
+//            Stage currentStage = (Stage) newProjectButton.getScene().getWindow();
+//            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,9 +117,9 @@ public class ListOfProjectsController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Close the current login window
-            Stage currentStage = (Stage) newUserButton.getScene().getWindow();
-            currentStage.close();
+//            // Close the current login window
+//            Stage currentStage = (Stage) newUserButton.getScene().getWindow();
+//            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
