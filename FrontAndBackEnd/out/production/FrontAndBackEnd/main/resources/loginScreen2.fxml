@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextField?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutX="429.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" styleClass="borderPane" stylesheets="@style2.css">
+         <top>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="50.0" styleClass="loginVBox" stylesheets="@style2.css" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane styleClass="titleStackPane" stylesheets="@style2.css">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Label styleClass="loginTitleLabel" stylesheets="@style2.css" text="Login Screen" />
+                     </children>
+                  </StackPane>
+                  <TextField promptText="USERNAME" styleClass="userNameTextField" stylesheets="@style2.css" />
+                  <TextField promptText="PASSWORD" styleClass="passwordTextField" stylesheets="@style2.css" />
+               </children>
+            </VBox>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" styleClass="loginButton" stylesheets="@style2.css" text="Login" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
