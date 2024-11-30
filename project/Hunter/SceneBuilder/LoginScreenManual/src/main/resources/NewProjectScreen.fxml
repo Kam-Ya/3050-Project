@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="newProjectAnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="anchorPaneNewProject" stylesheets="style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.NewProjectController">
+<AnchorPane fx:id="newProjectAnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="anchorPane" stylesheets="style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.NewProjectController">
     <BorderPane fx:id="newProjectScreen" layoutX="115.0" layoutY="83.0" prefHeight="919.0" prefWidth="943.0" styleClass="borderPane" stylesheets="@style2.css">
         <!-- Top Section: Title -->
         <top>
