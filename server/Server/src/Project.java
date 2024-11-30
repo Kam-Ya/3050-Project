@@ -39,18 +39,19 @@ public class Project implements Serializable {
         }
     }
 
-    public int deleteFromDB() {
+    public void deleteFromDB() {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
             // deletes the project from the database
-            String input = String.format("DELETE FROM project WHERE description = '%s';", this.Desc);
+            this.getID();
+            String input = String.format("DELETE FROM project WHERE projectID = %d;", this.ID);
             state.executeUpdate(input);
         } catch (SQLException sqle) {
-            // TODO
+            System.out.println(sqle.getMessage());
+            return;
         }
-        return 1;
     }
 
     public String getProjectName() {
@@ -259,7 +260,28 @@ public class Project implements Serializable {
         }
     }
 
-    public void listReports() {
-        // TODO: title, date, writer
+    public ArrayList<ProgressReport> listReports() {
+        ArrayList<ProgressReport> reports = new ArrayList<ProgressReport>();
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the project ID from the database
+            String input = String.format("SELECT title, date, user FROM report WHERE proj = %d;", this.ID);
+            ResultSet rs = state.executeQuery(input);
+
+            for(int i = 0; rs.next(); i++) {
+                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user"), rs.getDate("date")));
+            }
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+
+            return reports;
+        } catch(SQLException sqle) {
+            return null;
+        }
     }
 }
