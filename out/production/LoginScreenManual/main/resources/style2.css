@@ -1,0 +1,171 @@
+/* AnchorPane styling */
+/*.anchorPane {*/
+/*    -fx-background-color: #D3D3D3;*/
+/*    -fx-pref-width: 1500px;*/
+/*    -fx-pref-height: 980px;*/
+/*    -fx-min-width: 680px;*/
+/*    -fx-min-height: 430px;*/
+/*}*/
+.anchorPane {
+    -fx-background-color: #D3D3D3;
+    -fx-pref-width: 900px;
+    -fx-pref-height: 600px;
+    -fx-min-width: 500px;
+    -fx-min-height: 430px;
+}
+.anchorPaneNewProject {
+    -fx-background-color: #D3D3D3;
+    -fx-pref-width: 1300px;
+    -fx-pref-height: 1000px;
+    -fx-min-width: 500px;
+    -fx-min-height: 430px;
+}
+
+/* Centered BorderPane styling */
+.borderPane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 680px;
+    -fx-pref-height: 430px;
+}
+.borderPaneProjectScreen {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 943px;
+    -fx-pref-height: 837px;
+}
+.borderPaneTaskScreen {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 943px;
+    -fx-pref-height: 919px;
+}
+
+.borderPaneWriteReportScreen {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 943px;
+    -fx-pref-height: 727px;
+}
+.borderPaneCommentScreen {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-pref-width: 943px;
+    -fx-pref-height: 837px;
+}
+.messageLabel {
+    -fx-alignment: center;             /* Center-aligns the text */
+    -fx-font-family: "Inter";          /* Font family */
+    -fx-font-size: 28px;               /* Font size */
+    -fx-font-weight: bold;
+    /* Font weight */
+    -fx-text-transform: uppercase;     /* Uppercase text */
+    -fx-line-height: normal;           /* Line height is typically not available in JavaFX */
+}
+
+/* TextField styling for username input */
+.userNameTextField, .passwordTextField {
+    /* -fx-border-color: #FFEB3B;
+    -fx-border-width: 2px; */
+    -fx-padding: 10px;
+}
+
+/* Label styling for login screen title */
+.loginTitleLabel {
+    -fx-text-fill: #1A1A1A;            /* Equivalent to 'color' */
+    -fx-alignment: center;             /* Center-aligns the text */
+    -fx-font-family: "Inter";          /* Font family */
+    -fx-font-size: 48px;               /* Font size */
+    -fx-font-weight: bold;
+    -fx-font-weight: 500;              /* Font weight */
+    -fx-text-transform: uppercase;     /* Uppercase text */
+    -fx-line-height: normal;           /* Line height is typically not available in JavaFX */
+    -fx-pref-width: 630px;
+}
+
+.projectTitleLabel {
+    -fx-text-fill: #1A1A1A;            /* Equivalent to 'color' */
+    -fx-alignment: center;             /* Center-aligns the text */
+    -fx-font-family: "Inter";          /* Font family */
+    -fx-font-size: 20px;               /* Font size */
+    -fx-font-weight: bold;
+    -fx-text-transform: uppercase;     /* Uppercase text */
+    -fx-line-height: normal;           /* Line height is typically not available in JavaFX */
+    -fx-pref-width: 630px;
+    -fx-pref-height: 34px;
+}
+
+.titleStackPane{
+    -fx-pref-width: 630px;
+    -fx-pref-height: 78px;
+    -fx-background-color: #FFEB3B;
+    /* -fx-padding: 20px; */
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
+
+}
+
+/* Login Button styling */
+.loginButton {
+    -fx-background-color: #D32F2F;     /* Red background color */
+    -fx-text-fill: #FFFFFF;            /* White text color */
+    -fx-font-weight: bold;             /* Bold font */
+    -fx-pref-width: 150px;             /* Width of button */
+    -fx-pref-height: 54px;             /* Height of button */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);  /* Drop shadow */
+    -fx-text-fill: #FFFFFF;           /* Equivalent to 'color: #FFF;' */
+    -fx-alignment: center;            /* Equivalent to 'text-align: center;' */
+    -fx-font-family: "Inter";         /* Equivalent to 'font-family: Inter;' */
+    -fx-font-size: 24px;              /* Equivalent to 'font-size: 24px;' */
+    -fx-font-style: normal;           /* Equivalent to 'font-style: normal;' */
+    -fx-font-weight: 800;             /* Equivalent to 'font-weight: 800;' */
+    -fx-text-transform: uppercase;    /* Equivalent to 'text-transform: uppercase;' */
+
+}
+.largeButton {
+    -fx-background-color: #D32F2F;     /* Red background color */
+    -fx-text-fill: #FFFFFF;            /* White text color */
+    -fx-font-weight: bold;             /* Bold font */
+    -fx-pref-width: 200px;             /* Width of button */
+    -fx-pref-height: 54px;             /* Height of button */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);  /* Drop shadow */
+    -fx-text-fill: #FFFFFF;           /* Equivalent to 'color: #FFF;' */
+    -fx-alignment: center;            /* Equivalent to 'text-align: center;' */
+    -fx-font-family: "Inter";         /* Equivalent to 'font-family: Inter;' */
+    -fx-font-size: 24px;              /* Equivalent to 'font-size: 24px;' */
+    -fx-font-style: normal;           /* Equivalent to 'font-style: normal;' */
+    -fx-font-weight: 800;             /* Equivalent to 'font-weight: 800;' */
+    -fx-text-transform: uppercase;    /* Equivalent to 'text-transform: uppercase;' */
+}
+
+.smallButton {
+    -fx-background-color: #D32F2F; /* Red background color */
+    -fx-text-fill: #FFFFFF; /* White text color */
+    -fx-font-weight: bold; /* Bold font */
+    -fx-pref-width: 150px; /* Width of button */
+    -fx-pref-height: 34px; /* Height of button */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2); /* Drop shadow */
+    /* Equivalent to 'color: #FFF;' */
+    -fx-alignment: center; /* Equivalent to 'text-align: center;' */
+    -fx-font-family: "Inter"; /* Equivalent to 'font-family: Inter;' */
+    -fx-font-size: 14px; /* Equivalent to 'font-size: 24px;' */
+    -fx-font-style: normal; /* Equivalent to 'font-style: normal;' */
+    -fx-text-transform: uppercase;
+}   /* Equivalent to 'text-transform: uppercase;' */
+

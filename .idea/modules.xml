@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/3050-Project.iml" filepath="$PROJECT_DIR$/3050-Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoginScreenManual/LoginScreenManual.iml" filepath="$PROJECT_DIR$/LoginScreenManual/LoginScreenManual.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OCSF/OCSF.iml" filepath="$PROJECT_DIR$/OCSF/OCSF.iml" />
+    </modules>
+  </component>
+</project>
