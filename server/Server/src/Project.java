@@ -281,6 +281,7 @@ public class Project implements Serializable {
 
             return reports;
         } catch(SQLException sqle) {
+            System.out.println(sqle.getMessage());
             return null;
         }
     }

@@ -30,6 +30,11 @@ public class User implements Serializable {
 
             log.register(this.userID);
 
+            if (this.role.getClass() == CEO.class) {
+                CEO c = new CEO();
+                c.createOrg(this.userID);
+            }
+
             // close the connection
             state.close();
             con.close();
@@ -85,6 +90,28 @@ public class User implements Serializable {
             state.executeUpdate(input);
 
             // close the connection
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+    }
+
+    public void DeleteOrg() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // adds the actual user information into the database
+            String input = String.format("SELECT org FROM inORG WHERE employee = %d;", this.userID);
+            ResultSet rs = state.executeQuery(input);
+            int ID = rs.getInt("employeeID");
+
+            CEO c = new CEO();
+            c.deleteOrg(ID);
+
+            // close the connection
+            rs.close();
             state.close();
             con.close();
         } catch(SQLException sqle) {

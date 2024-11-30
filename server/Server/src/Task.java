@@ -66,8 +66,28 @@ public class Task implements Serializable {
     }
 
     public ArrayList<Comment> getComments() {
-        //TODO
-        return this.comments;
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the project ID from the database
+            String input = String.format("SELECT content, date, commentor FROM comment WHERE task = %d;", this.ID);
+            ResultSet rs = state.executeQuery(input);
+
+            for (int i = 0; rs.next(); i++) {
+                this.comments.add(new Comment(rs.getString("content"), rs.getDate("date"), rs.getString("commentor")));
+            }
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+
+            return this.comments;
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+            return null;
+        }
     }
 
     public String getDesc() {
@@ -81,7 +101,7 @@ public class Task implements Serializable {
     public void addComment(String name, Date due, String comm) {
         Comment com = new Comment(name, due, comm);
         this.comments.add(com);
-        try(
+        try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
@@ -99,13 +119,13 @@ public class Task implements Serializable {
             rs.close();
             state.close();
             con.close();
-        } catch(SQLException sqle) {
+        } catch (SQLException sqle) {
             return;
         }
     }
 
     public void addToDB() {
-        try(
+        try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
@@ -118,35 +138,36 @@ public class Task implements Serializable {
             // close connection
             state.close();
             con.close();
-        } catch(SQLException sqle) {
+        } catch (SQLException sqle) {
             return;
         }
     }
 
     public void deleteFromDatabase() {
-        try(
+        try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
             // deletes task from database
-            String input = String.format("DELETE FROM task WHERE name = '%s' AND description = '%s';", this.taskName, this.desc);
+            this.getID();
+            String input = String.format("DELETE FROM task WHERE taskID = %d;", this.ID);
             state.executeUpdate(input);
 
             // close the connection
             state.close();
             con.close();
-        } catch(SQLException sqle) {
+        } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
     }
 
     public void getID() {
-        try(
+        try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
             // get the task ID from the database
-            String input = String.format("SELECT taskID FROM task WHERE description = '%s';", this.desc);
+            String input = String.format("SELECT taskID FROM task WHERE description = '%s' AND name = '%s';", this.desc, this.taskName);
             ResultSet rs = state.executeQuery(input);
 
             this.ID = rs.getInt("taskID");
@@ -155,7 +176,7 @@ public class Task implements Serializable {
             rs.close();
             state.close();
             con.close();
-        } catch(SQLException sqle) {
+        } catch (SQLException sqle) {
             return;
         }
     }
