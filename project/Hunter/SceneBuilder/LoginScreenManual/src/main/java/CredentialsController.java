@@ -1,5 +1,6 @@
 package main.java;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,13 +10,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.Console;
 import java.io.IOException;
 
 public class CredentialsController {
 
     public Button loginButton;
     @FXML
+    public Button registerButton;
     //TODO: Add a button to Signup
+    @FXML
     private TextField usernameField;
 
     @FXML
@@ -65,5 +69,9 @@ public class CredentialsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void handleSignup() {
+        System.out.println("Signup Button Pressed");
     }
 }
