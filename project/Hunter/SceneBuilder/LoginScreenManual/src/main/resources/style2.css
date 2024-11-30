@@ -1,9 +1,23 @@
 /* AnchorPane styling */
+/*.anchorPane {*/
+/*    -fx-background-color: #D3D3D3;*/
+/*    -fx-pref-width: 1500px;*/
+/*    -fx-pref-height: 980px;*/
+/*    -fx-min-width: 680px;*/
+/*    -fx-min-height: 430px;*/
+/*}*/
 .anchorPane {
     -fx-background-color: #D3D3D3;
-    -fx-pref-width: 1500px;
-    -fx-pref-height: 980px;
-    -fx-min-width: 680px;
+    -fx-pref-width: 900px;
+    -fx-pref-height: 600px;
+    -fx-min-width: 500px;
+    -fx-min-height: 430px;
+}
+.anchorPaneNewProject {
+    -fx-background-color: #D3D3D3;
+    -fx-pref-width: 1300px;
+    -fx-pref-height: 1000px;
+    -fx-min-width: 500px;
     -fx-min-height: 430px;
 }
 

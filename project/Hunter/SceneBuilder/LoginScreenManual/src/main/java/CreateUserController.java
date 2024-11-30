@@ -13,6 +13,9 @@ public class CreateUserController {
     private TextField usernameField;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
     private PasswordField passwordField;
 
     @FXML
@@ -51,10 +54,11 @@ public class CreateUserController {
         System.out.println("Create button clicked.");
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
+        String name = nameField.getText().trim();
         String role = roleComboBox.getValue();
 
         // Validate input fields
-        if (username.isEmpty() || password.isEmpty() || role == null || role.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || role == null || role.isEmpty() || name.isEmpty()){
             System.out.println("All fields are required!");
             // Show error message or dialog (not implemented here)
             return;

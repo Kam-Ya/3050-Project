@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ProjectScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" styleClass="anchorPaneNewProject" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ProjectScreenController">
     <children>
         <!-- Centered BorderPane -->
-        <BorderPane layoutX="279.0" layoutY="72.0" styleClass="borderPaneProjectScreen" stylesheets="@style2.css">
+        <BorderPane layoutX="194.0" layoutY="93.0" styleClass="borderPaneProjectScreen" stylesheets="@style2.css">
             <top>
                 <!-- Top Buttons -->
                 <HBox alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
                     <children>
                         <Button fx:id="writeReportButton" onAction="#handleWriteReport" styleClass="largeButton" text="WRITE REPORT" />
                         <Button fx:id="readReportButton" onAction="#handleReadReport" styleClass="largeButton" text="READ REPORT" />
-                        <Button fx:id="newTaskButton" onAction="#handleNewTask" styleClass="largeButton" text="NEW TASK" />
-                        <Button fx:id="aboutButton" onAction="#handleAbout" styleClass="largeButton" text="ABOUT" />
-                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="largeButton" text="CLOSE" />
+                        <Button fx:id="newTaskButton" onAction="#handleNewTask" styleClass="loginButton" text="NEW TASK" />
+                        <Button fx:id="aboutButton" onAction="#handleAbout" styleClass="loginButton" text="ABOUT" />
+                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="loginButton" text="CLOSE" />
                     </children>
                 </HBox>
             </top>
