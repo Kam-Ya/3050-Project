@@ -10,6 +10,7 @@ public class Project implements Serializable {
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;
+    public ArrayList<ProgressReport> reports;
     public String Desc;
     public String manager;
     private int ID;
@@ -261,7 +262,6 @@ public class Project implements Serializable {
     }
 
     public ArrayList<ProgressReport> listReports() {
-        ArrayList<ProgressReport> reports = new ArrayList<ProgressReport>();
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
