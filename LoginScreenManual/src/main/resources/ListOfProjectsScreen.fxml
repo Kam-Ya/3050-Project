@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ListOfProjectsController">
+    <children>
+        <!-- Centered BorderPane -->
+        <BorderPane layoutX="112.0" layoutY="87.0" prefHeight="600.0" prefWidth="800.0" styleClass="borderPane" stylesheets="@style2.css">
+            <top>
+                <!-- Top Buttons -->
+                <HBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="loginButton" text="LOGOUT" />
+                        <Button fx:id="newProjectButton" onAction="#handleNewProject" styleClass="largeButton" text="NEW PROJECT" />
+                        <Button fx:id="newUserButton" onAction="#handleNewUser" styleClass="largeButton" text="NEW USER" />
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <!-- Welcome Back and Project List -->
+                <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+                    <children>
+                        <StackPane styleClass="titleStackPane">
+                            <Label styleClass="loginTitleLabel" text="WELCOME BACK" />
+                        </StackPane>
+                        <ListView fx:id="projectListView" styleClass="projectListView" />
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
