@@ -77,28 +77,33 @@ public class ListOfProjectsController {
     }
 
 
-    private void openProjectScreen(String projectName) {
+    private void openProjectScreen(String selectedProjectInfo) {
         try {
+            // Find the selected project from the user's projects
+            Project selectedProject = currentUser.getProjs().stream()
+                    .filter(project -> selectedProjectInfo.startsWith(project.getProjectName()))
+                    .findFirst()
+                    .orElse(null);
+
+            if (selectedProject == null) {
+                System.err.println("Selected project not found.");
+                return;
+            }
+
             // Load the ProjectScreen FXML
-            // Bug testing
-            System.out.println("ListOfProjectsController:");
-            System.out.println(getClass().getResource(ProjectScreen));
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ProjectScreen));
             Parent root = loader.load();
 
-            // Get the controller for ProjectScreen and pass the project data
+            // Pass the selected project to the ProjectScreenController
             ProjectScreenController controller = loader.getController();
-            controller.setProjectName(projectName);
+            controller.setProjectDetails(selectedProject);
 
             // Show the ProjectScreen in a new window
             Stage stage = new Stage();
-            stage.setTitle("Project Screen");
+            stage.setTitle("Project: " + selectedProject.getProjectName());
             stage.setScene(new Scene(root));
             stage.show();
 
-//            // close the current screen
-//            Stage currentStage = (Stage) projectListView.getScene().getWindow();
-//            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

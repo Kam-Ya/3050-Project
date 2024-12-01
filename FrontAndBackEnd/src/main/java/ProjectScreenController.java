@@ -16,6 +16,7 @@ import java.io.IOException;
 public class ProjectScreenController {
 
     public Label descriptionLabel;
+    public Label projectDueDateLabel;
     @FXML
     private Button writeReportButton;
 
@@ -41,9 +42,22 @@ public class ProjectScreenController {
     private TextArea projectDescriptionArea;
 
     // Method to set project details
-    public void setProjectDetails(String title, String description) {
-        projectTitleLabel.setText(title);
-        projectDescriptionArea.setText(description);
+    public void setProjectDetails(Project project) {
+        // Set project details
+        projectTitleLabel.setText(project.getProjectName());
+        projectDueDateLabel.setText(project.getProjectDueDate().toString());
+        projectDescriptionArea.setText(project.Desc);
+
+        // Populate the tasks ListView
+        taskListView.getItems().clear();
+        for (Task task : project.tasks) {
+            taskListView.getItems().add(String.format(
+                    "%s - Due: %s | Priority: %d",
+                    task.getTaskName(),
+                    task.getTaskDueDate(),
+                    task.getPriority()
+            ));
+        }
     }
     @FXML
     private void initialize() {
