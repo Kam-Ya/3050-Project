@@ -109,6 +109,16 @@
     -fx-pref-width: 630px;
     -fx-pref-height: 34px;
 }
+.labelText {
+    -fx-font-family: "Inter";          /* Font family */
+    -fx-font-size: 20px;               /* Font size */
+    -fx-font-weight: bold;
+}
+.simpleText {
+    -fx-font-family: "Inter";          /* Font family */
+    -fx-font-size: 18px;               /* Font size */
+    -fx-font-weight: normal;
+}
 
 .titleStackPane{
     -fx-pref-width: 630px;

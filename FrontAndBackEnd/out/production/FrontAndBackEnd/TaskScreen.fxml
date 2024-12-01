@@ -25,16 +25,16 @@
                 <!-- Task Details -->
                 <VBox spacing="20" style="-fx-padding: 20;">
                     <children>
-                        <Label text="Description" />
-                        <Label fx:id="descriptionLabel" />
+                        <Label text="Description:" styleClass="labelText"/>
+                        <Label fx:id="descriptionLabel"  />
 
-                        <Label text="Due Date" />
+                        <Label text="Due Date:" styleClass="labelText"/>
                         <Label fx:id="dueDateLabel" text="10-10-2024" />
 
-                        <Label text="Assigned To" />
+                        <Label text="Assigned To:" styleClass="labelText"/>
                         <Label fx:id="assignedUserLabel" text="John Doe"/>
 
-                        <Label text="Priority:"  />
+                        <Label text="Priority:" styleClass="labelText" />
                         <Label fx:id="priorityLabel" text="High" />
                     </children>
                 </VBox>
@@ -43,10 +43,10 @@
                 <!-- Task Action Buttons -->
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="completeButton" onAction="#handleComplete" styleClass="largeButton" text="COMPLETE" />
-                        <Button fx:id="notesButton" onAction="#handleNotes" styleClass="largeButton" text="NOTES" />
-                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="largeButton" text="DELETE" />
-                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="largeButton" text="CLOSE" />
+                        <Button fx:id="completeButton" onAction="#handleComplete" styleClass="smallButton" text="COMPLETE" />
+                        <Button fx:id="notesButton" onAction="#handleNotes" styleClass="smallButton" text="NOTES" />
+                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
+                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
                     </children>
                 </HBox>
             </bottom>
