@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import main.java.TaskScreenController;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 public class ProjectScreenController {
 
+    public Label descriptionLabel;
     @FXML
     private Button writeReportButton;
 
@@ -35,7 +37,14 @@ public class ProjectScreenController {
     @FXML
     private ListView<String> taskListView;
 
+    @FXML
+    private TextArea projectDescriptionArea;
 
+    // Method to set project details
+    public void setProjectDetails(String title, String description) {
+        projectTitleLabel.setText(title);
+        projectDescriptionArea.setText(description);
+    }
     @FXML
     private void initialize() {
         // Example task items
@@ -44,6 +53,8 @@ public class ProjectScreenController {
                 "Task 2 - Due: 23-10-24 | 3 notes",
                 "Task 3 - Due: 24-10-24 | 7 notes"
         );
+        projectDescriptionArea.setEditable(false);
+        projectDescriptionArea.setText("This is a project description");
         // Set click handler for the ListView
         taskListView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Detect double-click
