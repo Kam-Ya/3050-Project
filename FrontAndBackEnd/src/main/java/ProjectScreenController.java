@@ -44,7 +44,7 @@ public class ProjectScreenController {
     private TextArea projectDescriptionArea;
 
     // Method to set project details
-    public void setProjectDetails(Project project, User currentUser) {
+    public void setProjectDetails(Project project, Integer userID) {
         this.project = project;
         // Set project details
         System.out.println("setProjectDetails called for project: " + project.getProjectName());
@@ -57,7 +57,7 @@ public class ProjectScreenController {
         taskListView.getItems().clear();
         for (Task task : project.tasks) {
             // Check if the currentUser is assigned to the task
-            boolean isAssigned = task.getAsignees().contains(currentUser.get());
+            boolean isAssigned = task.getAsignees().contains(userID);
             String taskInfo = String.format(
                     "%s - Due: %s | Priority: %d%s",
                     task.getTaskName(),

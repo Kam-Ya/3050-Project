@@ -47,13 +47,17 @@ public class CredentialsController {
         // Create a Login object
         Login loginRequest = new Login(username, password);
 
+        showSystemMessage("Please Wait", "Server is loading please wait");
+
          // OCSF Stuff
         // Send the Login object to the server using OCSF
         clientController.sendMSG(loginRequest, "loginRequest", -1);
+
+
 //        CTMClient client = Main.getClient(); // Get the OCSF client instance
 
     }
-    public static void openListOfProjectsScreen(User user) {
+    public void openListOfProjectsScreen(User user) {
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ListOFProjects));

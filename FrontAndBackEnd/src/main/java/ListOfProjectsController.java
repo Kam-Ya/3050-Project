@@ -27,13 +27,12 @@ public class ListOfProjectsController {
     @FXML
     private ListView<String> projectListView;
 
-    private User currentUser;
+    private Integer userID;
 
-    public void setCurrentUser(User user) {
-        this.currentUser = user;
+    public void setCurrentUseIDr(Integer userID) {
+        this.userID = userID;
         // debugging
-        System.out.println("User Name: " + user.getName());
-        System.out.println("User Role: " + user.getRole());
+        System.out.println("UserID: " + userID);
 
         loadProjects(); // Load projects for the current user
     }
@@ -59,11 +58,6 @@ public class ListOfProjectsController {
     }
 
     private void loadProjects() {
-        if (currentUser != null) {
-            // Fetch projects for the current user
-            currentUser.listProj();
-            ArrayList<Project> projects = currentUser.getProjs();
-
             // Populate the ListView
             for (Project project : projects) {
                 String projectInfo = String.format(
@@ -79,16 +73,6 @@ public class ListOfProjectsController {
 
     private void openProjectScreen(String selectedProjectInfo) {
         try {
-            // Find the selected project from the user's projects
-            Project selectedProject = currentUser.getProjs().stream()
-                    .filter(project -> selectedProjectInfo.startsWith(project.getProjectName()))
-                    .findFirst()
-                    .orElse(null);
-
-            if (selectedProject == null) {
-                System.err.println("Selected project not found.");
-                return;
-            }
 
             System.out.println("Opening ProjectScreen for project: " + selectedProject.getProjectName());
 
@@ -98,7 +82,7 @@ public class ListOfProjectsController {
 
             // Pass the selected project to the ProjectScreenController
             ProjectScreenController controller = loader.getController();
-            controller.setProjectDetails(selectedProject, currentUser);
+            controller.setProjectDetails(selectedProject, userID);
 
             // Show the ProjectScreen in a new window
             Stage stage = new Stage();
