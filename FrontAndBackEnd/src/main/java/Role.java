@@ -1,4 +1,4 @@
-package Server.src;
+package main.java;
 
 public class Role {
     public int permissions;
