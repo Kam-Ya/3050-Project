@@ -142,7 +142,7 @@ public class CTMController {
     }
     public static void viewReport(Object obj, ConnectionToClient client){
         Integer reportID = (Integer) obj;
-        ProgressReport report = new ProgressReport().getInfo(reportID);
+        ProgressReport report =  new ProgressReport().getInfo(reportID);
 
 
     }
