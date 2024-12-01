@@ -10,6 +10,7 @@ public class Project implements Serializable {
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;
+    public ArrayList<Task> tasks;
     public ArrayList<ProgressReport> reports;
     public String Desc;
     public String manager;
@@ -165,28 +166,26 @@ public class Project implements Serializable {
         }
     }
 
-    public ArrayList<Integer> getTaskList() {
-        ArrayList<Integer> tasks = new ArrayList<Integer>();
+    public void listtasks() {
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
             // get the project ID from the database
-            String input = String.format("SELECT task FROM forProject WHERE proj = %d;", this.ID);
+            String input = String.format("SELECT taskID, name, priority, description, due FROM task WHERE projectID = " +
+                    "(SELECT task FROM forProject WHERE proj = %d;)", this.ID);
             ResultSet rs = state.executeQuery(input);
 
             while(rs.next()) {
-                tasks.add(rs.getInt("task"));
+                this.tasks.add(new Task(rs.getString("name"), rs.getDate("due"), rs.getString("description"), rs.getInt("priority"), rs.getInt("taskID")));
             }
 
             // close the connection
             rs.close();
             state.close();
             con.close();
-
-            return tasks;
         } catch(SQLException sqle) {
-            return null;
+            return;
         }
     }
 
@@ -228,5 +227,9 @@ public class Project implements Serializable {
             System.out.println(sqle.getMessage());
             return;
         }
+    }
+    
+    public ArrayList<Task> getProjs() {
+        return this.tasks;
     }
 }

@@ -134,7 +134,7 @@ public class User implements Serializable {
                 Statement state = con.createStatement();
         ) {
             // get the project ID from the database
-            String input = String.format("SELECT projectID, name, date, description FROM project WHERE project ID = " +
+            String input = String.format("SELECT projectID, name, date, description FROM project WHERE projectID = " +
                     "(SELECT proj FROM projassign WHERE emp = %d;)", this.userID);
             ResultSet rs = state.executeQuery(input);
 
