@@ -141,7 +141,7 @@ public class ListOfProjectsController {
         System.out.println("New User button clicked!");
         try {
             // Load the new FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CreateUserScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CreateNewUserScreen));
             Parent root = fxmlLoader.load();
 
             // Create a new stage
