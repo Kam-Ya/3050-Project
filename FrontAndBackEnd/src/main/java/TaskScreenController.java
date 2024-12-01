@@ -17,9 +17,6 @@ public class TaskScreenController {
     private Label taskTitleLabel;
 
     @FXML
-    private Label assignedUserLabel;
-
-    @FXML
     private Label priorityLabel;
 
     @FXML
