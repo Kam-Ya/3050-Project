@@ -122,14 +122,14 @@ public class Project implements Serializable {
         }
     }
 
-    public void insertEmp(ArrayList<Integer>selected) {
+    public void insertEmp(ArrayList<Integer>selected, Integer ID) {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
             // insert the rest of the employees into the list
             for (Integer i : selected) {
-                String input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, i);
+                String input = String.format("INSERT INTO projassign VALUES (%d, %d);", ID, i);
                 state.executeUpdate(input);
             }
 
