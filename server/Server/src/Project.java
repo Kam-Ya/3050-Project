@@ -198,23 +198,6 @@ public class Project implements Serializable {
         }
     }
 
-    public void deleteFromDatabase() {
-        try(
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // deletes project from database
-            String input = String.format("DELETE FROM project WHERE name = '%s' AND description = '%s';", this.projectName, this.Desc);
-            state.executeUpdate(input);
-
-            // close the connection
-            state.close();
-            con.close();
-        } catch(SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-    }
-
     public void getID() {
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
