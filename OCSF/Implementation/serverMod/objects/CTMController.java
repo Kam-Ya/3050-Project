@@ -1,5 +1,8 @@
 package server;
 import com.format.msgFormat;
+import
+import objects.*;
+
  
 
 
@@ -11,11 +14,11 @@ public class CTMController {
     public void sendMSG(Object obj, String operation, ConnectionToClient client){
 
         switch(operation){
-            case "sendUserInfo":
+            case "userInfo":
             break;
-            case "sendProjectInfo":
+            case "projectInfo":
             break;
-            case "sendTaskInfo":
+            case "taskInfo":
             break;
             case "operationConfirmation":
             break;
@@ -36,9 +39,16 @@ public class CTMController {
         }
 
     //Recieving
-    public void createOrg(Object obj, ConnectionToClient client){}
-    public void createAccount(Object obj, ConnectionToClient client){}
-    public void loginRequest(Object obj, ConnectionToClient client){}
+
+    public void createCEO(Object obj, ConnectionToClient client){}
+    public void deleteCEO(Object obj, ConnectionToClient client){}
+    public void createUser(Object obj, ConnectionToClient client){}
+    public void deleteUser(Object obj, ConnectionToClient client){}
+
+    public void loginRequest(Object obj, ConnectionToClient client){
+        obj=(Login)obj;
+
+    }
     public void createProject(Object obj, ConnectionToClient client){}
     public void createTask(Object obj, ConnectionToClient client){}
     public void assignTask(Object obj, ConnectionToClient client){}
