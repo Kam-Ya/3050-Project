@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.client.CTMClient;
 
 import java.io.Console;
 import java.io.IOException;
@@ -40,6 +41,22 @@ public class CredentialsController {
 
         System.out.println("Username: " + username + ", Password: " + password);
         // Add actual login logic here
+        // Create a Login object
+        Login loginRequest = new Login(username, password);
+
+        // OCSF Stuff
+//        try {
+//            // Send the Login object to the server using OCSF
+//            CTMClient client = Main.getClient(); // Get the OCSF client instance
+//            client.sendToServer(loginRequest);
+//
+//            // Log message for debugging
+//            System.out.println("Login request sent: " + username);
+//        } catch (IOException e) {
+//            System.err.println("Failed to send login request: " + e.getMessage());
+//            e.printStackTrace();
+//            showSystemMessage("Error", "Could not connect to the server.");
+//        }
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
