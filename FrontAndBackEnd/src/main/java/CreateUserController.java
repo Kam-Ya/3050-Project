@@ -1,11 +1,15 @@
 package main.java;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.control.TextFormatter;
+
+import java.io.IOException;
+
 
 public class CreateUserController {
     //TODO: Add name field
@@ -31,6 +35,20 @@ public class CreateUserController {
     public void initialize() {
         // Populate the ComboBox with roles
         roleComboBox.getItems().addAll("Admin", "Manager", "Employee", "Viewer");
+        enforceCharLimit(usernameField, 255);
+        enforceCharLimit(passwordField, 255);
+        enforceCharLimit(nameField, 255);
+
+    }
+
+    private void enforceCharLimit(javafx.scene.control.TextInputControl textInputControl, int maxChars) {
+        textInputControl.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().length() <= maxChars) {
+                return change; // Accept the input
+            }
+            showSystemMessage("Character Limit Exceeded", "Character Limit Exceeded");
+            return null; // Reject the input
+        }));
     }
 
     /**
@@ -75,5 +93,23 @@ public class CreateUserController {
         // Close the screen after user creation
         Stage stage = (Stage) createButton.getScene().getWindow();
         stage.close();
+    }
+
+    // error screen
+    private void showSystemMessage(String title, String body) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            MessageFromSystemController controller = fxmlLoader.getController();
+            controller.setMessage(title, body);
+
+            Stage stage = new Stage();
+            stage.setTitle("System Message");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
