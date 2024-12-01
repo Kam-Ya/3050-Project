@@ -27,7 +27,12 @@
                             <Label fx:id="projectTitleLabel" prefHeight="34.0" styleClass="projectTitleLabel" text="PROJECT N" />
                         </StackPane>
                         <VBox spacing="10">
-                            <Label fx:id="descriptionLabel" text="Project Description:" styleClass="projectTitleLabel" />
+                            <HBox>
+                                <Label text="Due-Date:"/>
+                                <Label fx:id="projectDueDateLabel" />
+                            </HBox>
+
+                            <Label fx:id="descriptionLabel" text="Project Description:" />
                             <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" style="-fx-padding: 10; -fx-pref-height: 90px;">
                                 <content>
                                     <TextArea fx:id="projectDescriptionArea" editable="false" wrapText="true" style="-fx-font-family: 'Inter'; -fx-font-size: 16px; -fx-pref-height: 90px; -fx-border-color: transparent;" />
