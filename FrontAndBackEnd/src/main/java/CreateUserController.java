@@ -78,6 +78,7 @@ public class CreateUserController {
         // Validate input fields
         if (username.isEmpty() || password.isEmpty() || role == null || role.isEmpty() || name.isEmpty()){
             System.out.println("All fields are required!");
+            showSystemMessage("All fields are required!", "All fields are required!");
             // Show error message or dialog (not implemented here)
             return;
         }
@@ -87,12 +88,33 @@ public class CreateUserController {
         System.out.println("Username: " + username);
         System.out.println("Password: " + password);
         System.out.println("Role: " + role);
-
-        // Logic to save the user details (e.g., to a database or a file) can be added here
+        showSystemMessage("Account Created Successfully", "Please login with your new account details.");
 
         // Close the screen after user creation
         Stage stage = (Stage) createButton.getScene().getWindow();
         stage.close();
+
+        // get user to log back in with their new credentials
+        try {
+            // Load the new FXML file
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Credential.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage
+            Stage stage2 = new Stage();
+            stage2.setTitle("Login");
+            stage2.setScene(new Scene(root));
+            stage2.show();
+
+//            // Close the current login window
+//            Stage currentStage = (Stage) newProjectButton.getScene().getWindow();
+//            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Logic to save the user details (e.g., to a database or a file) can be added here
+
+
     }
 
     // error screen
