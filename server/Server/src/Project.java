@@ -196,11 +196,11 @@ public class Project implements Serializable {
                 Statement state = con.createStatement();
         ) {
             // get the project ID from the database
-            String input = String.format("SELECT title, date, user FROM report WHERE proj = %d;", this.ID);
+            String input = String.format("SELECT ID, title, date, user FROM report WHERE proj = %d;", this.ID);
             ResultSet rs = state.executeQuery(input);
 
             for(int i = 0; rs.next(); i++) {
-                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user")));
+                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user"), rs.getInt("ID")));
             }
 
             // close the connection
