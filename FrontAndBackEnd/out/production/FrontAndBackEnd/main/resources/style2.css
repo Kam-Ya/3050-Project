@@ -179,3 +179,7 @@
     -fx-text-transform: uppercase;
 }   /* Equivalent to 'text-transform: uppercase;' */
 
+.listViewReports{
+    -fx-background-color: white; /* Default background */
+    -fx-border-color: transparent; /* Removes default border */
+}

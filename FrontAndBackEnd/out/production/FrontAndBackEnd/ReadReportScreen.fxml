@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ReadReportController">
+
     <BorderPane fx:id="readReportScreen" layoutX="113.0" layoutY="82.0" prefHeight="759.0" prefWidth="943.0" styleClass="borderPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
         <!-- Top section with Title -->
         <top>
