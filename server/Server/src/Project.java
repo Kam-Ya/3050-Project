@@ -10,15 +10,17 @@ public class Project implements Serializable {
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;
+    public ArrayList<Task> tasks;
     public ArrayList<ProgressReport> reports;
     public String Desc;
     public String manager;
     private int ID;
 
-    public Project(String name, Date dueDate, String desc) {
+    public Project(String name, Date dueDate, String desc, Integer ID) {
         this.Desc = desc;
         this.projectName = name;
         this.projectDueDate = dueDate;
+        this.ID = ID;
     }
 
     public void addToDB() {
@@ -120,19 +122,14 @@ public class Project implements Serializable {
         }
     }
 
-    public void insertEmp(Integer hid, ArrayList<Integer>selected) {
+    public void insertEmp(ArrayList<Integer>selected, Integer ID) {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
-
-            // insert the ID's into the connection table
-            String input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, hid);
-            state.executeUpdate(input);
-
             // insert the rest of the employees into the list
             for (Integer i : selected) {
-                input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, i);
+                String input = String.format("INSERT INTO projassign VALUES (%d, %d);", ID, i);
                 state.executeUpdate(input);
             }
 
@@ -144,74 +141,20 @@ public class Project implements Serializable {
         }
     }
 
-    public void addTask(String name, Date due, String desc, int prio) {
-        Task t = new Task(name, due, desc, prio);
-        t.addToDB();
+    public void addManage(Integer id) {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
-            // get task and project ID's from database
-            String input = String.format("SELECT taskID from task WHERE description = '%s';", t.getDesc());
-            ResultSet rs = state.executeQuery(input);
-
-            input = String.format("SELECT projectID FROM project WHERE description = '%s';", this.Desc);
-            ResultSet r = state.executeQuery(input);
-
-            // insert the ID's into the connection table
-            input = String.format("INSERT INTO forProject (proj, task) VALUES (%d, %d);", rs.getInt("taskID"), r.getInt("projectID"));
+            // insert the rest of the employees into the list
+            String input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, id);
             state.executeUpdate(input);
 
             // close the connection
-            rs.close();
             state.close();
             con.close();
         } catch (SQLException sqle) {
             return;
-        }
-    }
-
-    public void addReport(String title, String details, int ID) {
-        try(
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // get the project ID from the database
-            String input = String.format("SELECT name FROM users WHERE employeeID = %d;", ID);
-            ResultSet rs = state.executeQuery(input);
-
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
-            ProgressReport rep = new ProgressReport(title, details, rs.getString("name"));
-
-            // insert the report in to the database
-            input = String.format("INSERT INTO report (content, date, user, proj, title) VALUES('%s', '%s', '%s', %d, '%s');",
-                    rep.getReportDetails(), df.format(rep.getTimestamp()), rep.getUser(), this.ID, rep.getTitle());
-            state.executeUpdate(input);
-
-            // close the connection
-            rs.close();
-            state.close();
-            con.close();
-        } catch(SQLException sqle) {
-            return;
-        }
-    }
-
-    public void deleteFromDatabase() {
-        try(
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // deletes project from database
-            String input = String.format("DELETE FROM project WHERE name = '%s' AND description = '%s';", this.projectName, this.Desc);
-            state.executeUpdate(input);
-
-            // close the connection
-            state.close();
-            con.close();
-        } catch(SQLException sqle) {
-            System.out.println(sqle.getMessage());
         }
     }
 
@@ -235,28 +178,26 @@ public class Project implements Serializable {
         }
     }
 
-    public ArrayList<Integer> getTaskList() {
-        ArrayList<Integer> tasks = new ArrayList<Integer>();
+    public void listtasks() {
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
             // get the project ID from the database
-            String input = String.format("SELECT task FROM forProject WHERE proj = %d;", this.ID);
+            String input = String.format("SELECT taskID, name, priority, description, due FROM task WHERE projectID = " +
+                    "(SELECT task FROM forProject WHERE proj = %d;)", this.ID);
             ResultSet rs = state.executeQuery(input);
 
             while(rs.next()) {
-                tasks.add(rs.getInt("task"));
+                this.tasks.add(new Task(rs.getString("name"), rs.getDate("due"), rs.getString("description"), rs.getInt("priority"), rs.getInt("taskID")));
             }
 
             // close the connection
             rs.close();
             state.close();
             con.close();
-
-            return tasks;
         } catch(SQLException sqle) {
-            return null;
+            return;
         }
     }
 
@@ -266,11 +207,11 @@ public class Project implements Serializable {
                 Statement state = con.createStatement();
         ) {
             // get the project ID from the database
-            String input = String.format("SELECT title, date, user FROM report WHERE proj = %d;", this.ID);
+            String input = String.format("SELECT ID, title, date, user FROM report WHERE proj = %d;", this.ID);
             ResultSet rs = state.executeQuery(input);
 
             for(int i = 0; rs.next(); i++) {
-                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user")));
+                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user"), rs.getInt("ID")));
             }
 
             // close the connection
@@ -298,5 +239,9 @@ public class Project implements Serializable {
             System.out.println(sqle.getMessage());
             return;
         }
+    }
+
+    public ArrayList<Task> getProjs() {
+        return this.tasks;
     }
 }

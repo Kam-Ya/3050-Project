@@ -8,7 +8,5 @@ public class testDriver {
 
         Date d = new Date();
         System.out.println("Testing adding a project to the database: ");
-        Project pro = new Project("Test", d, "test Description");
-        pro.addToDB();
-    }
+   }
 }

@@ -83,4 +83,25 @@ public class Comment implements Serializable {
             return;
         }
     }
+
+    public void addComment(Integer ID) {
+        Date made = new Date();
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+
+            // insert the comment into the database
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            String input = String.format("INSERT INTO comment (content, date, commentor, task) VALUES('%s', '%s', '%s', %d);",
+                    this.getContent(), df.format(this.getDateMade()), this.getCommentor(), ID);
+            state.executeUpdate(input);
+
+            // close the connection
+            state.close();
+            con.close();
+        } catch (SQLException sqle) {
+            return;
+        }
+    }
 }
