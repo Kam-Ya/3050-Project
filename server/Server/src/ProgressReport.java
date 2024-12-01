@@ -85,4 +85,25 @@ public class ProgressReport implements Serializable {
             return;
         }
     }
+
+    public void addReport(Integer ID) {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+            // insert the report in to the database
+            String input = String.format("INSERT INTO report (content, date, user, proj, title) VALUES('%s', '%s', '%s', %d, '%s');",
+                    this.getReportDetails(), df.format(this.getTimestamp()), this.getUser(), ID, this.getTitle());
+            state.executeUpdate(input);
+
+            // close the connection
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
+    }
 }

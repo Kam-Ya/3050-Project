@@ -15,10 +15,11 @@ public class Project implements Serializable {
     public String manager;
     private int ID;
 
-    public Project(String name, Date dueDate, String desc) {
+    public Project(String name, Date dueDate, String desc, Integer ID) {
         this.Desc = desc;
         this.projectName = name;
         this.projectDueDate = dueDate;
+        this.ID = ID;
     }
 
     public void addToDB() {
@@ -140,60 +141,6 @@ public class Project implements Serializable {
             state.close();
             con.close();
         } catch (SQLException sqle) {
-            return;
-        }
-    }
-
-    public void addTask(String name, Date due, String desc, int prio) {
-        Task t = new Task(name, due, desc, prio);
-        t.addToDB();
-        try (
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // get task and project ID's from database
-            String input = String.format("SELECT taskID from task WHERE description = '%s';", t.getDesc());
-            ResultSet rs = state.executeQuery(input);
-
-            input = String.format("SELECT projectID FROM project WHERE description = '%s';", this.Desc);
-            ResultSet r = state.executeQuery(input);
-
-            // insert the ID's into the connection table
-            input = String.format("INSERT INTO forProject (proj, task) VALUES (%d, %d);", rs.getInt("taskID"), r.getInt("projectID"));
-            state.executeUpdate(input);
-
-            // close the connection
-            rs.close();
-            state.close();
-            con.close();
-        } catch (SQLException sqle) {
-            return;
-        }
-    }
-
-    public void addReport(String title, String details, int ID) {
-        try(
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // get the project ID from the database
-            String input = String.format("SELECT name FROM users WHERE employeeID = %d;", ID);
-            ResultSet rs = state.executeQuery(input);
-
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
-            ProgressReport rep = new ProgressReport(title, details, rs.getString("name"));
-
-            // insert the report in to the database
-            input = String.format("INSERT INTO report (content, date, user, proj, title) VALUES('%s', '%s', '%s', %d, '%s');",
-                    rep.getReportDetails(), df.format(rep.getTimestamp()), rep.getUser(), this.ID, rep.getTitle());
-            state.executeUpdate(input);
-
-            // close the connection
-            rs.close();
-            state.close();
-            con.close();
-        } catch(SQLException sqle) {
             return;
         }
     }

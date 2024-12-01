@@ -18,11 +18,12 @@ public class Task implements Serializable {
     private int ID;
     private ArrayList<Comment> comments;
 
-    public Task(String name, Date due, String Description, int priority) {
+    public Task(String name, Date due, String Description, Integer priority, Integer ID) {
         this.taskName = name;
         this.taskDueDate = due;
         this.desc = Description;
         this.priority = priority;
+        this.ID = ID;
     }
 
     public String getTaskName() {
@@ -98,33 +99,6 @@ public class Task implements Serializable {
         this.desc = desc;
     }
 
-    public void addComment(String name, String comm) {
-        Date made = new Date();
-        Comment com = new Comment(name, made, comm);
-        this.comments.add(com);
-        try (
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // get the taskID from the database
-            String input = String.format("SELECT taskID from task WHERE description = '%s';", this.desc);
-            ResultSet rs = state.executeQuery(input);
-
-            // insert the comment into the database
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            input = String.format("INSERT INTO comment (content, date, commentor, task) VALUES('%s', '%s', '%s', %d);",
-                    com.getContent(), df.format(com.getDateMade()), com.getCommentor(), rs.getInt("taskID"));
-            state.executeUpdate(input);
-
-            // close the connection
-            rs.close();
-            state.close();
-            con.close();
-        } catch (SQLException sqle) {
-            return;
-        }
-    }
-
     public void addToDB() {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
@@ -175,6 +149,26 @@ public class Task implements Serializable {
 
             // close the connection
             rs.close();
+            state.close();
+            con.close();
+        } catch (SQLException sqle) {
+            return;
+        }
+    }
+
+    public void addTask(Integer ID) {
+        this.addToDB();
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            this.getID();
+
+            // insert the ID's into the connection table
+            String input = String.format("INSERT INTO forProject (proj, task) VALUES (%d, %d);", this.ID, ID);
+            state.executeUpdate(input);
+
+            // close the connection
             state.close();
             con.close();
         } catch (SQLException sqle) {
