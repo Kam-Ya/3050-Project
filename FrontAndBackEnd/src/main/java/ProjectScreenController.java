@@ -17,6 +17,7 @@ public class ProjectScreenController {
 
     public Label descriptionLabel;
     public Label projectDueDateLabel;
+    private Project project;
     @FXML
     private Button writeReportButton;
 
@@ -43,6 +44,7 @@ public class ProjectScreenController {
 
     // Method to set project details
     public void setProjectDetails(Project project) {
+        this.project = project;
         // Set project details
         System.out.println("setProjectDetails called for project: " + project.getProjectName());
 
@@ -63,83 +65,56 @@ public class ProjectScreenController {
     }
     @FXML
     private void initialize() {
-        // Example task items
-        taskListView.getItems().addAll(
-                "Task 1 - Due: 22-10-24 | 5 notes | John",
-                "Task 2 - Due: 23-10-24 | 3 notes | Jain",
-                "Task 3 - Due: 24-10-24 | 7 notes | Jack"
-        );
         projectDescriptionArea.setEditable(false);
-        projectDescriptionArea.setText("This is a project description");
-        // Set click handler for the ListView
+
+        // Set double-click handler for the ListView
         taskListView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Detect double-click
-                String selectedTask = taskListView.getSelectionModel().getSelectedItem();
-                if (selectedTask != null) {
-                    openTaskScreen(selectedTask);
+                int selectedIndex = taskListView.getSelectionModel().getSelectedIndex();
+                if (selectedIndex >= 0 && project != null) { // Ensure project is not null
+                    Task selectedTask = project.tasks.get(selectedIndex); // Get Task by index
+                    openTaskScreen(selectedTask); // Pass the Task object
                 }
             }
         });
     }
-
     /**
      * Opens the TaskScreen with detailed task information.
      *
      * @param taskDetails A string containing task details in the format:
      *                    "Task Name - Due: Date | Priority | Assigned User"
      */
-    private void openTaskScreen(String taskDetails) {
+    private void openTaskScreen(Task selectedTask) {
         try {
-            // Validate the input format
-            if (taskDetails == null || !taskDetails.contains(" - Due: ") || !taskDetails.contains(" | ")) {
-                throw new IllegalArgumentException("Invalid task details format: " + taskDetails);
-            }
-
-            // Parse task details
-            String[] parts = taskDetails.split(" - Due: ");
-            String taskName = parts[0].trim(); // Task name
-            String[] otherDetails = parts[1].split(" \\| ");
-
-            // Extract details with fallback defaults
-            String dueDate = otherDetails.length > 0 ? otherDetails[0].trim() : "Unknown Due Date";
-            String notesCount = otherDetails.length > 1 ? otherDetails[1].trim() : "0 notes";
-            String assignedUser = otherDetails.length > 2 ? otherDetails[2].trim() : "Unassigned";
-
-            // Load TaskScreen FXML
+            // Load the TaskScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/TaskScreen.fxml"));
             Parent root = loader.load();
 
-            // Get the controller for TaskScreen and pass the task details
+            // Pass the selected Task to the TaskScreenController
             TaskScreenController controller = loader.getController();
-            String taskDescription = String.format("Task with %s", notesCount); // Example description
-            controller.setTaskDetails(taskName, taskDescription, dueDate, assignedUser, "Default Priority");
+            controller.setTaskDetails(
+                    selectedTask.getTaskName(),
+                    selectedTask.getDesc(),
+                    selectedTask.getTaskDueDate().toString(),
+                    selectedTask.getAsignees(), // Pass the ArrayList of assigned users
+                    String.valueOf(selectedTask.getPriority())
+            );
 
-            // Create a new stage for TaskScreen
+            // Create a new stage for the TaskScreen
             Stage stage = new Stage();
-            stage.setTitle("Task Screen - " + taskName);
+            stage.setTitle("Task Screen - " + selectedTask.getTaskName());
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error parsing task details: " + e.getMessage());
-            showSystemMessage("Error", "Invalid task details: " + taskDetails);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
     public void setProjectName(String projectName) {
         // Set the project name in the title
         projectTitleLabel.setText(projectName);
-
-        // Example: Populate tasks based on the project name
-        taskListView.getItems().clear();
-        taskListView.getItems().addAll(
-                "Task 1 - Due: 22-10-24 | 5 notes",
-                "Task 2 - Due: 23-10-24 | 3 notes",
-                "Task 3 - Due: 24-10-24 | 7 notes"
-        );
     }
 
     @FXML

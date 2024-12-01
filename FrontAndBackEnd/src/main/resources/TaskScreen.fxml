@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.ListView?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.TaskScreenController">
     <children>
         <!-- Centered BorderPane -->
@@ -32,7 +33,7 @@
                         <Label fx:id="dueDateLabel" text="10-10-2024" />
 
                         <Label text="Assigned To:" styleClass="labelText"/>
-                        <Label fx:id="assignedUserLabel" text="John Doe"/>
+                        <ListView fx:id="assignedListView" styleClass="projectListView" />
 
                         <Label text="Priority:" styleClass="labelText" />
                         <Label fx:id="priorityLabel" text="High" />
