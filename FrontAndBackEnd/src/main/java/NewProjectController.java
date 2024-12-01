@@ -52,6 +52,7 @@ public class NewProjectController {
 
         enforceCharLimit(projectTitleField, 255); // Names: 255 chars
         enforceCharLimit(projectDescriptionArea, 1000); // Description: 1000 chars
+        enforceCharLimit(dueDateField, 10);
     }
     private void enforceCharLimit(javafx.scene.control.TextInputControl textInputControl, int maxChars) {
         textInputControl.setTextFormatter(new TextFormatter<>(change -> {

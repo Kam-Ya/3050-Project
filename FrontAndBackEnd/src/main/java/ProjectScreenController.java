@@ -66,25 +66,49 @@ public class ProjectScreenController {
         });
     }
 
+    /**
+     * Opens the TaskScreen with detailed task information.
+     *
+     * @param taskDetails A string containing task details in the format:
+     *                    "Task Name - Due: Date | Priority | Assigned User"
+     */
     private void openTaskScreen(String taskDetails) {
         try {
+            // Validate the input format
+            if (taskDetails == null || !taskDetails.contains(" - Due: ") || !taskDetails.contains(" | ")) {
+                throw new IllegalArgumentException("Invalid task details format: " + taskDetails);
+            }
+
+            // Parse task details
+            String[] parts = taskDetails.split(" - Due: ");
+            String taskName = parts[0]; // Task name
+            String[] otherDetails = parts[1].split(" \\| ");
+
+            String dueDate = otherDetails.length > 0 ? otherDetails[0].trim() : "Unknown Due Date";
+            String priority = otherDetails.length > 1 ? otherDetails[1].trim() : "Unknown Priority";
+            String assignedUser = otherDetails.length > 2 ? otherDetails[2].trim() : "Unassigned";
+
             // Load TaskScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/TaskScreen.fxml"));
             Parent root = loader.load();
 
             // Get the controller for TaskScreen and pass the task details
             TaskScreenController controller = loader.getController();
-            controller.setTaskDetails(taskDetails);
+            controller.setTaskDetails(taskName, "Task Description Here", dueDate, assignedUser, priority);
 
             // Create a new stage for TaskScreen
             Stage stage = new Stage();
-            stage.setTitle("Task Screen");
+            stage.setTitle("Task Screen - " + taskName);
             stage.setScene(new Scene(root));
             stage.show();
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error parsing task details: " + e.getMessage());
+            showSystemMessage("Error", "Invalid task details: " + taskDetails);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 
     public void setProjectName(String projectName) {
@@ -147,7 +171,7 @@ public class ProjectScreenController {
         System.out.println("New Task button clicked!");
         try {
             // Load the ListReportsScreen FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TaskScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewTaskScreen.fxml"));
             Parent root = loader.load();
 
             // Create a new stage for ListReportsScreen
@@ -184,5 +208,23 @@ public class ProjectScreenController {
         System.out.println("Close button clicked!");
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    // Error screen
+    private void showSystemMessage(String title, String body) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            MessageFromSystemController controller = fxmlLoader.getController();
+            controller.setMessage(title, body);
+
+            Stage stage = new Stage();
+            stage.setTitle("System Message");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

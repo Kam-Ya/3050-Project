@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.TaskScreenController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="main.java.TaskScreenController">
     <children>
-        <!-- Centered BorderPane -->
-        <BorderPane layoutX="109.0" layoutY="72.0" styleClass="borderPane" stylesheets="@style2.css">
+        <BorderPane prefWidth="800" prefHeight="600" styleClass="borderPane">
             <top>
-                <!-- Task Title -->
-                <StackPane styleClass="titleStackPane" BorderPane.alignment="CENTER">
-                    <Label fx:id="taskTitleLabel" styleClass="loginTitleLabel" text="TASK N" />
-                </StackPane>
+                <VBox alignment="CENTER" spacing="15.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label fx:id="taskTitleLabel" text="Task Title" styleClass="messageLabel" />
+                    </children>
+                </VBox>
             </top>
             <center>
-                <!-- Task Details -->
-                <VBox alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;">
+                <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 20;">
                     <children>
-                        <Label text="Description" />
-                        <TextArea fx:id="descriptionField" promptText="Enter task description..." />
-
-                        <Label text="Due Date" />
-                        <TextField fx:id="dueDateField" text="10-10-24" />
-
-                        <Label text="Assigned To" />
-                        <ComboBox fx:id="assignedToDropdown" promptText="Select User" />
+                        <HBox spacing="10.0">
+                            <children>
+                                <Label text="Assigned User:" styleClass="messageLabel" />
+                                <Label fx:id="assignedUserLabel" text="John Doe" styleClass="messageLabel" />
+                            </children>
+                        </HBox>
+                        <HBox spacing="10.0">
+                            <children>
+                                <Label text="Priority:" styleClass="messageLabel" />
+                                <Label fx:id="priorityLabel" text="High" styleClass="messageLabel" />
+                            </children>
+                        </HBox>
                     </children>
                 </VBox>
             </center>
             <bottom>
-                <!-- Task Action Buttons -->
-                <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+                <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER" style="-fx-padding: 10;">
                     <children>
-                        <ComboBox fx:id="priorityDropdown" promptText="Priority" />
-                        <Button fx:id="completeButton" onAction="#handleComplete" styleClass="smallButton" text="COMPLETE" />
-                        <Button fx:id="notesButton" onAction="#handleNotes" styleClass="smallButton" text="NOTES" />
-                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
-                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
+                        <Button text="Back" onAction="#handleClose" styleClass="smallButton" />
                     </children>
                 </HBox>
             </bottom>

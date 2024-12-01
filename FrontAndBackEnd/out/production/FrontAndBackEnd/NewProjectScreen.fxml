@@ -27,7 +27,7 @@
                 <children>
                     <TextField fx:id="projectTitleField" promptText="Enter project title here..." styleClass="textFieldInput" />
                     <TextArea fx:id="projectDescriptionArea" prefHeight="100.0" promptText="Enter task description..." styleClass="textFieldInput" />
-                    <TextField fx:id="dueDateField" promptText="Enter due date (DD-MM-YY)" styleClass="textFieldInput" />
+                    <TextField fx:id="dueDateField" promptText="Enter due date (DD-MM-YYYY)" styleClass="textFieldInput" />
                     <VBox alignment="CENTER_LEFT" spacing="10.0">
                         <children>
                             <Label styleClass="fieldLabel" text="Assigned workers" />

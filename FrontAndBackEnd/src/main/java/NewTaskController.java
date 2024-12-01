@@ -9,22 +9,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TaskScreenController {
+public class NewTaskController {
 
-    @FXML
-    private Label taskTitleLabel;
-
-    @FXML
-    private Label assignedUserLabel;
-
-    @FXML
-    private Label priorityLabel;
-
+    public Label taskTitleLabel;
     @FXML
     private TextArea descriptionField;
 
     @FXML
     private TextField dueDateField;
+
+    @FXML
+    private ComboBox<String> assignedToDropdown;
+
+    @FXML
+    private ComboBox<String> priorityDropdown;
 
     @FXML
     private Button completeButton;
@@ -40,24 +38,42 @@ public class TaskScreenController {
 
     @FXML
     private void initialize() {
+        // Example priority levels
+        priorityDropdown.getItems().addAll("1", "2", "3", "4", "5");
+
+        // Example users
+        assignedToDropdown.getItems().addAll("User A", "User B", "User C");
+
+        // enforce char limmits
+        enforceCharLimit(descriptionField, 1000);
+        enforceCharLimit(dueDateField, 10);
     }
 
-    /**
-     * Sets the task details to be displayed on the screen.
-     *
-     * @param taskTitle     The title of the task.
-     * @param description   The description of the task.
-     * @param dueDate       The due date for the task.
-     * @param assignedUser  The name of the assigned user.
-     * @param priority      The priority of the task.
-     */
-    public void setTaskDetails(String taskTitle, String description, String dueDate, String assignedUser, String priority) {
-        taskTitleLabel.setText(taskTitle);
-        descriptionField.setText(description);
-        dueDateField.setText(dueDate);
-        assignedUserLabel.setText(assignedUser);
-        priorityLabel.setText(priority);
+    private void enforceCharLimit(javafx.scene.control.TextInputControl textInputControl, int maxChars) {
+        textInputControl.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().length() <= maxChars) {
+                return change; // Accept the input
+            }
+            showSystemMessage("Character Limit Exceeded", "Character Limit Exceeded");
+            return null; // Reject the input
+        }));
     }
+
+    public void setTaskDetails(String taskDetails) {
+        // Parse task details and update fields (example logic)
+        String[] details = taskDetails.split(" - Due: ");
+        String taskName = details[0];
+        String dueDate = details[1].split(" \\|")[0];
+
+        // Set task details
+        descriptionField.setText("Details for " + taskName);
+        dueDateField.setText(dueDate);
+
+        // Example: Populate dropdowns
+        priorityDropdown.getItems().addAll("1", "2", "3", "4", "5");
+        assignedToDropdown.getItems().addAll("User A", "User B", "User C");
+    }
+
 
     @FXML
     private void handleComplete() {
@@ -74,7 +90,7 @@ public class TaskScreenController {
 
             // Pass task details dynamically if needed
             CommentScreenController controller = loader.getController();
-            // Example: controller.setTaskName(taskTitleLabel.getText());
+            // Example: controller.setTaskName("Task N");
 
             Stage stage = new Stage();
             stage.setTitle("Task Comments");
@@ -98,7 +114,7 @@ public class TaskScreenController {
         stage.close();
     }
 
-    // Error screen
+    // error screen
     private void showSystemMessage(String title, String body) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
