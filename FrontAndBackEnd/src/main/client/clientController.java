@@ -54,21 +54,6 @@ public class clientController {
 
         public static void handleLogin(Object obj){
             Integer userID=(Integer) obj;
-
-            if (message.obj instanceof User) {
-                User user = (User) message.obj;
-                System.out.println("Login successful: " + user.getName());
-  
-                // Transition to the ListOfProjectsScreen
-                Platform.runLater(() -> { // ensure UI updates are done on the JavaFX Application Thread
-                  try {
-                    CredentialsController credentialsController = Main.getCredentialsController();
-                    credentialsController.openListOfProjectsScreen(user);
-                  } catch (Exception e) {
-                    e.printStackTrace();
-                  }
-                });
-              }
         }
 
         public static void projectInfo(){}
