@@ -12,15 +12,11 @@ import javafx.stage.Stage;
 import main.client.CTMClient;
 import main.client.clientController;
 
-import java.io.Console;
 import java.io.IOException;
-
 
 public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
     private static final String CreateUser = "/CreateUserScreen.fxml";
-
-
 
     public Button loginButton;
     @FXML
@@ -30,6 +26,8 @@ public class CredentialsController {
 
     @FXML
     private PasswordField passwordField;
+
+    private final Integer mockUserID = 123; // Mock userID for testing
 
     @FXML
     private void handleLogin() {
@@ -41,31 +39,21 @@ public class CredentialsController {
             return;
         }
 
-
         System.out.println("Username: " + username + ", Password: " + password);
-        // Add actual login logic here
-        // Create a Login object
-        Login loginRequest = new Login(username, password);
 
-        showSystemMessage("Please Wait", "Server is loading please wait");
-
-         // OCSF Stuff
-        // Send the Login object to the server using OCSF
-        clientController.sendMSG(loginRequest, "loginRequest", -1);
-
-
-//        CTMClient client = Main.getClient(); // Get the OCSF client instance
-
+        // Simulate login success with mockUserID
+        showSystemMessage("Please Wait", "Simulating server response...");
+        openListOfProjectsScreen(mockUserID);
     }
-    public void openListOfProjectsScreen(User user) {
-        try {
 
+    public void openListOfProjectsScreen(Integer userID) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ListOFProjects));
             Parent root = loader.load();
 
-            // Pass the User object to ListOfProjectsController
+            // Pass the mockUserID to ListOfProjectsController
             ListOfProjectsController controller = loader.getController();
-            controller.setCurrentUseID();
+            controller.setUserID(userID);
 
             Stage stage = new Stage();
             stage.setTitle("List of Projects");
@@ -111,7 +99,7 @@ public class CredentialsController {
             stage.setScene(new Scene(root));
             stage.show();
 
-           // Close the current login window
+            // Close the current login window
             Stage currentStage = (Stage) registerButton.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
