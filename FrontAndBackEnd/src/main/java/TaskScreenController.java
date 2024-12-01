@@ -8,9 +8,11 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TaskScreenController {
 
+    public ListView assignedListView;
     @FXML
     private Label taskTitleLabel;
 
@@ -51,12 +53,17 @@ public class TaskScreenController {
      * @param assignedUser  The user assigned to the task.
      * @param priority      The priority level of the task.
      */
-    public void setTaskDetails(String taskName, String description, String dueDate, String assignedUser, String priority) {
+    public void setTaskDetails(String taskName, String description, String dueDate, ArrayList<Integer> assignedUsers, String priority) {
         taskTitleLabel.setText(taskName);
         descriptionLabel.setText(description);
         dueDateLabel.setText(dueDate);
-        assignedUserLabel.setText(assignedUser);
         priorityLabel.setText(priority);
+        // Populate the assignedListView
+        assignedListView.getItems().clear();
+        for (Integer userId : assignedUsers) {
+            // Replace with a method or lookup for user names if available
+            assignedListView.getItems().add("User ID: " + userId);
+        }
     }
 
     @FXML
