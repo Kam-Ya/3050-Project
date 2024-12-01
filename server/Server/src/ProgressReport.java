@@ -1,4 +1,4 @@
-package main.java;
+package Server.src;
 
 import java.io.Serializable;
 import java.sql.*;

@@ -3,7 +3,7 @@
 // license found at www.lloseng.com
 
 
-package server;
+package Server.src;
 import java.io.*;
 import java.net.*;
 import java.util.*;

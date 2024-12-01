@@ -1,4 +1,4 @@
-package com.format;
+package Server.src.format;
 import java.io.*;
 //msgFormat implements serializable
 //Provides a standard way to exchange objects between the client and the server

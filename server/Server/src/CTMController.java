@@ -1,4 +1,4 @@
-package server;
+package Server.src;
 import com.format.msgFormat;
 
 import objects.Comment;

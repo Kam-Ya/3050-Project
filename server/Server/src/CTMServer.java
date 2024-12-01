@@ -1,5 +1,5 @@
-package server;
-import com.format.msgFormat;
+package Server.src;
+import Server.src.format.msgFormat;
 
 
 public class CTMServer extends AbstractServer {
