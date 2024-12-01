@@ -270,7 +270,7 @@ public class Project implements Serializable {
             ResultSet rs = state.executeQuery(input);
 
             for(int i = 0; rs.next(); i++) {
-                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user"), rs.getDate("date")));
+                reports.add(new ProgressReport(rs.getString("title"), "", rs.getString("user")));
             }
 
             // close the connection
