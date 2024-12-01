@@ -10,11 +10,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ListOfProjectsController {
     private static final String ProjectScreen = "/ProjectScreen.fxml";
     private static final String NewProjectScreen = "/NewProjectScreen.fxml";
     private static final String CreateNewUserScreen = "/CreateNewUserScreen.fxml";
+
     @FXML
     private Button logoutButton;
 
@@ -29,57 +32,80 @@ public class ListOfProjectsController {
 
     private Integer userID;
 
+    /**
+     * Simulated projects list for mocking purposes.
+     */
+    private ArrayList<Project> mockProjects;
+
     public void setUserID(Integer userID) {
         this.userID = userID;
         // debugging
         System.out.println("UserID: " + userID);
 
-        loadProjects(); // Load projects for the current user
+        loadMockProjects(); // Load mocked projects
     }
 
     @FXML
     private void initialize() {
-//        // Example projects for display
-//        projectListView.getItems().addAll(
-//                "Project 1 - Due: 22-10-24 | 5 tasks",
-//                "Project 2 - Due: 23-10-24 | 3 tasks",
-//                "Project 3 - Due: 24-10-24 | 7 tasks"
-//        );
-
         // Set click handler for the ListView
         projectListView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Detect double-click
-                String selectedProject = projectListView.getSelectionModel().getSelectedItem();
-                if (selectedProject != null) {
-                    openProjectScreen(selectedProject);
+                int selectedIndex = projectListView.getSelectionModel().getSelectedIndex();
+                if (selectedIndex >= 0) {
+                    openMockProjectScreen(mockProjects.get(selectedIndex)); // Use mocked project
                 }
             }
         });
     }
 
-    private void loadProjects() {
-            // Populate the ListView
-            for (Project project : projects) {
-                String projectInfo = String.format(
-                        "%s - Due: %s",
-                        project.getProjectName(),
-                        project.getProjectDueDate()
-                );
-                projectListView.getItems().add(projectInfo);
-            }
+    /**
+     * Mock method to load projects.
+     */
+    private void loadMockProjects() {
+        mockProjects = new ArrayList<>();
+
+        // Create mock dates using java.util.Calendar
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(2024, Calendar.DECEMBER, 31); // Mock Project 1 due date
+        Date mockDate1 = calendar.getTime();
+
+        calendar.set(2025, Calendar.JANUARY, 15); // Mock Project 2 due date
+        Date mockDate2 = calendar.getTime();
+
+        calendar.set(2025, Calendar.FEBRUARY, 10); // Mock Project 3 due date
+        Date mockDate3 = calendar.getTime();
+
+        // Simulated projects with Date objects
+        mockProjects.add(new Project("Mock Project 1", mockDate1, "A test project 1", 1));
+        mockProjects.add(new Project("Mock Project 2", mockDate2, "A test project 2", 2));
+        mockProjects.add(new Project("Mock Project 3", mockDate3, "A test project 3", 3));
+
+        // Populate the ListView with mock data
+        for (Project project : mockProjects) {
+            String projectInfo = String.format(
+                    "%s - Due: %s",
+                    project.getProjectName(),
+                    new java.text.SimpleDateFormat("MMM dd, yyyy").format(project.getProjectDueDate()) // Format Date for display
+            );
+            projectListView.getItems().add(projectInfo);
+        }
     }
 
-
-    private void openProjectScreen(String selectedProjectInfo) {
+    /**
+     * Mock method to open the project screen.
+     *
+     * @param selectedProject The selected project.
+     */
+    private void openMockProjectScreen(Project selectedProject) {
         try {
-
             System.out.println("Opening ProjectScreen for project: " + selectedProject.getProjectName());
 
             // Load the ProjectScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ProjectScreen));
             Parent root = loader.load();
 
-            // Pass the selected project to the ProjectScreenController
+            // Pass the selected project and user ID to the ProjectScreenController
             ProjectScreenController controller = loader.getController();
             controller.setProjectDetails(selectedProject, userID);
 
@@ -94,9 +120,6 @@ public class ListOfProjectsController {
         }
     }
 
-
-
-
     @FXML
     private void handleLogout() {
         System.out.println("Logout button clicked!");
@@ -106,21 +129,15 @@ public class ListOfProjectsController {
     @FXML
     private void handleNewProject() {
         System.out.println("New Project button clicked!");
-        // Logic to create a new project
         try {
-            // Load the new FXML file
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(NewProjectScreen));
             Parent root = fxmlLoader.load();
 
-            // Create a new stage
             Stage stage = new Stage();
-            stage.setTitle("Dashboard");
+            stage.setTitle("New Project");
             stage.setScene(new Scene(root));
             stage.show();
 
-//            // Close the current login window
-//            Stage currentStage = (Stage) newProjectButton.getScene().getWindow();
-//            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,19 +147,14 @@ public class ListOfProjectsController {
     private void handleNewUser() {
         System.out.println("New User button clicked!");
         try {
-            // Load the new FXML file
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CreateNewUserScreen));
             Parent root = fxmlLoader.load();
 
-            // Create a new stage
             Stage stage = new Stage();
-            stage.setTitle("Dashboard");
+            stage.setTitle("Create New User");
             stage.setScene(new Scene(root));
             stage.show();
 
-//            // Close the current login window
-//            Stage currentStage = (Stage) newUserButton.getScene().getWindow();
-//            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
