@@ -147,7 +147,7 @@ public class User implements Serializable {
         }
     }
 
-    public void SetID(int ID) {
+    public void SetID(Integer ID) {
         this.userID = ID;
     }
 }
