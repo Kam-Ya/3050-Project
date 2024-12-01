@@ -49,7 +49,9 @@ public class CredentialsController {
         try {
             // Send the Login object to the server using OCSF
             CTMClient client = Main.getClient(); // Get the OCSF client instance
-            client.sendToServer(loginRequest);
+
+
+
 
 
             // Log message for debugging

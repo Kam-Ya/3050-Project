@@ -18,6 +18,7 @@ public class ProjectScreenController {
     public Label descriptionLabel;
     public Label projectDueDateLabel;
     private Project project;
+    private User currentUser;
     @FXML
     private Button writeReportButton;
 
@@ -43,7 +44,7 @@ public class ProjectScreenController {
     private TextArea projectDescriptionArea;
 
     // Method to set project details
-    public void setProjectDetails(Project project) {
+    public void setProjectDetails(Project project, User currentUser) {
         this.project = project;
         // Set project details
         System.out.println("setProjectDetails called for project: " + project.getProjectName());
@@ -55,12 +56,16 @@ public class ProjectScreenController {
         // Populate the tasks ListView
         taskListView.getItems().clear();
         for (Task task : project.tasks) {
-            taskListView.getItems().add(String.format(
-                    "%s - Due: %s | Priority: %d",
+            // Check if the currentUser is assigned to the task
+            boolean isAssigned = task.getAsignees().contains(currentUser.get());
+            String taskInfo = String.format(
+                    "%s - Due: %s | Priority: %d%s",
                     task.getTaskName(),
                     task.getTaskDueDate(),
-                    task.getPriority()
-            ));
+                    task.getPriority(),
+                    isAssigned ? " *" : "" // Add an asterisk if assigned
+            );
+            taskListView.getItems().add(taskInfo);
         }
     }
     @FXML

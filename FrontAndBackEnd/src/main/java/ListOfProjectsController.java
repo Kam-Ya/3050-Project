@@ -98,7 +98,7 @@ public class ListOfProjectsController {
 
             // Pass the selected project to the ProjectScreenController
             ProjectScreenController controller = loader.getController();
-            controller.setProjectDetails(selectedProject);
+            controller.setProjectDetails(selectedProject, currentUser);
 
             // Show the ProjectScreen in a new window
             Stage stage = new Stage();
