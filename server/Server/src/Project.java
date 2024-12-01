@@ -181,9 +181,8 @@ public class Project implements Serializable {
             ResultSet rs = state.executeQuery(input);
 
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            Date today = new Date();
 
-            ProgressReport rep = new ProgressReport(title, details, rs.getString("name"), today);
+            ProgressReport rep = new ProgressReport(title, details, rs.getString("name"));
 
             // insert the report in to the database
             input = String.format("INSERT INTO report (content, date, user, proj, title) VALUES('%s', '%s', '%s', %d, '%s');",
