@@ -8,8 +8,10 @@ public class runnableClient extends Thread {
     }
     CTMClient client;
     
+    
     public runnableClient() {
       client= new CTMClient("localhost",12345);
+      clientController.clientProcess=client;
     }
   
     public void run() {

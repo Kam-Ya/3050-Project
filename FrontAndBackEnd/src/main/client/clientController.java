@@ -1,7 +1,8 @@
 package main.client;
 import main.com.format.msgFormat;
 public class clientController {
-    public static void sendMSG(Object obj, String operation, CTMClient client){
+  static CTMClient clientProcess;
+    public static void sendMSG(Object obj, String operation, Integer ID){
 
         switch(operation){
             case "createOrg":
@@ -43,9 +44,9 @@ public class clientController {
             case "Error":
             break;
         }
-        msgFormat message=new msgFormat(operation,obj);
+        msgFormat message=new msgFormat(operation,obj,ID);
         try{
-            client.sendToServer(message);
+            clientProcess.sendToServer(message);
         } catch(java.io.IOException e){
             System.out.println("Failed to send message:" + e);
         }

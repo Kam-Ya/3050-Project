@@ -9,8 +9,12 @@ public class msgFormat implements Serializable{
     //This is the object that will be exchanged
     public Object obj;
 
-    public msgFormat(String type, Object obj){
+    //This object allows passing of generic ids
+    public Integer genericID;
+
+    public msgFormat(String type, Object obj, Integer genericID){
         this.type=type;
         this.obj=obj;
+        this.genericID=genericID;
     }
 }
