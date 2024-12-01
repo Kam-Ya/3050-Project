@@ -15,14 +15,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Initialize the OCSF client
-        try {
-            client = new CTMClient("localhost", 12345); // Adjust host and port as necessary
-            client.openConnection(); // Establish connection to the server
-        } catch (Exception e) {
-            System.err.println("Failed to connect to server: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        // Initialize the OCSF client
+//        try {
+//            client = new CTMClient("localhost", 12345); // Adjust host and port as necessary
+//            client.openConnection(); // Establish connection to the server
+//        } catch (Exception e) {
+//            System.err.println("Failed to connect to server: " + e.getMessage());
+//            e.printStackTrace();
+//        }
 
         // Load the FXML file
         try {
@@ -40,8 +40,8 @@ public class Main extends Application {
         launch(args);
     }
 
-    // Provide a way for controllers to access the client
-    public static CTMClient getClient() {
-        return client;
-    }
+//    // Provide a way for controllers to access the client
+//    public static CTMClient getClient() {
+//        return client;
+//    }
 }
