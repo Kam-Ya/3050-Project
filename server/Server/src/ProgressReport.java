@@ -13,11 +13,11 @@ public class ProgressReport implements Serializable {
     private Date timestamp;
     private int ID;
 
-    public ProgressReport(String title, String content, String user, Date made) {
+    public ProgressReport(String title, String content, String user) {
         this.title = title;
         this.reportDetails = content;
         this.User = user;
-        this.timestamp = made;
+        this.timestamp = new Date();
     }
 
     public Date getTimestamp() {

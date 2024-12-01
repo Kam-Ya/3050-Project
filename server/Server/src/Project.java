@@ -285,4 +285,19 @@ public class Project implements Serializable {
             return null;
         }
     }
+
+    public void removeEmp(int ID) {
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // deletes the project from the database
+            this.getID();
+            String input = String.format("DELETE FROM projassign WHERE emp = %d;", ID);
+            state.executeUpdate(input);
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+            return;
+        }
+    }
 }
