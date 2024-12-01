@@ -3,7 +3,7 @@ import main.com.format.msgFormat;
 
 
 public class CTMClient extends AbstractClient{
-    CTMClient(String h, int p) {
+    public CTMClient(String h, int p) {
   
         super(h,p);
       }

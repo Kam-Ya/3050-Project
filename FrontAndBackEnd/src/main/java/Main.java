@@ -1,5 +1,6 @@
 package main.java;
 
+import main.client.CTMClient; // Import your OCSF client
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +11,19 @@ import java.util.Objects;
 
 public class Main extends Application {
     private static final String CREDENTIALS_SCREEN = "/CredentialsScreen.fxml";
+    private static CTMClient client; // Static client instance
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // Initialize the OCSF client
+        try {
+            client = new CTMClient("localhost", 12345); // Adjust host and port as necessary
+            client.openConnection(); // Establish connection to the server
+        } catch (Exception e) {
+            System.err.println("Failed to connect to server: " + e.getMessage());
+            e.printStackTrace();
+        }
+
         // Load the FXML file
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(CREDENTIALS_SCREEN)));
@@ -21,10 +33,15 @@ public class Main extends Application {
             e.printStackTrace();
         }
         primaryStage.show();
-        primaryStage.setTitle("JavaFX Without Maven");
+        primaryStage.setTitle("JavaFX With OCSF");
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    // Provide a way for controllers to access the client
+    public static CTMClient getClient() {
+        return client;
     }
 }
