@@ -41,10 +41,10 @@
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
                         <ComboBox fx:id="priorityDropdown" promptText="Priority" />
-                        <Button fx:id="completeButton" onAction="#handleComplete" styleClass="largeButton" text="COMPLETE" />
-                        <Button fx:id="notesButton" onAction="#handleNotes" styleClass="largeButton" text="NOTES" />
-                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="largeButton" text="DELETE" />
-                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="largeButton" text="CLOSE" />
+                        <Button fx:id="completeButton" onAction="#handleComplete" styleClass="smallButton" text="COMPLETE" />
+                        <Button fx:id="notesButton" onAction="#handleNotes" styleClass="smallButton" text="NOTES" />
+                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
+                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
                     </children>
                 </HBox>
             </bottom>

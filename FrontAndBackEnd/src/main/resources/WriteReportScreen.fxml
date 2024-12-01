@@ -36,8 +36,8 @@
                 <!-- Action Buttons -->
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="submitButton" onAction="#handleSubmit" styleClass="largeButton" text="SUBMIT" />
-                        <Button fx:id="cancelButton" onAction="#handleCancel" styleClass="largeButton" text="CANCEL" />
+                        <Button fx:id="submitButton" onAction="#handleSubmit" styleClass="smallButton" text="SUBMIT" />
+                        <Button fx:id="cancelButton" onAction="#handleCancel" styleClass="smallButton" text="CANCEL" />
                     </children>
                 </HBox>
             </bottom>

@@ -34,8 +34,8 @@
         <bottom>
             <HBox alignment="CENTER" spacing="20.0">
                 <children>
-                    <Button fx:id="sendButton" text="SEND" styleClass="largeButton" onAction="#handleSend"/>
-                    <Button fx:id="cancelButton" text="CANCEL" styleClass="largeButton" onAction="#handleCancel"/>
+                    <Button fx:id="sendButton" text="SEND" styleClass="smallButton" onAction="#handleSend"/>
+                    <Button fx:id="cancelButton" text="CANCEL" styleClass="smallButton" onAction="#handleCancel"/>
                 </children>
                 <HBox.margin>
                     <Insets top="10" right="20" bottom="10" left="20"/>
