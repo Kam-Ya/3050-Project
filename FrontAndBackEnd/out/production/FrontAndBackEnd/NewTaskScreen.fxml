@@ -25,14 +25,19 @@
                 <!-- Task Details -->
                 <VBox alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;">
                     <children>
-                        <Label text="Description" />
+                        <Label text="Description" styleClass="labelText" />
                         <TextArea fx:id="descriptionField" promptText="Enter task description..." />
 
-                        <Label text="Due Date" />
-                        <TextField fx:id="dueDateField" text="10-10-24" />
+                        <Label text="Due Date" styleClass="labelText"/>
+                        <TextField fx:id="dueDateField" promptText="DD-MM-YYYY" />
+                        <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+                            <Label text="Assigned To" styleClass="labelText"/>
+                            <ComboBox fx:id="assignedToDropdown" promptText="Select User" />
 
-                        <Label text="Assigned To" />
-                        <ComboBox fx:id="assignedToDropdown" promptText="Select User" />
+                            <Label text="Priority" styleClass="labelText"/>
+                            <ComboBox fx:id="priorityDropdown" promptText="Priority" />
+                        </HBox>
+
                     </children>
                 </VBox>
             </center>
@@ -40,7 +45,7 @@
                 <!-- Task Action Buttons -->
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
-                        <ComboBox fx:id="priorityDropdown" promptText="Priority" />
+
                         <Button fx:id="completeButton" onAction="#handleComplete" styleClass="smallButton" text="COMPLETE" />
                         <Button fx:id="notesButton" onAction="#handleNotes" styleClass="smallButton" text="NOTES" />
                         <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
