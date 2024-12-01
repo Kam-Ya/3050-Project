@@ -2,11 +2,13 @@ package Server.src;
 
 import java.io.Serializable;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class User implements Serializable {
     private String name;
     private final Role role;
     private Integer userID;
+    public ArrayList<Project> projs;
 
     // constructor
     public User(String name, Role role) {
@@ -116,6 +118,31 @@ public class User implements Serializable {
             con.close();
         } catch(SQLException sqle) {
             System.out.println(sqle.getMessage());
+        }
+    }
+
+    public ArrayList<Project> listProj() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the project ID from the database
+            String input = String.format("SELECT name, date, description FROM project WHERE project ID = " +
+                    "(SELECT proj FROM projassign WHERE emp = %d;)", this.userID);
+            ResultSet rs = state.executeQuery(input);
+
+            while(rs.next()) {
+                projs.add(new Project(rs.getString("name"), rs.getDate("date"), rs.getString("description")));
+            }
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+
+            return this.projs;
+        } catch(SQLException sqle) {
+            return null;
         }
     }
 }
