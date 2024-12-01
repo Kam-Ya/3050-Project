@@ -15,7 +15,6 @@ import main.client.clientController;
 import java.io.Console;
 import java.io.IOException;
 
-import static main.java.Main.client;
 
 public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
@@ -50,11 +49,11 @@ public class CredentialsController {
 
          // OCSF Stuff
         // Send the Login object to the server using OCSF
-        clientController.sendMSG(loginRequest, "loginRequest", client);
+        clientController.sendMSG(loginRequest, "loginRequest", -1);
 //        CTMClient client = Main.getClient(); // Get the OCSF client instance
 
     }
-    public void openListOfProjectsScreen(User user) {
+    public static void openListOfProjectsScreen(User user) {
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ListOFProjects));
