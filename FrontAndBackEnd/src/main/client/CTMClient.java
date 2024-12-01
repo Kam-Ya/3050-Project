@@ -1,5 +1,9 @@
 package main.client;
+import javafx.application.Platform;
 import main.com.format.msgFormat;
+import main.java.CredentialsController;
+import main.java.User;
+import main.java.Main;
 
 
 public class CTMClient extends AbstractClient{
@@ -29,6 +33,21 @@ public class CTMClient extends AbstractClient{
         msgFormat message= (msgFormat) msg;
         switch (message.type){
           case "sendUserInfo":
+            // Handle login success
+            if (message.obj instanceof User) {
+              User user = (User) message.obj;
+              System.out.println("Login successful: " + user.getName());
+
+              // Transition to the ListOfProjectsScreen
+              Platform.runLater(() -> { // ensure UI updates are done on the JavaFX Application Thread
+                try {
+                  CredentialsController credentialsController = Main.getCredentialsController();
+                  credentialsController.openListOfProjectsScreen(user);
+                } catch (Exception e) {
+                  e.printStackTrace();
+                }
+              });
+            }
           break;
           case "sendProjectInfo":
           break;
@@ -41,6 +60,7 @@ public class CTMClient extends AbstractClient{
           case "sendReport":
           break;
           default:
+            System.err.println("Unknown message type: " + message.type);
         }
       }
 

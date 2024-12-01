@@ -45,28 +45,35 @@ public class CredentialsController {
         Login loginRequest = new Login(username, password);
 
         // OCSF Stuff
-//        try {
-//            // Send the Login object to the server using OCSF
-//            CTMClient client = Main.getClient(); // Get the OCSF client instance
-//            client.sendToServer(loginRequest);
-//
-//            // Log message for debugging
-//            System.out.println("Login request sent: " + username);
-//        } catch (IOException e) {
-//            System.err.println("Failed to send login request: " + e.getMessage());
-//            e.printStackTrace();
-//            showSystemMessage("Error", "Could not connect to the server.");
-//        }
-
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
-            Parent root = fxmlLoader.load();
+            // Send the Login object to the server using OCSF
+            CTMClient client = Main.getClient(); // Get the OCSF client instance
+            client.sendToServer(loginRequest);
+
+            // Log message for debugging
+            System.out.println("Login request sent: " + username);
+        } catch (IOException e) {
+            System.err.println("Failed to send login request: " + e.getMessage());
+            e.printStackTrace();
+            showSystemMessage("Error", "Could not connect to the server.");
+        }
+
+    }
+    public void openListOfProjectsScreen(User user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
+            Parent root = loader.load();
+
+            // Pass the User object to ListOfProjectsController
+            ListOfProjectsController controller = loader.getController();
+            controller.setCurrentUser(user);
 
             Stage stage = new Stage();
-            stage.setTitle("Dashboard");
+            stage.setTitle("List of Projects");
             stage.setScene(new Scene(root));
             stage.show();
 
+            // Close the current login screen
             Stage currentStage = (Stage) loginButton.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

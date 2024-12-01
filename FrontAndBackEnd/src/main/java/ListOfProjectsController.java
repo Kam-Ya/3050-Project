@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ListOfProjectsController {
 
@@ -24,14 +25,21 @@ public class ListOfProjectsController {
     @FXML
     private ListView<String> projectListView;
 
+    private User currentUser;
+
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+        loadProjects(); // Load projects for the current user
+    }
+
     @FXML
     private void initialize() {
-        // Example projects for display
-        projectListView.getItems().addAll(
-                "Project 1 - Due: 22-10-24 | 5 tasks",
-                "Project 2 - Due: 23-10-24 | 3 tasks",
-                "Project 3 - Due: 24-10-24 | 7 tasks"
-        );
+//        // Example projects for display
+//        projectListView.getItems().addAll(
+//                "Project 1 - Due: 22-10-24 | 5 tasks",
+//                "Project 2 - Due: 23-10-24 | 3 tasks",
+//                "Project 3 - Due: 24-10-24 | 7 tasks"
+//        );
 
         // Set click handler for the ListView
         projectListView.setOnMouseClicked(event -> {
@@ -43,6 +51,25 @@ public class ListOfProjectsController {
             }
         });
     }
+
+    private void loadProjects() {
+        if (currentUser != null) {
+            // Fetch projects for the current user
+            currentUser.listProj();
+            ArrayList<Project> projects = currentUser.getProjs();
+
+            // Populate the ListView
+            for (Project project : projects) {
+                String projectInfo = String.format(
+                        "%s - Due: %s",
+                        project.getProjectName(),
+                        project.getProjectDueDate()
+                );
+                projectListView.getItems().add(projectInfo);
+            }
+        }
+    }
+
 
     private void openProjectScreen(String projectName) {
         try {
