@@ -49,9 +49,9 @@ public class ProjectScreenController {
     private void initialize() {
         // Example task items
         taskListView.getItems().addAll(
-                "Task 1 - Due: 22-10-24 | 5 notes",
-                "Task 2 - Due: 23-10-24 | 3 notes",
-                "Task 3 - Due: 24-10-24 | 7 notes"
+                "Task 1 - Due: 22-10-24 | 5 notes | John",
+                "Task 2 - Due: 23-10-24 | 3 notes | Jain",
+                "Task 3 - Due: 24-10-24 | 7 notes | Jack"
         );
         projectDescriptionArea.setEditable(false);
         projectDescriptionArea.setText("This is a project description");
@@ -81,11 +81,12 @@ public class ProjectScreenController {
 
             // Parse task details
             String[] parts = taskDetails.split(" - Due: ");
-            String taskName = parts[0]; // Task name
+            String taskName = parts[0].trim(); // Task name
             String[] otherDetails = parts[1].split(" \\| ");
 
+            // Extract details with fallback defaults
             String dueDate = otherDetails.length > 0 ? otherDetails[0].trim() : "Unknown Due Date";
-            String priority = otherDetails.length > 1 ? otherDetails[1].trim() : "Unknown Priority";
+            String notesCount = otherDetails.length > 1 ? otherDetails[1].trim() : "0 notes";
             String assignedUser = otherDetails.length > 2 ? otherDetails[2].trim() : "Unassigned";
 
             // Load TaskScreen FXML
@@ -94,7 +95,8 @@ public class ProjectScreenController {
 
             // Get the controller for TaskScreen and pass the task details
             TaskScreenController controller = loader.getController();
-            controller.setTaskDetails(taskName, "Task Description Here", dueDate, assignedUser, priority);
+            String taskDescription = String.format("Task with %s", notesCount); // Example description
+            controller.setTaskDetails(taskName, taskDescription, dueDate, assignedUser, "Default Priority");
 
             // Create a new stage for TaskScreen
             Stage stage = new Stage();

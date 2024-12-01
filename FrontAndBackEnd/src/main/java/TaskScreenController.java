@@ -21,10 +21,10 @@ public class TaskScreenController {
     private Label priorityLabel;
 
     @FXML
-    private TextArea descriptionField;
+    private Label descriptionLabel;
 
     @FXML
-    private TextField dueDateField;
+    private Label dueDateLabel;
 
     @FXML
     private Button completeButton;
@@ -45,16 +45,16 @@ public class TaskScreenController {
     /**
      * Sets the task details to be displayed on the screen.
      *
-     * @param taskTitle     The title of the task.
+     * @param taskName      The title of the task.
      * @param description   The description of the task.
-     * @param dueDate       The due date for the task.
-     * @param assignedUser  The name of the assigned user.
-     * @param priority      The priority of the task.
+     * @param dueDate       The due date of the task.
+     * @param assignedUser  The user assigned to the task.
+     * @param priority      The priority level of the task.
      */
-    public void setTaskDetails(String taskTitle, String description, String dueDate, String assignedUser, String priority) {
-        taskTitleLabel.setText(taskTitle);
-        descriptionField.setText(description);
-        dueDateField.setText(dueDate);
+    public void setTaskDetails(String taskName, String description, String dueDate, String assignedUser, String priority) {
+        taskTitleLabel.setText(taskName);
+        descriptionLabel.setText(description);
+        dueDateLabel.setText(dueDate);
         assignedUserLabel.setText(assignedUser);
         priorityLabel.setText(priority);
     }

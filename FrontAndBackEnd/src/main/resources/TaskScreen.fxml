@@ -25,13 +25,13 @@
                 <!-- Task Details -->
                 <VBox spacing="20" style="-fx-padding: 20;">
                     <children>
-                        <Label text="Description" />
-                        <TextArea fx:id="descriptionField" promptText="Enter task description..." />
+                        <Label text="Description:" />
+                        <Label fx:id="descriptionLabel" />
 
-                        <Label text="Due Date" />
-                        <TextField fx:id="dueDateField" text="10-10-2024" />
+                        <Label text="Due Date:" />
+                        <Label fx:id="dueDateLabel" text="10-10-2024" />
 
-                        <Label text="Assigned To" />
+                        <Label text="Assigned To:" />
                         <Label fx:id="assignedUserLabel" text="John Doe"/>
 
                         <Label text="Priority:"  />
