@@ -34,14 +34,18 @@ public class CTMClient extends AbstractClient{
           clientController.handleLogin(msgObj);            
           break;
           case "sendProjectInfo":
+          clientController.projectInfo();
           break;
           case "sendTaskInfo":
+          clientController.taskInfo();
           break;
           case "operationConfirmation":
           break;
           case "sendReportList":
+          clientController.reportList();
           break;
           case "sendReport":
+          clientController.readReport();
           break;
           default:
             System.err.println("Unknown message type: " + message.type);

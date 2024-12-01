@@ -18,10 +18,6 @@ public class Comment implements Serializable {
         this.commentor = com;
     }
 
-    public void addComment() {
-
-    }
-
     public void setContent(String newContent) {
         this.content = newContent;
     }

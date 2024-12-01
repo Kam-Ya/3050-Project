@@ -53,7 +53,7 @@ public class clientController {
 
         public static void handleLogin(Object obj){
             Integer userID=(Integer) obj;
-            
+
             if (message.obj instanceof User) {
                 User user = (User) message.obj;
                 System.out.println("Login successful: " + user.getName());
@@ -69,6 +69,13 @@ public class clientController {
                 });
               }
         }
+
+        public static void projectInfo(){}
+        public static void taskInfo(){}
+        public static void reportList(){}
+        public static void readReport(){}
+
+
         }
 
-}
+

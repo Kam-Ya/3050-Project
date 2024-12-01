@@ -129,6 +129,7 @@ public class CTMController {
     }
     public static void commentTask(Object obj, Integer taskID, ConnectionToClient client){
         Comment comment=(Comment) obj;
+        comment.addComment(taskID);
         sendMSG("Comment created","Success",client);
 
     }
@@ -143,7 +144,9 @@ public class CTMController {
         ProgressReport report = new ProgressReport("","","",reportID);
         
         report.getInfo();
-        
+
+        sendMSG(report,"viewReport",client);
+
 
 
     }
