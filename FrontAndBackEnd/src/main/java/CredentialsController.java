@@ -36,9 +36,6 @@ public class CredentialsController {
             return;
         }
 
-        // Attempting to use Kams Login class
-        Login login = new Login(username, password);
-
 
         System.out.println("Username: " + username + ", Password: " + password);
         // Add actual login logic here
@@ -50,6 +47,7 @@ public class CredentialsController {
             // Send the Login object to the server using OCSF
             CTMClient client = Main.getClient(); // Get the OCSF client instance
             client.sendToServer(loginRequest);
+
 
             // Log message for debugging
             System.out.println("Login request sent: " + username);
