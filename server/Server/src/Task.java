@@ -98,8 +98,9 @@ public class Task implements Serializable {
         this.desc = desc;
     }
 
-    public void addComment(String name, Date due, String comm) {
-        Comment com = new Comment(name, due, comm);
+    public void addComment(String name, String comm) {
+        Date made = new Date();
+        Comment com = new Comment(name, made, comm);
         this.comments.add(com);
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
