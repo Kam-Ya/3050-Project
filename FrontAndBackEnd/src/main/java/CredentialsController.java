@@ -18,7 +18,6 @@ public class CredentialsController {
     public Button loginButton;
     @FXML
     public Button registerButton;
-    //TODO: Add a button to Signup
     @FXML
     private TextField usernameField;
 
@@ -34,6 +33,10 @@ public class CredentialsController {
             showSystemMessage("Empty Fields", "Please enter both username and password.");
             return;
         }
+
+        // Attempting to use Kams Login class
+        Login login = new Login(username, password);
+
 
         System.out.println("Username: " + username + ", Password: " + password);
         // Add actual login logic here
