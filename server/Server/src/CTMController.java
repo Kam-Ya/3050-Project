@@ -1,15 +1,9 @@
 package Server.src;
-import com.format.msgFormat;
-
-import objects.Comment;
-import objects.Login;
-import objects.ProgressReport;
-import objects.Project;
-import objects.Task;
-import objects.User;
+import Server.src.format.msgFormat;
 
 import java.util.ArrayList;
-
+import Server.src.User;
+import Server.src.*;
 
 public class CTMController {
 
@@ -93,9 +87,9 @@ public class CTMController {
     }
 
     public static void getProjects(Object obj, Integer userID, ConnectionToClient client){
-        main.java.User user = new User(userID);
+        User user = new User(userID);
         user.listProj();
-        ArryList <Project> projects = user.getProjs();
+        ArrayList <Project> projects = user.getProjs();
         sendMSG(projects, "projectList", client);
 
 
@@ -146,7 +140,8 @@ public class CTMController {
     }
     public static void viewReport(Object obj, ConnectionToClient client){
         Integer reportID = (Integer) obj;
-        ProgressReport report = new ProgressReport("","","",1).getInfo(reportID);
+        ProgressReport report = new ProgressReport("","","",1);
+        report.getInfo();
 
 
     }
