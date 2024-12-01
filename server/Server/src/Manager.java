@@ -1,4 +1,4 @@
-package main.java;
+package Server.src;
 
 public class Manager extends Lead{
     // constructor sets permissions
