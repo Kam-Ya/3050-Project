@@ -1,6 +1,7 @@
 package Server.src;
 
 import java.io.Serializable;
+import java.net.IDN;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -144,5 +145,9 @@ public class User implements Serializable {
         } catch(SQLException sqle) {
             return null;
         }
+    }
+
+    public void SetID(int ID) {
+        this.userID = ID;
     }
 }
