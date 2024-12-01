@@ -1,9 +1,7 @@
 package main.client;
 import javafx.application.Platform;
 import main.com.format.msgFormat;
-import main.java.CredentialsController;
-import main.java.User;
-import main.java.Main;
+import main.java.*;
 
 
 public class CTMClient extends AbstractClient{
@@ -33,21 +31,29 @@ public class CTMClient extends AbstractClient{
         msgFormat message= (msgFormat) msg;
         switch (message.type){
           case "sendUserInfo":
-            // Handle login success
-            if (message.obj instanceof User) {
-              User user = (User) message.obj;
-              System.out.println("Login successful: " + user.getName());
-
-              // Transition to the ListOfProjectsScreen
-              Platform.runLater(() -> { // ensure UI updates are done on the JavaFX Application Thread
-                try {
-                  CredentialsController credentialsController = Main.getCredentialsController();
-                  credentialsController.openListOfProjectsScreen(user);
-                } catch (Exception e) {
-                  e.printStackTrace();
-                }
-              });
-            }
+//            // Handle login success
+//            if (message.obj instanceof User) {
+//              User user = (User) message.obj;
+//              System.out.println("Login successful: " + user.getName());
+//
+//              // Transition to the ListOfProjectsScreen
+//              Platform.runLater(() -> { // ensure UI updates are done on the JavaFX Application Thread
+//                try {
+//                  CredentialsController credentialsController = Main.getCredentialsController();
+//                  credentialsController.openListOfProjectsScreen(user);
+//                } catch (Exception e) {
+//                  e.printStackTrace();
+//                }
+//              });
+//            }
+            // Mocking server response for testing
+            System.out.println("Mocking server response for sendUserInfo...");
+            Role mockRole = new CEO();
+            User mockUser = new User("MockUser", mockRole);
+            Platform.runLater(() -> {
+              CredentialsController credentialsController = Main.getCredentialsController();
+              credentialsController.openListOfProjectsScreen(mockUser);
+            });
           break;
           case "sendProjectInfo":
           break;

@@ -29,6 +29,10 @@ public class ListOfProjectsController {
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
+        // debugging
+        System.out.println("Mock User Name: " + user.getName());
+        System.out.println("Mock User Role: " + user.getRole());
+
         loadProjects(); // Load projects for the current user
     }
 
