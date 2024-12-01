@@ -5,7 +5,7 @@
 
 <AnchorPane fx:id="anchorPane" xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.aboutProjectController" stylesheets="@style2.css" styleClass="anchorPane">
     <children>
-        <BorderPane fx:id="borderPane" styleClass="borderPaneProjectScreen" AnchorPane.topAnchor="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <BorderPane fx:id="borderPane" styleClass="borderPane" AnchorPane.topAnchor="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
             <top>
                 <StackPane fx:id="titleStackPane" styleClass="titleStackPane" BorderPane.alignment="CENTER">
                     <Label fx:id="projectTitleLabel" text="About Project" styleClass="projectTitleLabel" />
