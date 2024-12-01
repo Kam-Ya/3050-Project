@@ -90,6 +90,8 @@ public class ListOfProjectsController {
                 return;
             }
 
+            System.out.println("Opening ProjectScreen for project: " + selectedProject.getProjectName());
+
             // Load the ProjectScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ProjectScreen));
             Parent root = loader.load();

@@ -44,6 +44,8 @@ public class ProjectScreenController {
     // Method to set project details
     public void setProjectDetails(Project project) {
         // Set project details
+        System.out.println("setProjectDetails called for project: " + project.getProjectName());
+
         projectTitleLabel.setText(project.getProjectName());
         projectDueDateLabel.setText(project.getProjectDueDate().toString());
         projectDescriptionArea.setText(project.Desc);
