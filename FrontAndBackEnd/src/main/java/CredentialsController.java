@@ -46,22 +46,8 @@ public class CredentialsController {
         Login loginRequest = new Login(username, password);
 
          // OCSF Stuff
-        try {
-            // Send the Login object to the server using OCSF
-            CTMClient client = Main.getClient(); // Get the OCSF client instance
-
-
-
-
-
-
-            // Log message for debugging
-            System.out.println("Login request sent: " + username);
-        } catch (IOException e) {
-            System.err.println("Failed to send login request: " + e.getMessage());
-            e.printStackTrace();
-            showSystemMessage("Error", "Could not connect to the server.");
-        }
+        // Send the Login object to the server using OCSF
+        CTMClient client = Main.getClient(); // Get the OCSF client instance
 
     }
     public void openListOfProjectsScreen(User user) {
