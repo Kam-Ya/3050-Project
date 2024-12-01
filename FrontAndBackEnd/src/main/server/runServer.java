@@ -1,4 +1,4 @@
-package server;
+package main.server;
 public class runServer extends Thread {
 
     public static void main(String[] args) {

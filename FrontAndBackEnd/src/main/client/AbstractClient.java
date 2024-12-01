@@ -3,7 +3,7 @@
 // license found at www.lloseng.com
 
 
-package client;
+package main.client;
 import java.io.*;
 import java.net.*;
 

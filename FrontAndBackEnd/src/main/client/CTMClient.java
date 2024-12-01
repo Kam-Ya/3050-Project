@@ -1,5 +1,5 @@
-package client;
-import com.format.msgFormat;
+package main.client;
+import main.com.format.msgFormat;
 
 
 public class CTMClient extends AbstractClient{

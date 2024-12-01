@@ -1,4 +1,4 @@
-package Server.src;
+package main.java;
 
 import java.util.Date;
 

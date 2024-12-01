@@ -1,4 +1,4 @@
-package client;
+package main.client;
 public class runnableClient extends Thread {
 
     public static void main(String[] args) {

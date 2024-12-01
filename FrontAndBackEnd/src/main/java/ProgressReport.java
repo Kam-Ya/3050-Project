@@ -13,11 +13,12 @@ public class ProgressReport implements Serializable {
     private Date timestamp;
     private int ID;
 
-    public ProgressReport(String title, String content, String user, Date made) {
+    public ProgressReport(String title, String content, String user, Integer ID) {
         this.title = title;
         this.reportDetails = content;
         this.User = user;
-        this.timestamp = made;
+        this.timestamp = new Date();
+        this.ID = ID;
     }
 
     public Date getTimestamp() {
@@ -76,6 +77,52 @@ public class ProgressReport implements Serializable {
             ResultSet rs = state.executeQuery(input);
 
             this.ID = rs.getInt("ID");
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
+    }
+
+    public void addReport(Integer ID) {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+            // insert the report in to the database
+            String input = String.format("INSERT INTO report (content, date, user, proj, title) VALUES('%s', '%s', '%s', %d, '%s');",
+                    this.getReportDetails(), df.format(this.getTimestamp()), this.getUser(), ID, this.getTitle());
+            state.executeUpdate(input);
+
+            // close the connection
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
+    }
+
+    public void getInfo() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the report ID from the database
+            String input = String.format("SELECT content, date, user, title FROM report WHERE ID;", this.ID);
+            ResultSet rs = state.executeQuery(input);
+
+            while (rs.next()) {
+                this.title = rs.getString("title");
+                this.reportDetails = rs.getString("content");
+                this.User = rs.getString("user");
+                this.timestamp = rs.getDate("date");
+            }
 
             // close the connection
             rs.close();
