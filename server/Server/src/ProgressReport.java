@@ -107,4 +107,29 @@ public class ProgressReport implements Serializable {
             return;
         }
     }
+
+    public void getInfo() {
+        try(
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // get the report ID from the database
+            String input = String.format("SELECT content, date, user, title FROM report WHERE ID;", this.ID);
+            ResultSet rs = state.executeQuery(input);
+
+            while (rs.next()) {
+                this.title = rs.getString("title");
+                this.reportDetails = rs.getString("content");
+                this.User = rs.getString("user");
+                this.timestamp = rs.getDate("date");
+            }
+
+            // close the connection
+            rs.close();
+            state.close();
+            con.close();
+        } catch(SQLException sqle) {
+            return;
+        }
+    }
 }
