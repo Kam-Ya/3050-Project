@@ -128,7 +128,7 @@ public class User implements Serializable {
         }
     }
 
-    public ArrayList<Project> listProj() {
+    public void listProj() {
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
@@ -139,18 +139,20 @@ public class User implements Serializable {
             ResultSet rs = state.executeQuery(input);
 
             while(rs.next()) {
-                projs.add(new Project(rs.getString("name"), rs.getDate("date"), rs.getString("description"), rs.getInt("projectID")));
+                this.projs.add(new Project(rs.getString("name"), rs.getDate("date"), rs.getString("description"), rs.getInt("projectID")));
             }
 
             // close the connection
             rs.close();
             state.close();
             con.close();
-
-            return this.projs;
         } catch(SQLException sqle) {
-            return null;
+            return;
         }
+    }
+
+    public ArrayList<Project> getProjs() {
+        return this.projs;
     }
 
     public void SetID(Integer ID) {
