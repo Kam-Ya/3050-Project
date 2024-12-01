@@ -17,6 +17,9 @@ import java.io.IOException;
 public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
     private static final String CreateUser = "/CreateUserScreen.fxml";
+
+
+
     public Button loginButton;
     @FXML
     public Button registerButton;
