@@ -29,7 +29,7 @@ public class ListOfProjectsController {
 
     private Integer userID;
 
-    public void setCurrentUseIDr(Integer userID) {
+    public void setCurrentUseID(Integer userID) {
         this.userID = userID;
         // debugging
         System.out.println("UserID: " + userID);

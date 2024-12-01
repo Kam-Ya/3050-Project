@@ -65,7 +65,7 @@ public class CredentialsController {
 
             // Pass the User object to ListOfProjectsController
             ListOfProjectsController controller = loader.getController();
-            controller.setCurrentUser(user);
+            controller.setCurrentUseID();
 
             Stage stage = new Stage();
             stage.setTitle("List of Projects");
