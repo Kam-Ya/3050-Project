@@ -122,21 +122,33 @@ public class Project implements Serializable {
         }
     }
 
-    public void insertEmp(Integer hid, ArrayList<Integer>selected) {
+    public void insertEmp(ArrayList<Integer>selected) {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
         ) {
-
-            // insert the ID's into the connection table
-            String input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, hid);
-            state.executeUpdate(input);
-
             // insert the rest of the employees into the list
             for (Integer i : selected) {
-                input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, i);
+                String input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, i);
                 state.executeUpdate(input);
             }
+
+            // close the connection
+            state.close();
+            con.close();
+        } catch (SQLException sqle) {
+            return;
+        }
+    }
+
+    public void addManage(Integer id) {
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+                Statement state = con.createStatement();
+        ) {
+            // insert the rest of the employees into the list
+            String input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, id);
+            state.executeUpdate(input);
 
             // close the connection
             state.close();
@@ -228,7 +240,7 @@ public class Project implements Serializable {
             return;
         }
     }
-    
+
     public ArrayList<Task> getProjs() {
         return this.tasks;
     }
