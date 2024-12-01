@@ -10,9 +10,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.client.CTMClient;
+import main.client.clientController;
 
 import java.io.Console;
 import java.io.IOException;
+
+import static main.java.Main.client;
 
 public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
@@ -47,7 +50,8 @@ public class CredentialsController {
 
          // OCSF Stuff
         // Send the Login object to the server using OCSF
-        CTMClient client = Main.getClient(); // Get the OCSF client instance
+        clientController.sendMSG(loginRequest, "loginRequest", client);
+//        CTMClient client = Main.getClient(); // Get the OCSF client instance
 
     }
     public void openListOfProjectsScreen(User user) {
