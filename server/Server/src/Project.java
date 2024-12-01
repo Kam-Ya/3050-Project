@@ -122,7 +122,7 @@ public class Project implements Serializable {
         }
     }
 
-    public void insertEmp(ArrayList<Integer>selected, Integer ID) {
+    public static void insertEmp(ArrayList<Integer>selected, Integer ID) {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
