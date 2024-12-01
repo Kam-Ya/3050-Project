@@ -1,53 +1,46 @@
 package client;
-import com.format.msgFormat;
+import com.form.msgFormat;
+import objects.CTMController;
+
 public class clientController {
-    public static void sendMSG(Object obj, String operation, CTMClient client){
+    public static void sendMSG(Object obj, Integer genID, String operation, CTMClient client){
 
         switch(operation){
-            case "createOrg":
-            break;
-            case "createAccount":
-            break;
+            case "createUser":
+                break;
+            case "deleteUser":
+                break;
             case "loginRequest":
-            break;
+                break;
             case "createProject":
-            break;
-            case "createTask":
-            break;
-            case  "assignTask":
-            break;
-            case  "commentTask":
-            break;
-            case "assignPriority":
-            break;
-            case "deleteObject":
-            break;
-            case "writeReport":
-            break;
-            case "viewReports":
-            break;
-            case "readReport":
-            break;
-            case "getCalendar":
-            break;
-            case "getTasks":
-            break;
-            case "getProjects":
-            break;
-            case "completeTask":
-            break;
-            case "completeProject":
-            break;
+                break;
+            case "deleteProject":
+                break;
+            case "assignEmpProj":
+                break;
+            case  "createTask":
+                break;
+            case "deleteTask":
+                break;
+            case "assignEmpTask":
+                break;
+            case "commentTask":
+                break;
+            case "createReport":
+                break;
+            case "viewReport":
+                break;
             case "messageString":
-            break;
-            case "Error":
-            break;
+                break;
+            default:
         }
-        msgFormat message=new msgFormat(operation,obj);
+        msgFormat message=new msgFormat(operation,obj,genID);
         try{
             client.sendToServer(message);
         } catch(java.io.IOException e){
             System.out.println("Failed to send message:" + e);
         }
         }
+
+
 }

@@ -11,7 +11,7 @@ public class runnableClient extends Thread {
     CTMClient client;
     
     public runnableClient() {
-      client= new CTMClient("localhost",12345);
+      client= new CTMClient("10.100.148.220",12345);
     }
   
     public void run() {

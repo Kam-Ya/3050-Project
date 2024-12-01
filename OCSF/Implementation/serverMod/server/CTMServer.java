@@ -1,7 +1,6 @@
 package server;
 import com.format.msgFormat;
-
-
+import objects.CTMController;
 
 
 public class CTMServer extends AbstractServer {
@@ -59,41 +58,46 @@ public class CTMServer extends AbstractServer {
       protected void handleMessageFromClient(Object msg, ConnectionToClient client){
         //Creates a message object and casts msg to it for further processing
         msgFormat message= (msgFormat) msg;
+        Object msgObj=message.obj;
+        Integer genID=message.genericId;
         //Checks for what operation is required to send to the correct CTMController call
         switch(message.type){
-        case "createOrg":
+
+        case "createUser":
+          CTMController.createUser(msgObj,client);
         break;
-        case "createAccount":
+        case "deleteUser":
+          CTMController.deleteUser(msgObj,client);
         break;
         case "loginRequest":
+          CTMController.loginRequest(msgObj,client);
         break;
         case "createProject":
+          CTMController.createProject(msgObj,genID,client);
         break;
-        case "createTask":
+        case "deleteProject":
+          CTMController.deleteProject(msgObj,client);
         break;
-        case  "assignTask":
+        case  "assignEmpProj":
+          CTMController.assignEmpProj(msgObj,genID,client);
         break;
-        case  "commentTask":
+        case  "createTask":
+          CTMController.createTask(msgObj,genID,client);
         break;
-        case "assignPriority":
+        case "deleteTask":
+          CTMController.deleteTask(msgObj,client);
         break;
-        case "deleteObject":
+        case "assignEmpTask":
+          CTMController.assignEmpTask(msgObj,genID,client);
         break;
-        case "writeReport":
+        case "commentTask":
+          CTMController.commentTask(msgObj,genID,client);
         break;
-        case "viewReports":
+        case "createReport":
+          CTMController.createReport(msgObj,genID,client);
         break;
-        case "readReport":
-        break;
-        case "getCalendar":
-        break;
-        case "getTasks":
-        break;
-        case "getProjects":
-        break;
-        case "completeTask":
-        break;
-        case "completeProject":
+        case "viewReport":
+          CTMController.viewReport(msgObj,client);
         break;
         case "messageString":
         CTMController.messageString(message.obj,client);

@@ -1,5 +1,5 @@
 package client;
-import com.format.msgFormat;
+import com.form.msgFormat;
 
 
 public class CTMClient extends AbstractClient{
@@ -27,21 +27,26 @@ public class CTMClient extends AbstractClient{
     
       protected void handleMessageFromServer(Object msg){
         msgFormat message= (msgFormat) msg;
-        switch (message.type){
-          case "sendUserInfo":
-          break;
-          case "sendProjectInfo":
-          break;
-          case "sendTaskInfo":
-          break;
+        Object msgObj = (Object) message.obj;
+        switch (message.type) {
+          case "userAuth":
+            break;
+          case "projectList":
+            break;
+          case "taskList":
+            break;
           case "operationConfirmation":
-          break;
-          case "sendReportList":
-          break;
-          case "sendReport":
-          break;
+            break;
+          case "reportList":
+            break;
+          case "viewReport":
+            break;
+          case "Error":
+            break;
+          case "Success":
+            break;
           default:
-        }
+            break;
       }
 
 }

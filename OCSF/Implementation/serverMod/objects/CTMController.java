@@ -1,9 +1,8 @@
-package server;
+package objects;
 import com.format.msgFormat;
-import
-import objects.*;
+import server.ConnectionToClient;
 
- 
+import java.util.ArrayList;
 
 
 public class CTMController {
@@ -11,58 +10,160 @@ public class CTMController {
 
 
     //Sending
-    public void sendMSG(Object obj, String operation, ConnectionToClient client){
+    public static void sendMSG(Object obj, String operation, ConnectionToClient client) {
 
-        switch(operation){
-            case "userInfo":
-            break;
-            case "projectInfo":
-            break;
-            case "taskInfo":
-            break;
-            case "operationConfirmation":
-            break;
-            case "sendReportList":
-            break;
-            case "sendReport":
-            break;
-            default:
-            operation="Error";
-            break;
-        }
-        msgFormat message=new msgFormat(operation,obj);
-            try{
+            switch (operation) {
+                case "userAuth":
+                    break;
+                case "projectList":
+                    break;
+                case "taskList":
+                    break;
+                case "operationConfirmation":
+                    break;
+                case "reportList":
+                    break;
+                case "viewReport":
+                    break;
+                case "Error":
+                    String errorMsg=(String) obj;
+                    obj="Error: ".concat(errorMsg);
+                    break;
+                case "Success":
+                    String successMsg=(String) obj;
+                    obj="Success: ".concat(successMsg);
+                    break;
+                default:
+                    operation = "Unknown Error Please Contact Support";
+                    break;
+            }
+            msgFormat message = new msgFormat(operation, obj, -1);
+            try {
                 client.sendToClient(message);
-            } catch(java.io.IOException e){
+            } catch (java.io.IOException e) {
                 System.out.println("Failed to send message:" + e);
             }
         }
 
-    //Recieving
+        //Recieving
 
-    public void createCEO(Object obj, ConnectionToClient client){}
-    public void deleteCEO(Object obj, ConnectionToClient client){}
-    public void createUser(Object obj, ConnectionToClient client){}
-    public void deleteUser(Object obj, ConnectionToClient client){}
 
-    public void loginRequest(Object obj, ConnectionToClient client){
-        obj=(Login)obj;
+    public static void createUser (Object obj, ConnectionToClient client){
+        User user=(User) obj;
+        sendMSG("Account created","Success",client);
 
     }
-    public void createProject(Object obj, ConnectionToClient client){}
-    public void createTask(Object obj, ConnectionToClient client){}
-    public void assignTask(Object obj, ConnectionToClient client){}
-    public void commentTask(Object obj, ConnectionToClient client){}
-    public void assignPriority(Object obj, ConnectionToClient client){}
-    public void deleteObject(Object obj, ConnectionToClient client){}
-    public void writeReport(Object obj, ConnectionToClient client){}
-    public void viewReports(Object obj, ConnectionToClient client){}
-    public void readReport(Object obj, ConnectionToClient client){}
-    public void getCalendar(Object obj, ConnectionToClient client){}
-    public void getTasks(Object obj, ConnectionToClient client){}
-    public void getProjects(Object obj, ConnectionToClient client){}
-    public void completeTask(Object obj, ConnectionToClient client){}
-    public void completeProject(Object obj, ConnectionToClient client){}
+    public static void deleteUser (Object obj, ConnectionToClient client){
+        Integer userID=(Integer) obj;
+        User user=new User(userID);
+        user.deleteFromDatabase();
+        sendMSG("Account deleted","Success",client);
+
+    }
+
+    public static void loginRequest (Object obj, ConnectionToClient client){
+        Login login=(Login) obj;
+
+        int user = login.authenticate();
+        if (user != -1) {
+            sendMSG(user,"userAuth",client);
+        } else {
+            sendMSG("Login Request Failed","Error",client);
+
+        }
+
+    }
+
+    public static void createProject(Object obj, Integer userID, ConnectionToClient client){
+    Project project=(Project) obj;
+    project.addToDB();
+    project.addManage(userID);
+        sendMSG("Project created","Success",client);
+    }
+    public static void deleteProject(Object obj, ConnectionToClient client){
+        Project project=(Project) obj;
+        project.deleteFromDB();
+        sendMSG("Project deleted","Success",client);
+    }
+
+    public static void getProjects(Object obj, Integer userID, ConnectionToClient client){
+
+
+    }
+    public static void getTasks(Object obj, Integer userID, ConnectionToClient client){
+
+
+    }
+
+
+
+    public static void assignEmpProj(Object obj, Integer projID, ConnectionToClient client){
+        ArrayList <Integer> users = (ArrayList<Integer>) obj;
+        Project.insertEmp(users,projID);
+
+    }
+    public static void createTask(Object obj, Integer taskID, ConnectionToClient client){
+        Task task=(Task) obj;
+        task.addToDB();
+        sendMSG("Task created","Success",client);
+    }
+    public static void deleteTask(Object obj, ConnectionToClient client){
+        Task task=(Task) obj;
+        task.deleteFromDatabase();
+        sendMSG("Task deleted","Success",client);
+
+    }
+
+    public static void assignEmpTask(Object obj, Integer userID,ConnectionToClient client){
+        Task task=(Task) obj;
+        task.addAsignee(userID);
+
+    }
+    public static void completeTask(Object obj, ConnectionToClient client){
+        Task task=(Task) obj;
+        task.toggleCompleted();
+    }
+    public static void commentTask(Object obj, Integer taskID, ConnectionToClient client){
+        Comment comment=(Comment) obj;
+        sendMSG("Comment created","Success",client);
+
+    }
+    public static void createReport(Object obj,Integer projectID, ConnectionToClient client){
+        ProgressReport report = (ProgressReport) obj;
+        report.addReport(projectID);
+        sendMSG("Report created","Success",client);
+
+    }
+    public static void viewReport(Object obj, ConnectionToClient client){
+        Integer reportID = (Integer) obj;
+        ProgressReport report = new ProgressReport().getInfo(reportID);
+
+
+    }
+    //public void setTaskPriority(Object obj, ConnectionToClient client){
+
+    //
+
+
+    //If we have time
+    //public void updateTaskName(Object obj, ConnectionToClient client){}
+    //public void updateTaskDate(Object obj, ConnectionToClient client){}
+    //public void updateProjectName(Object obj, ConnectionToClient client){}
+    //public void updateProjectDate(Object obj, ConnectionToClient client){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void messageString(Object obj, ConnectionToClient client){
         obj=(String)obj;
         System.out.println(obj);
