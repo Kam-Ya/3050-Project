@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ListOfProjectsController {
-
+    private static final String ProjectScreen = "/ProjectScreen.fxml";
+    private static final String NewProjectScreen = "/NewProjectScreen.fxml";
+    private static final String CreateNewUserScreen = "/CreateNewUserScreen.fxml";
     @FXML
     private Button logoutButton;
 
@@ -30,8 +32,8 @@ public class ListOfProjectsController {
     public void setCurrentUser(User user) {
         this.currentUser = user;
         // debugging
-        System.out.println("Mock User Name: " + user.getName());
-        System.out.println("Mock User Role: " + user.getRole());
+        System.out.println("User Name: " + user.getName());
+        System.out.println("User Role: " + user.getRole());
 
         loadProjects(); // Load projects for the current user
     }
@@ -80,8 +82,8 @@ public class ListOfProjectsController {
             // Load the ProjectScreen FXML
             // Bug testing
             System.out.println("ListOfProjectsController:");
-            System.out.println(getClass().getResource("/ProjectScreen.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjectScreen.fxml"));
+            System.out.println(getClass().getResource(ProjectScreen));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ProjectScreen));
             Parent root = loader.load();
 
             // Get the controller for ProjectScreen and pass the project data
@@ -117,7 +119,7 @@ public class ListOfProjectsController {
         // Logic to create a new project
         try {
             // Load the new FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/NewProjectScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(NewProjectScreen));
             Parent root = fxmlLoader.load();
 
             // Create a new stage

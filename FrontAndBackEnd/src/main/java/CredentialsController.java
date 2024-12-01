@@ -15,7 +15,8 @@ import java.io.Console;
 import java.io.IOException;
 
 public class CredentialsController {
-
+    private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
+    private static final String CreateUser = "/CreateUserScreen.fxml";
     public Button loginButton;
     @FXML
     public Button registerButton;
@@ -44,24 +45,25 @@ public class CredentialsController {
         // Create a Login object
         Login loginRequest = new Login(username, password);
 
-        // OCSF Stuff
-//        try {
-//            // Send the Login object to the server using OCSF
-//            CTMClient client = Main.getClient(); // Get the OCSF client instance
-//            client.sendToServer(loginRequest);
-//
-//            // Log message for debugging
-//            System.out.println("Login request sent: " + username);
-//        } catch (IOException e) {
-//            System.err.println("Failed to send login request: " + e.getMessage());
-//            e.printStackTrace();
-//            showSystemMessage("Error", "Could not connect to the server.");
-//        }
+         // OCSF Stuff
+        try {
+            // Send the Login object to the server using OCSF
+            CTMClient client = Main.getClient(); // Get the OCSF client instance
+            client.sendToServer(loginRequest);
+
+            // Log message for debugging
+            System.out.println("Login request sent: " + username);
+        } catch (IOException e) {
+            System.err.println("Failed to send login request: " + e.getMessage());
+            e.printStackTrace();
+            showSystemMessage("Error", "Could not connect to the server.");
+        }
 
     }
     public void openListOfProjectsScreen(User user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ListOFProjects));
             Parent root = loader.load();
 
             // Pass the User object to ListOfProjectsController
@@ -103,7 +105,7 @@ public class CredentialsController {
         System.out.println("Signup Button Pressed");
         try {
             // Load the new FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CreateUserScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CreateUser));
             Parent root = fxmlLoader.load();
 
             // Create a new stage
