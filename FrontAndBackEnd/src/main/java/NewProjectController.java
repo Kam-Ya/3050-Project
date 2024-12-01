@@ -3,8 +3,15 @@ package main.java;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.control.TextFormatter;
+
+import java.io.IOException;
+
 
 public class NewProjectController {
 
@@ -42,6 +49,18 @@ public class NewProjectController {
     public void initialize() {
         workersListView.setItems(availableWorkers);
         workersListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        enforceCharLimit(projectTitleField, 2); // Names: 255 chars
+        enforceCharLimit(projectDescriptionArea, 10); // Description: 1000 chars
+    }
+    private void enforceCharLimit(javafx.scene.control.TextInputControl textInputControl, int maxChars) {
+        textInputControl.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().length() <= maxChars) {
+                return change; // Accept the input
+            }
+            showSystemMessage("Character Limit Exceeded", "Character Limit Exceeded");
+            return null; // Reject the input
+        }));
     }
 
     /**
@@ -99,5 +118,23 @@ public class NewProjectController {
         // Logic to delete the project can be added here
         Stage stage = (Stage) deleteButton.getScene().getWindow();
         stage.close();
+    }
+
+    // error screen
+    private void showSystemMessage(String title, String body) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            MessageFromSystemController controller = fxmlLoader.getController();
+            controller.setMessage(title, body);
+
+            Stage stage = new Stage();
+            stage.setTitle("System Message");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

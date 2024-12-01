@@ -57,6 +57,7 @@ public class CredentialsController {
         }
     }
 
+    // error screen
     private void showSystemMessage(String title, String body) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
