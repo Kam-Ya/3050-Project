@@ -1,6 +1,12 @@
-package objects;
+package server;
 import com.format.msgFormat;
-import server.ConnectionToClient;
+
+import objects.Comment;
+import objects.Login;
+import objects.ProgressReport;
+import objects.Project;
+import objects.Task;
+import objects.User;
 
 import java.util.ArrayList;
 
