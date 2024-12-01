@@ -2,9 +2,7 @@ package main.client;
 public class runnableClient extends Thread {
 
     public static void main(String[] args) {
-      
-      System.out.println("*** Testing of exception throwing inside message handling ***\n");
-  
+        
       Thread test= new runnableClient();
       test.start();
     }
@@ -19,7 +17,6 @@ public class runnableClient extends Thread {
       try {
         (new ClientThread(client)).start();
         sleep(5000);
-        clientController.sendMSG("Test Message It Works!","messageString",client);
        
        
       } catch (Exception ex) {
