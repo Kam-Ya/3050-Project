@@ -37,7 +37,7 @@
         <!-- Bottom section with Close Button -->
         <bottom>
             <HBox alignment="CENTER" spacing="10.0">
-                <Button onAction="#handleClose" styleClass="largeButton" text="CLOSE" />
+                <Button onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
             </HBox>
         </bottom>
     </BorderPane>

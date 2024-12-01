@@ -141,7 +141,7 @@ public class ProjectScreenController {
 
             // Create a new stage for ListReportsScreen
             Stage stage = new Stage();
-            stage.setTitle("List Reports");
+            stage.setTitle("New Task");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
@@ -152,12 +152,26 @@ public class ProjectScreenController {
     @FXML
     private void handleAbout() {
         System.out.println("About button clicked!");
-        // Logic for showing about information
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/aboutProjectScreen.fxml"));
+            Parent root = loader.load();
+
+            aboutProjectController aboutController = loader.getController();
+            aboutController.setProjectDetails("Test");
+
+            Stage stage = new Stage();
+            stage.setTitle("About Project");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void handleClose() {
         System.out.println("Close button clicked!");
-        // Logic for closing this screen
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }
