@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class User implements Serializable {
     private String name;
-    private final Role role;
+    private Role role;
     private Integer userID;
     public ArrayList<Project> projs;
 
@@ -17,6 +17,12 @@ public class User implements Serializable {
         this.role = role;
     }
 
+    // constructor part 2 electric boogaloo
+    public User(Integer ID) {
+        this.userID = ID;
+    }
+
+    // constructor part 3 yuh huh
     public User(String name, Role role, String username, String password) throws SQLException {
         Login log = new Login(username, password);
         this.name = name;
