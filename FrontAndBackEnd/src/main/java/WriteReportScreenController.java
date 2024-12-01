@@ -1,14 +1,18 @@
 package main.java;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class WriteReportScreenController {
 
     @FXML
     public Label reportTitleLabel;
+    public Button cancelButton;
+    public Button submitButton;
     @FXML
     private TextField titleField;
 
@@ -38,7 +42,8 @@ public class WriteReportScreenController {
     @FXML
     private void handleCancel() {
         System.out.println("Report writing canceled.");
-        // TODO: Close the WriteReportScreen or navigate back to the previous screen
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     // Method to set project details dynamically (e.g., project name)

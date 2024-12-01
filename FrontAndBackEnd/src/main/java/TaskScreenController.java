@@ -4,16 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class TaskScreenController {
 
+    public Label taskTitleLabel;
     @FXML
     private TextArea descriptionField;
 
@@ -100,6 +98,7 @@ public class TaskScreenController {
     @FXML
     private void handleClose() {
         System.out.println("Close button clicked!");
-        // Logic to close the task screen
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }

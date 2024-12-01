@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +12,12 @@ import java.util.Optional;
 
 public class CommentScreenController {
 
+    public Button deleteButton;
+    public Button writeButton;
+    public Button editButton;
+    public Button refreshButton;
+    public Button closeButton;
+    public Label commentTitleLabel;
     @FXML
     private ListView<String> commentsListView;
 
@@ -88,7 +92,8 @@ public class CommentScreenController {
     @FXML
     private void handleClose() {
         System.out.println("Close button clicked.");
-        // TODO: Close the CommentScreen and return to the previous screen
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
     private void showAlert(String title, String message) {

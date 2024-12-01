@@ -73,5 +73,22 @@ public class CredentialsController {
 
     public void handleSignup() {
         System.out.println("Signup Button Pressed");
+        try {
+            // Load the new FXML file
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CreateUserScreen.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage
+            Stage stage = new Stage();
+            stage.setTitle("Dashboard");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+           // Close the current login window
+            Stage currentStage = (Stage) registerButton.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

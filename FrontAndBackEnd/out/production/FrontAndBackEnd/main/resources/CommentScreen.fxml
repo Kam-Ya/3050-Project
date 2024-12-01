@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" fx:controller="main.java.CommentScreenController" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.CommentScreenController">
     <children>
         <!-- Centered BorderPane -->
-        <BorderPane layoutX="278.5" layoutY="126.5" styleClass="borderPaneCommentScreen" stylesheets="@style2.css">
+        <BorderPane layoutX="125.0" layoutY="85.0" styleClass="borderPane" stylesheets="@style2.css">
             <top>
                 <!-- Action Buttons -->
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="deleteButton" text="DELETE" styleClass="largeButton" onAction="#handleDelete" />
-                        <Button fx:id="writeButton" text="WRITE" styleClass="largeButton" onAction="#handleWrite" />
-                        <Button fx:id="editButton" text="EDIT" styleClass="largeButton" onAction="#handleEdit" />
-                        <Button fx:id="refreshButton" text="REFRESH" styleClass="largeButton" onAction="#handleRefresh" />
-                        <Button fx:id="closeButton" text="CLOSE" styleClass="largeButton" onAction="#handleClose" />
+                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
+                        <Button fx:id="writeButton" onAction="#handleWrite" styleClass="smallButton" text="WRITE" />
+                        <Button fx:id="editButton" onAction="#handleEdit" styleClass="smallButton" text="EDIT" />
+                        <Button fx:id="refreshButton" onAction="#handleRefresh" styleClass="smallButton" text="REFRESH" />
+                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
                     </children>
                 </HBox>
             </top>
