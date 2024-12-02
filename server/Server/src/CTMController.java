@@ -1,9 +1,10 @@
 package Server.src;
-import Server.src.format.msgFormat;
+import main.objects.msgFormat;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import Server.src.User;
-import Server.src.*;
+
+import main.objects.*;
 
 public class CTMController {
 
@@ -48,8 +49,10 @@ public class CTMController {
         //Recieving
 
 
-    public static void createUser (Object obj, ConnectionToClient client){
-        User user=(User) obj;
+    public static void createUser (Object obj, ConnectionToClient client) throws SQLException {
+        User newUser=(User) obj;
+        newUser.createUser();
+
         sendMSG("Account created","Success",client);
 
     }

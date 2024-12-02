@@ -1,5 +1,7 @@
 package Server.src;
-import Server.src.format.msgFormat;
+import main.objects.msgFormat;
+
+import java.sql.SQLException;
 
 
 public class CTMServer extends AbstractServer {
@@ -54,7 +56,7 @@ public class CTMServer extends AbstractServer {
         System.out.println("Listening exception: " + exception);    
       }
       
-      protected void handleMessageFromClient(Object msg, ConnectionToClient client){
+      protected void handleMessageFromClient(Object msg, ConnectionToClient client) throws SQLException {
         //Creates a message object and casts msg to it for further processing
         msgFormat message= (msgFormat) msg;
         Object msgObj=message.obj;

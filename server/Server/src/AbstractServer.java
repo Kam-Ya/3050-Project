@@ -6,6 +6,7 @@
 package Server.src;
 import java.net.*;
 import java.io.*;
+import java.sql.SQLException;
 
 /**
 * The <code> AbstractServer </code> class maintains a thread that waits
@@ -529,7 +530,7 @@ public abstract class AbstractServer implements Runnable
    *  sent the message.
    */
   protected abstract void handleMessageFromClient(
-    Object msg, ConnectionToClient client);
+    Object msg, ConnectionToClient client) throws SQLException;
 
 
 // METHODS TO BE USED FROM WITHIN THE FRAMEWORK ONLY ----------------
@@ -547,8 +548,7 @@ public abstract class AbstractServer implements Runnable
    *  sent the message.
    */
   final synchronized void receiveMessageFromClient(
-    Object msg, ConnectionToClient client)
-  {
+    Object msg, ConnectionToClient client) throws SQLException {
     this.handleMessageFromClient(msg, client);
   }
 }
