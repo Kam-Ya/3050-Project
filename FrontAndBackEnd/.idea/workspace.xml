@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="61e3d0b6-b404-46e0-98b8-7e4a4c21423b" name="Changes" comment="made mock ListOfProjectsController" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="TestingOCSF" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hunterAntal&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Kam-Ya/3050-Project&quot;,
+    &quot;accountId&quot;: &quot;1083a737-6526-4bf0-b08a-9eb458ab18f1&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2pagNnYc8Kurfl5FvHRk2N0mLbr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestingOCSF.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sceneBuilder&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hunterantal/3050Project/TestingOCSF/3050-Project/FrontAndBackEnd&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TestingOCSF" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="main.java.Main" />
+      <module name="FrontAndBackEnd" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61e3d0b6-b404-46e0-98b8-7e4a4c21423b" name="Changes" comment="" />
+      <created>1733009562999</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733009562999</updated>
+      <workItem from="1733009564000" duration="5289000" />
+      <workItem from="1733015048876" duration="9278000" />
+      <workItem from="1733024456531" duration="25000" />
+      <workItem from="1733069045115" duration="20092000" />
+      <workItem from="1733095595492" duration="1287000" />
+      <workItem from="1733097329437" duration="27000" />
+    </task>
+    <task id="LOCAL-00001" summary="first">
+      <option name="closed" value="true" />
+      <created>1733010136119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733010136119</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fxml files working">
+      <option name="closed" value="true" />
+      <created>1733010463919</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733010463919</updated>
+    </task>
+    <task id="LOCAL-00003" summary="updateing WriteReportScreenController">
+      <option name="closed" value="true" />
+      <created>1733010800079</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733010800079</updated>
+    </task>
+    <task id="LOCAL-00004" summary="updating fxml files">
+      <option name="closed" value="true" />
+      <created>1733011248640</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733011248640</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updating fxml files">
+      <option name="closed" value="true" />
+      <created>1733011622922</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733011622922</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added aboutProjectController">
+      <option name="closed" value="true" />
+      <created>1733012779957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733012779957</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added aboutProjectController">
+      <option name="closed" value="true" />
+      <created>1733012788688</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733012788688</updated>
+    </task>
+    <task id="LOCAL-00008" summary="updated aboutProjectController">
+      <option name="closed" value="true" />
+      <created>1733012990626</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733012990626</updated>
+    </task>
+    <task id="LOCAL-00009" summary="trying to get the description to look good">
+      <option name="closed" value="true" />
+      <created>1733014463774</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1733014463774</updated>
+    </task>
+    <task id="LOCAL-00010" summary="updated Kam's files so they are in the same package as Hunters">
+      <option name="closed" value="true" />
+      <created>1733015390436</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733015390436</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added login logic">
+      <option name="closed" value="true" />
+      <created>1733015606625</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733015606625</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added char limit to NewProject">
+      <option name="closed" value="true" />
+      <created>1733017076381</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733017076381</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added char limit to CreateUserController">
+      <option name="closed" value="true" />
+      <created>1733017358096</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733017358096</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added char limit to CreateUserController">
+      <option name="closed" value="true" />
+      <created>1733017818887</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733017818887</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Trying to get TaskScreen to look nice">
+      <option name="closed" value="true" />
+      <created>1733020704151</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1733020704151</updated>
+    </task>
+    <task id="LOCAL-00016" summary="styled TaskScreen">
+      <option name="closed" value="true" />
+      <created>1733021080024</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1733021080024</updated>
+    </task>
+    <task id="LOCAL-00017" summary="styled TaskScreen">
+      <option name="closed" value="true" />
+      <created>1733021632513</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1733021632513</updated>
+    </task>
+    <task id="LOCAL-00018" summary="styled TaskScreen looking good">
+      <option name="closed" value="true" />
+      <created>1733021897209</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1733021897209</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Changed the look of NewTaskScreen.fxml">
+      <option name="closed" value="true" />
+      <created>1733022182667</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1733022182667</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fixed weird boring issues with ListReportsScreen.fxml">
+      <option name="closed" value="true" />
+      <created>1733023055491</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023055491</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed weird boring issues with ListReportsScreen.fxml">
+      <option name="closed" value="true" />
+      <created>1733023253859</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023253859</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added all classes to my application.">
+      <option name="closed" value="true" />
+      <created>1733072269366</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733072269366</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Made CTMClient() constrctor public so I can use it in Main.java">
+      <option name="closed" value="true" />
+      <created>1733072626374</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1733072626374</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Going to integrate the classes first">
+      <option name="closed" value="true" />
+      <created>1733073291638</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1733073291638</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Integrated CredentialsController">
+      <option name="closed" value="true" />
+      <created>1733073766205</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1733073766205</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Integrated CredentialsController">
+      <option name="closed" value="true" />
+      <created>1733073814760</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1733073814760</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Integrated ListOfProjectsController">
+      <option name="closed" value="true" />
+      <created>1733075993429</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1733075993429</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Integrated ListOfProjectsController meeting up with the group">
+      <option name="closed" value="true" />
+      <created>1733082722330</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1733082722330</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Updated ListOfProjectsController">
+      <option name="closed" value="true" />
+      <created>1733084580555</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1733084580555</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Updated CredentialsController">
+      <option name="closed" value="true" />
+      <created>1733084849357</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1733084849357</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Updated CredentialsController">
+      <option name="closed" value="true" />
+      <created>1733085183612</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1733085183612</updated>
+    </task>
+    <task id="LOCAL-00032" summary="ListOfProjectsController now passes the Project Object to ProjectScreenController">
+      <option name="closed" value="true" />
+      <created>1733086729330</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1733086729330</updated>
+    </task>
+    <task id="LOCAL-00033" summary="ListOfProjectsController now passes the Project Object to ProjectScreenController">
+      <option name="closed" value="true" />
+      <created>1733086812499</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1733086812499</updated>
+    </task>
+    <task id="LOCAL-00034" summary="ProjectScreenController should open and populate TaskScreen.fxml">
+      <option name="closed" value="true" />
+      <created>1733088454864</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1733088454864</updated>
+    </task>
+    <task id="LOCAL-00035" summary="ProjectScreenController should open and populate TaskScreen.fxml">
+      <option name="closed" value="true" />
+      <created>1733088634923</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1733088634923</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Working with Jamie">
+      <option name="closed" value="true" />
+      <created>1733090317095</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1733090317095</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Working with Jamie">
+      <option name="closed" value="true" />
+      <created>1733090480647</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1733090480647</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Working with Jamie">
+      <option name="closed" value="true" />
+      <created>1733091101453</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1733091101453</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Updated CredentialsController">
+      <option name="closed" value="true" />
+      <created>1733091203877</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1733091203877</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Updated CredentialsController">
+      <option name="closed" value="true" />
+      <created>1733091945459</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1733091945459</updated>
+    </task>
+    <task id="LOCAL-00041" summary="changed CreateCommentScreen.fxml">
+      <option name="closed" value="true" />
+      <created>1733092495812</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1733092495812</updated>
+    </task>
+    <task id="LOCAL-00042" summary="shits going crazy">
+      <option name="closed" value="true" />
+      <created>1733093296968</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1733093296968</updated>
+    </task>
+    <task id="LOCAL-00043" summary="deleted form clientController">
+      <option name="closed" value="true" />
+      <created>1733093505982</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1733093505982</updated>
+    </task>
+    <task id="LOCAL-00044" summary="deleted form clientController">
+      <option name="closed" value="true" />
+      <created>1733093664723</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1733093664723</updated>
+    </task>
+    <task id="LOCAL-00045" summary="goint to user mockUserID">
+      <option name="closed" value="true" />
+      <created>1733094997984</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1733094997984</updated>
+    </task>
+    <task id="LOCAL-00046" summary="made mockMain">
+      <option name="closed" value="true" />
+      <created>1733095123077</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1733095123077</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fixed ListOfProjectsController">
+      <option name="closed" value="true" />
+      <created>1733095895824</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1733095895824</updated>
+    </task>
+    <task id="LOCAL-00048" summary="made mock ListOfProjectsController">
+      <option name="closed" value="true" />
+      <created>1733096295949</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1733096295949</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added char limit to NewProject" />
+    <MESSAGE value="Added char limit to CreateUserController" />
+    <MESSAGE value="Trying to get TaskScreen to look nice" />
+    <MESSAGE value="styled TaskScreen" />
+    <MESSAGE value="styled TaskScreen looking good" />
+    <MESSAGE value="Changed the look of NewTaskScreen.fxml" />
+    <MESSAGE value="Fixed weird boring issues with ListReportsScreen.fxml" />
+    <MESSAGE value="Added all classes to my application." />
+    <MESSAGE value="Made CTMClient() constrctor public so I can use it in Main.java" />
+    <MESSAGE value="Going to integrate the classes first" />
+    <MESSAGE value="Integrated CredentialsController" />
+    <MESSAGE value="Integrated ListOfProjectsController" />
+    <MESSAGE value="Integrated ListOfProjectsController meeting up with the group" />
+    <MESSAGE value="Updated ListOfProjectsController" />
+    <MESSAGE value="ListOfProjectsController now passes the Project Object to ProjectScreenController" />
+    <MESSAGE value="ProjectScreenController should open and populate TaskScreen.fxml" />
+    <MESSAGE value="Working with Jamie" />
+    <MESSAGE value="Updated CredentialsController" />
+    <MESSAGE value="changed CreateCommentScreen.fxml" />
+    <MESSAGE value="shits going crazy" />
+    <MESSAGE value="deleted form clientController" />
+    <MESSAGE value="goint to user mockUserID" />
+    <MESSAGE value="made mockMain" />
+    <MESSAGE value="fixed ListOfProjectsController" />
+    <MESSAGE value="made mock ListOfProjectsController" />
+    <option name="LAST_COMMIT_MESSAGE" value="made mock ListOfProjectsController" />
+  </component>
+</project>
