@@ -47,6 +47,14 @@ public class CTMClient extends AbstractClient{
           case "sendReport":
           clientController.readReport();
           break;
+          case "Success":
+            String successMsg = (String) msgObj;
+            System.out.println(successMsg);
+            break;
+          case "Error":
+            String errorMsg = (String) msgObj;
+            System.out.println(errorMsg);
+            break;
           default:
             System.err.println("Unknown message type: " + message.type);
         }
