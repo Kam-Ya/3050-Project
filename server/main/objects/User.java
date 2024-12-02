@@ -2,6 +2,7 @@ package main.objects;
 
 import java.io.Serializable;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class User implements Serializable {
@@ -11,7 +12,7 @@ public class User implements Serializable {
     private String login;
     private String pass;
     private Integer userID;
-    public ArrayList<Project> projs;
+    public ArrayList<Project> projs = new ArrayList<Project>();
 
     // constructor
     public User(String name, Role role) {
@@ -113,12 +114,17 @@ public class User implements Serializable {
                 Statement state = con.createStatement();
         ) {
             // get the project ID from the database
-            String input = String.format("SELECT projectID, name, date, description FROM project WHERE projectID = " +
-                    "(SELECT proj FROM projassign WHERE emp = %d;)", this.userID);
+            String input = String.format("SELECT projectID, name, date, description FROM project LEFT JOIN projassign ON emp = %d", this.userID);
             ResultSet rs = state.executeQuery(input);
 
             while(rs.next()) {
-                this.projs.add(new Project(rs.getString("name"), rs.getDate("date"), rs.getString("description"), rs.getInt("projectID")));
+                SimpleDateFormat form = new SimpleDateFormat("dd/MM/yyyy");
+
+                try {
+                    this.projs.add(new Project(rs.getString("name"), form.parse(rs.getString("date")), rs.getString("description"), rs.getInt("projectID")));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
 
             // close the connection

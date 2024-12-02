@@ -70,6 +70,7 @@ public class CTMController {
         int user = login.authenticate();
         if (user != -1) {
             sendMSG(user,"userAuth",client);
+            //getProjects(obj,user,client);
         } else {
             sendMSG("Login Request Failed","Error",client);
 
@@ -79,9 +80,8 @@ public class CTMController {
 
     public static void createProject(Object obj, Integer userID, ConnectionToClient client){
     Project project=(Project) obj;
-    System.out.println("oui");
-    project.addToDB();
-    project.addManage(userID);
+    project.addToDB(userID);
+//    project.addManage(userID);
         sendMSG("Project created","Success",client);
 
     }
@@ -94,7 +94,8 @@ public class CTMController {
     public static void getProjects(Object obj, Integer userID, ConnectionToClient client){
         User user = new User(userID);
         user.listProj();
-        ArrayList <Project> projects = user.getProjs();
+        ArrayList <Project> projects = new ArrayList<Project>();
+        projects=user.getProjs();
         sendMSG(projects, "projectList", client);
 
 

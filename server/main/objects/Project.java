@@ -24,7 +24,7 @@ public class Project implements Serializable {
         this.ID = ID;
     }
 
-    public void addToDB() {
+    public void addToDB(int ID) {
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
@@ -33,6 +33,13 @@ public class Project implements Serializable {
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             String input = String.format("INSERT INTO project (name, date, description) VALUES('%s', '%s', '%s');",
                     this.projectName, df.format(this.projectDueDate), this.Desc);
+            state.executeUpdate(input);
+
+            ResultSet rs = state.executeQuery("SELECT projectID FROM project ORDER BY projectID DESC LIMIT 1");
+            rs.next();
+            this.ID = rs.getInt("projectID");
+
+            input = String.format("INSERT INTO projassign VALUES (%d, %d);", this.ID, ID);
             state.executeUpdate(input);
 
             // close connection

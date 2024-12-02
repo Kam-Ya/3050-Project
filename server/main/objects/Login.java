@@ -45,15 +45,12 @@ public class Login implements Serializable {
 
             // compare to see if the passwords are the same
             pass.next();
-            System.out.println(Base64.getEncoder().encodeToString(pass.getBytes("pass")));
-            System.out.println(Base64.getEncoder().encodeToString(hashedPassword));
-            if(Arrays.equals(pass.getBytes("pass"), hashedPassword)) {
+            if(Arrays.equals(Base64.getDecoder().decode(pass.getBytes("pass")), hashedPassword)) {
                 input = String.format("SELECT user FROM login WHERE username = '%s';", this.username);
                 ResultSet token = state.executeQuery(input);
                 token.next();
                 return token.getInt("user");
             } else {
-                System.out.println("test 10000");
                 return -1;
             }
 
@@ -76,7 +73,6 @@ public class Login implements Serializable {
             // create the hashed password
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             md.update(salt);
-            System.out.println(Base64.getEncoder().encodeToString(salt));
             byte[] hashedPassword = md.digest(this.password.getBytes(StandardCharsets.UTF_8));
 
             try (
@@ -89,7 +85,6 @@ public class Login implements Serializable {
                         this.username, Base64.getEncoder().encodeToString(hashedPassword), Base64.getEncoder().encodeToString(salt), ID); // TODO
                 state.executeUpdate(input);
 
-                System.out.println(Base64.getEncoder().encodeToString(hashedPassword));
                 // close connection
                 state.close();
                 con.close();

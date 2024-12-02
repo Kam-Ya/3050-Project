@@ -99,7 +99,10 @@ public class CTMServer extends AbstractServer {
         break;
         case "viewReport":
           CTMController.viewReport(msgObj,client);
-        break;
+          break;
+          case "projectList":
+            CTMController.getProjects(msgObj,genID,client);
+            break;
         case "messageString":
         CTMController.messageString(message.obj,client);
         break;
