@@ -31,6 +31,9 @@ public class CommentScreenController {
         );
     }
 
+    /*
+    * deletes selected comments
+    * */
     @FXML
     private void handleDelete() {
         String selectedComment = commentsListView.getSelectionModel().getSelectedItem();
@@ -47,6 +50,9 @@ public class CommentScreenController {
         }
     }
 
+    /*
+     * Launches CreateCommentScreen
+     * */
     @FXML
     private void handleWrite() {
         System.out.println("Write button clicked.");
@@ -71,22 +77,8 @@ public class CommentScreenController {
     }
 
     @FXML
-    //TODO: Remove Edit
-    private void handleEdit() {
-        String selectedComment = commentsListView.getSelectionModel().getSelectedItem();
-        if (selectedComment == null) {
-            showAlert("Error", "No comment selected for editing!");
-            return;
-        }
-
-        System.out.println("Editing comment: " + selectedComment);
-        // TODO: Open a dialog or screen to edit the selected comment
-    }
-
-    @FXML
     private void handleRefresh() {
         System.out.println("Refreshing comments...");
-        // TODO: Refresh the comment list (e.g., reload from a database)
     }
 
     @FXML
