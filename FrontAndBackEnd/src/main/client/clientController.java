@@ -1,13 +1,19 @@
 package main.client;
-import main.com.format.msgFormat;
+import java.util.ArrayList;
+
+import Server.src.Project;
+import Server.src.format.msgFormat;
+import main.java.CredentialsController;
+
 public class clientController {
+    CredentialsController credentials;
   static CTMClient clientProcess;
     public static void sendMSG(Object obj, String operation, Integer ID){
 
         switch(operation){
             case "createOrg":
             break;
-            case "createAccount":
+            case "createUser":
             break;
             case "loginRequest":
             break;
@@ -54,25 +60,20 @@ public class clientController {
 
         public static void handleLogin(Object obj){
             Integer userID=(Integer) obj;
+            
+            Main.mockUserID=(Integer) obj;
 
-            if (message.obj instanceof User) {
-                User user = (User) message.obj;
-                System.out.println("Login successful: " + user.getName());
-  
-                // Transition to the ListOfProjectsScreen
-                Platform.runLater(() -> { // ensure UI updates are done on the JavaFX Application Thread
-                  try {
-                    CredentialsController credentialsController = Main.getCredentialsController();
-                    credentialsController.openListOfProjectsScreen(user);
-                  } catch (Exception e) {
-                    e.printStackTrace();
-                  }
-                });
-              }
+            
         }
 
-        public static void projectInfo(){}
-        public static void taskInfo(){}
+        public static void projectInfo(Object obj){
+            ArrayList <Project> projects=(ArrayList <Project>)obj;
+            ListOfProjectsController.listofProjects=projects;
+
+        }
+        public static void taskInfo(){
+
+        }
         public static void reportList(){}
         public static void readReport(){}
 

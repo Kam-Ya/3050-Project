@@ -30,9 +30,8 @@ public class CTMClient extends AbstractClient{
         msgFormat message= (msgFormat) msg;
         Object msgObj=message.obj;
         switch (message.type){
-          case "sendUserInfo":
-          clientController.handleLogin(msgObj);            
-          break;
+          case "userAuth":
+          clientController.handleLogin(msgObj);
           case "sendProjectInfo":
           clientController.projectInfo();
           break;
