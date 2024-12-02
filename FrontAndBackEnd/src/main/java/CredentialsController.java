@@ -1,5 +1,6 @@
 package main.java;
 
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 import main.objects.*;
 
@@ -24,17 +25,21 @@ public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
     private static final String CreateUser = "/CreateUserScreen.fxml";
 
-    public static Button loginButton;
+    public Button loginButton;
     @FXML
     public Button registerButton;
     @FXML
     private TextField usernameField;
-
+    @FXML
     private Label loginTitleLabel;
     @FXML
     private PasswordField passwordField;
 
     private final Integer mockUserID = 123; // Mock userID for testing
+//    @FXML
+//    public void initialize() {
+//        loginTitleLabel.setText("Login");
+//    }
 
     @FXML
     private void handleLogin() {
@@ -53,49 +58,47 @@ public class CredentialsController {
         Login login = new Login(username, password);
         clientController.sendMSG(login, "loginRequest", -1);
 
-        // tell user to wait.
-        loginTitleLabel.setText("Please Wait");
+        // Update the label to indicate waiting
+        loginTitleLabel.setText("Please Wait...");
 
-        // Simulate login success with mockUserID
-        //showSystemMessage("Please Wait", "Awaiting server response...");
+        // Create a new Thread to wait for the userID
+        new Thread(() -> {
+            try {
+                // Loop until userID is returned
+                while (userID <= 0) {
+                    Thread.sleep(100); // Avoid busy waiting
+                }
 
-//        if(userID != -1){
-//            // let the server load
-//            try {
-//                wait(500);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-//            // open the next screen
-            openListOfProjectsScreen();
-//        }
+                // Once userID is available, update the UI on the JavaFX Application Thread
+                Platform.runLater(() -> {
+                    loginTitleLabel.setText("Login Successful");
+                    openListOfProjectsScreen();
+                });
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Platform.runLater(() -> showSystemMessage("Error", "Failed to log in. Please try again."));
+            }
+        }).start();
     }
 
     public void openListOfProjectsScreen() {
         try {
-            //clientController.sendMSG(1,"projectList",Main.userID);
-            clientController.sendMSG(1,"projectList",Main.userID);
-
+            System.out.println("Before loading FXML...");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
-
             Parent root = loader.load();
+            System.out.println("FXML Loaded successfully...");
 
-            // Pass the mockUserID to ListOfProjectsController
-            //ListOfProjectsController controller = loader.getController();
-            //controller.setUserID(userID);
+            ListOfProjectsController controller = loader.getController();
+            System.out.println("Controller instance: " + controller);
+            System.out.println("Injected ListView: " + controller.projectListView2);
+
 
             Stage stage = new Stage();
             stage.setTitle("List of Projects");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Close the current login screen
-            Stage currentStage = (Stage) loginButton.getScene().getWindow();
-            currentStage.close();
-
-            ListOfProjectsController listofController = new ListOfProjectsController();
-            listofController.loadMockProjects();
         } catch (IOException e) {
             e.printStackTrace();
         }

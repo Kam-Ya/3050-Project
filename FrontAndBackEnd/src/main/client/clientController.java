@@ -61,25 +61,73 @@ public class clientController {
 
         public static void handleLogin(Object obj){
             Integer userID=(Integer) obj;
-            
+
+            long startTime = System.currentTimeMillis();
+            while (userID <= 0 && System.currentTimeMillis() - startTime < 10000) { // 10-second timeout
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (userID <= 0) {
+                Platform.runLater(() -> System.out.println("Server timed out"));
+                return;
+            }
             Main.userID=(Integer) obj;
+            System.out.println(Main.userID);
 
         }
 
         public static void projectInfo(Object obj){
-        if(obj.getClass().getName()=="java.lang.Integer"){}
-        else {
-
-
-            ArrayList <Project> projects=(ArrayList <Project>)obj;
-            for (Project project : projects) {
-                System.out.println("Project Name: " + project.getProjectName());
+//        if(obj.getClass().getName()=="java.lang.Integer"){}
+//        else {
+//
+//
+//            ArrayList <Project> projects=(ArrayList <Project>)obj;
+//            for (Project project : projects) {
+//                System.out.println("Project Name: " + project.getProjectName());
+//            }
+//            while (projects.isEmpty()){
+//                System.out.println("No projects found");
+//            }
+//
+//            ListOfProjectsController.listofProjects=projects;
+//
+//        }
+            if (obj instanceof Integer) {
+                // Handle Integer case (likely a status or ID)
+                System.out.println("Received Integer: " + obj);
+                return;
             }
 
-            ListOfProjectsController.listofProjects=projects;
+            if (obj instanceof ArrayList) {
+                ArrayList<Project> projects = (ArrayList<Project>) obj;
 
-        }
+                // Wait for projects to be populated
+                synchronized (projects) {
+                    while (projects.isEmpty()) {
+                        try {
+                            System.out.println("Waiting for projects to be populated...");
+                            projects.wait(); // Wait for projects to be populated
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            return;
+                        }
+                    }
+                }
 
+                // Print project names to verify
+                for (Project project : projects) {
+                    System.out.println("Project Name2: " + project.getProjectName());
+                }
+
+                // Pass the projects to the controller
+                ListOfProjectsController.setListOfProjects(projects);
+
+            } else {
+                System.out.println("Unexpected object type: " + obj.getClass().getName());
+            }
 
         }
         public static void taskInfo(){
