@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Comment implements Serializable {
+    private static final long serialVersionUID=20241130;
     private String content;
     private Date dateMade;
     private String commentor;

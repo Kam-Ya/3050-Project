@@ -3,6 +3,7 @@ package Server.src;
 import java.sql.*;
 
 public class CEO extends Lead {
+    
 
     // constructor sets permissions
     public CEO() {

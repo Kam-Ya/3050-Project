@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 public class Login implements Serializable {
+    private static final long serialVersionUID=20241130;
     private final String username;
     private final String password;
 
