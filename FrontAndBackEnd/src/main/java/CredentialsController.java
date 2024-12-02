@@ -1,5 +1,6 @@
 package main.java;
 
+import javafx.scene.control.Label;
 import main.objects.*;
 
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import main.client.CTMClient;
 import main.client.clientController;
 
+import javax.swing.text.LabelView;
 import java.io.IOException;
 
 import static main.java.Main.userID;
@@ -28,6 +30,7 @@ public class CredentialsController {
     @FXML
     private TextField usernameField;
 
+    private Label loginTitleLabel;
     @FXML
     private PasswordField passwordField;
 
@@ -50,8 +53,11 @@ public class CredentialsController {
         Login login = new Login(username, password);
         clientController.sendMSG(login, "loginRequest", -1);
 
+        // tell user to wait.
+        loginTitleLabel.setText("Please Wait");
+
         // Simulate login success with mockUserID
-        showSystemMessage("Please Wait", "Awaiting server response...");
+        //showSystemMessage("Please Wait", "Awaiting server response...");
 
 //        if(userID != -1){
 //            // let the server load
