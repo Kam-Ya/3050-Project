@@ -1,4 +1,12 @@
 package main.client;
+
+
+import java.util.Date;
+
+import Server.src.Project;
+import Server.src.Role;
+
+
 public class runnableClient extends Thread {
 
     public static void main(String[] args) {
@@ -10,7 +18,7 @@ public class runnableClient extends Thread {
     
     
     public runnableClient() {
-      client= new CTMClient("localhost",12345);
+      client= new CTMClient("172.20.10.5",12345);
       clientController.clientProcess=client;
     }
   
@@ -19,6 +27,9 @@ public class runnableClient extends Thread {
       try {
         (new ClientThread(client)).start();
         sleep(5000);
+
+        Project proj=new Project("test",new Date(),"ddd",2);
+        clientController.sendMSG(proj,"createProject",1);
        
        
       } catch (Exception ex) {

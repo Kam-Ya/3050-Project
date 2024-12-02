@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class User implements Serializable {
+    private static final long serialVersionUID=20241130;
     private String name;
     private Role role;
     private Integer userID;

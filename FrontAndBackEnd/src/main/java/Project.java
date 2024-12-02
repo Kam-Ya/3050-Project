@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Project implements Serializable {
+    private static final long serialVersionUID = 69420540;
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;

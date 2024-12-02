@@ -67,6 +67,8 @@ public class CTMController {
         int user = login.authenticate();
         if (user != -1) {
             sendMSG(user,"userAuth",client);
+            wait(500);
+            getProjects(user,user,client);
         } else {
             sendMSG("Login Request Failed","Error",client);
 
@@ -92,10 +94,6 @@ public class CTMController {
         ArrayList <Project> projects = user.getProjs();
         sendMSG(projects, "projectList", client);
 
-
-    }
-    public static void getTasks(Object obj, Integer userID, ConnectionToClient client){
-        
 
     }
 

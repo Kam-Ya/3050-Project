@@ -74,6 +74,8 @@ public class CTMServer extends AbstractServer {
         case "createProject":
           CTMController.createProject(msgObj,genID,client);
         break;
+        case "listProjects":
+        CTMController.getProjects(msgObj, genID, client);
         case "deleteProject":
           CTMController.deleteProject(msgObj,client);
         break;
