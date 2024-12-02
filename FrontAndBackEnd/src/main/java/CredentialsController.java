@@ -18,7 +18,7 @@ public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
     private static final String CreateUser = "/CreateUserScreen.fxml";
 
-    public Button loginButton;
+    public static Button loginButton;
     @FXML
     public Button registerButton;
     @FXML
@@ -41,14 +41,19 @@ public class CredentialsController {
 
         System.out.println("Username: " + username + ", Password: " + password);
 
+
+
+        Login login = new Login(username, password);
+        clientController.sendMSG(login, "loginRequest", -1);
+
         // Simulate login success with mockUserID
         showSystemMessage("Please Wait", "Simulating server response...");
-        openListOfProjectsScreen(mockUserID);
     }
 
-    public void openListOfProjectsScreen(Integer userID) {
+
+    public static void openListOfProjectsScreen(Integer userID) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ListOFProjects));
+            FXMLLoader loader = new FXMLLoader(CredentialsController.class.getClassLoader().getResource(ListOFProjects));
             Parent root = loader.load();
 
             // Pass the mockUserID to ListOfProjectsController

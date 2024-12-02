@@ -18,15 +18,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Initialize the OCSF client
-        try {
-            client = new CTMClient("localhost", 12345); // Adjust host and port as necessary
-            client.openConnection(); // Establish connection to the server
-        } catch (Exception e) {
-            System.err.println("Failed to connect to server: " + e.getMessage());
-            e.printStackTrace();
-        }
-
         // Load the FXML file
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(CREDENTIALS_SCREEN)));
@@ -46,7 +37,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        //runnableClient.main();
+        runnableClient.main();
     }
 
     // Provide a way for controllers to access the client
