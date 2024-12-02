@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProgressReport implements Serializable {
+    private static final long serialVersionUID=20241130;
+
     private String title;
     private String reportDetails;
     private String User;

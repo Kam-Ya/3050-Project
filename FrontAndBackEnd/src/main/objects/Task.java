@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Task implements Serializable {
+    private static final long serialVersionUID=20241130;
+
     private String taskName;
     private Date taskDueDate;
     private String desc;
