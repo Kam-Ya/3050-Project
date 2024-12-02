@@ -43,16 +43,13 @@ public class Login implements Serializable {
 
             // compare to see if the passwords are the same
             if(Arrays.equals(pass.getBytes("pass"), hashedPassword)) {
-                rs.close();
-                pass.close();
-                state.close();
-                con.close();
+
                 return token.getInt("user");
             } else {
-                rs.close();
-                pass.close();
-                state.close();
-                con.close();
+//                rs.close();
+//                pass.close();
+//                state.close();
+//                con.close();
                 return -1;
             }
 

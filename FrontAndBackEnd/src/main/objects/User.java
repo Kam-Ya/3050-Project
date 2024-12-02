@@ -9,6 +9,8 @@ public class User implements Serializable {
 
     private String name;
     private Role role;
+    private String login;
+    private String pass;
     private Integer userID;
     public ArrayList<Project> projs;
 
@@ -24,33 +26,33 @@ public class User implements Serializable {
     }
 
     // constructor part 3 yuh huh
-    public User(String name, Role role, String username, String password) throws SQLException {
-        Login log = new Login(username, password);
+    public User(String name, Role role, String username, String password) {
+        this.login=username;
+        this.pass=password;
         this.name = name;
         this.role = role;
-        this.addToDatabase();
 
-        try(
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
-                Statement state = con.createStatement();
-        ) {
-            // adds the actual user information into the database
-            ResultSet rs = state.executeQuery("SELECT LAST_INSERT_ID();");
-            this.userID = rs.getInt("employeeID");
-
-            log.register(this.userID);
-
-            if (this.role.getClass() == CEO.class) {
-                CEO c = new CEO();
-                c.createOrg(this.userID);
-            }
-
-            // close the connection
-            state.close();
-            con.close();
-        } catch(SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
+//        try(
+//                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
+//                Statement state = con.createStatement();
+//        ) {
+//            // adds the actual user information into the database
+//            ResultSet rs = state.executeQuery("SELECT LAST_INSERT_ID();");
+//            this.userID = rs.getInt("employeeID");
+//
+//            log.register(this.userID);
+//
+//            if (this.role.getClass() == CEO.class) {
+//                CEO c = new CEO();
+//                c.createOrg(this.userID);
+//            }
+//
+//            // close the connection
+//            state.close();
+//            con.close();
+//        } catch(SQLException sqle) {
+//            System.out.println(sqle.getMessage());
+//        }
 
     }
 

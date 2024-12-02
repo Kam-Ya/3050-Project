@@ -1,5 +1,7 @@
 package main.client;
 import java.util.ArrayList;
+
+import javafx.application.Platform;
 import main.java.*;
 import main.objects.*;
 import main.java.CredentialsController;
@@ -62,12 +64,22 @@ public class clientController {
             
             Main.userID=(Integer) obj;
 
-            
         }
 
         public static void projectInfo(Object obj){
+        if(obj.getClass().getName()=="java.lang.Integer"){}
+        else {
+
+
             ArrayList <Project> projects=(ArrayList <Project>)obj;
+            for (Project project : projects) {
+                System.out.println("Project Name: " + project.getProjectName());
+            }
+
             ListOfProjectsController.listofProjects=projects;
+
+        }
+
 
         }
         public static void taskInfo(){

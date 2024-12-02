@@ -14,7 +14,7 @@ public class Main extends Application {
     private static final String CREDENTIALS_SCREEN = "/CredentialsScreen.fxml";
     private static CTMClient client; // Static client instance
     private static CredentialsController credentialsController;
-    public static Integer userID; // Add mockUserID
+    public static Integer userID=0; // Add UserID
 
     @Override
     public void start(Stage primaryStage) throws Exception {

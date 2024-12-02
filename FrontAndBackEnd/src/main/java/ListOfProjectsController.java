@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class ListOfProjectsController {
     private static final String ProjectScreen = "/ProjectScreen.fxml";
@@ -29,25 +30,29 @@ public class ListOfProjectsController {
     private Button newUserButton;
 
     @FXML
-    private static ListView<String> projectListView;
+    private static ListView<String> projectListView=new ListView<>();
 
-    private Integer userID;
+
 
     /**
      * Simulated projects list for mocking purposes.
      */
     public static ArrayList<Project> listofProjects;
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-        // debugging
-        System.out.println("UserID: " + userID);
-
-        loadMockProjects(); // Load mocked projects
-    }
 
     @FXML
     private void initialize() {
+        System.out.println("Int");
+        for (Project project : listofProjects) {
+            String projectName = project.getProjectName();
+            System.out.println(projectName);
+            String projectDueDate = String.valueOf(project.getProjectDueDate());
+            System.out.println(projectDueDate);
+            String formattedProject = String.format("%s | Due Date: %s", projectName, projectDueDate);
+
+            // Add the formatted string to the ListView
+            projectListView.getItems().add(formattedProject);
+        }
         // Set click handler for the ListView
         projectListView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Detect double-click
@@ -63,15 +68,16 @@ public class ListOfProjectsController {
      * Mock method to load projects.
      */
     public static void loadMockProjects() {
-        listofProjects = new ArrayList<>();
-        // Populate the ListView with mock data
+        System.out.println("Int");
         for (Project project : listofProjects) {
-            String projectInfo = String.format(
-                    "%s - Due: %s",
-                    project.getProjectName(),
-                    new java.text.SimpleDateFormat("MMM dd, yyyy").format(project.getProjectDueDate()) // Format Date for display
-            );
-            projectListView.getItems().add(projectInfo);
+            String projectName = project.getProjectName();
+            System.out.println(projectName);
+            String projectDueDate = String.valueOf(project.getProjectDueDate());
+            System.out.println(projectDueDate);
+            String formattedProject = String.format("%s | Due Date: %s", projectName, projectDueDate);
+
+            // Add the formatted string to the ListView
+            projectListView.getItems().add(formattedProject);
         }
     }
 
@@ -90,7 +96,7 @@ public class ListOfProjectsController {
 
             // Pass the selected project and user ID to the ProjectScreenController
             ProjectScreenController controller = loader.getController();
-            controller.setProjectDetails(selectedProject, userID);
+            controller.setProjectDetails(selectedProject, Main.userID);
 
             // Show the ProjectScreen in a new window
             Stage stage = new Stage();

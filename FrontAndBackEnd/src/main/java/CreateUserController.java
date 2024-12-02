@@ -7,6 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.control.TextFormatter;
+import main.client.clientController;
+import main.objects.CEO;
+import main.objects.Employee;
+import main.objects.Manager;
+import main.objects.User;
+import main.objects.*;
 
 import java.io.IOException;
 
@@ -34,7 +40,7 @@ public class CreateUserController {
     @FXML
     public void initialize() {
         // Populate the ComboBox with roles
-        roleComboBox.getItems().addAll("Admin", "Manager", "Employee", "Viewer");
+        roleComboBox.getItems().addAll("CEO", "Manager", "Employee", "Viewer");
         enforceCharLimit(usernameField, 255);
         enforceCharLimit(passwordField, 255);
         enforceCharLimit(nameField, 255);
@@ -74,6 +80,24 @@ public class CreateUserController {
         String password = passwordField.getText().trim();
         String name = nameField.getText().trim();
         String role = roleComboBox.getValue();
+        Role userRole=new Role();
+        switch(role){
+            case "CEO":
+                userRole=new CEO();
+                break;
+                case "Manager":
+                    userRole=new Manager();
+                    break;
+                    case "Employee":
+                        userRole=new Employee();
+                        break;
+                        case "Lead":
+                            userRole=new Lead();
+                            break;
+                            default:
+
+        }
+        User user=new User(name,userRole,username,password);
 
         // Validate input fields
         if (username.isEmpty() || password.isEmpty() || role == null || role.isEmpty() || name.isEmpty()){
@@ -84,6 +108,7 @@ public class CreateUserController {
         }
 
         // Process the user creation logic
+        clientController.sendMSG(user,"createUser",-1);
         System.out.println("Creating user...");
         System.out.println("Username: " + username);
         System.out.println("Password: " + password);
@@ -97,7 +122,7 @@ public class CreateUserController {
         // get user to log back in with their new credentials
         try {
             // Load the new FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Credential.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/CredentialsScreen.fxml"));
             Parent root = fxmlLoader.load();
 
             // Create a new stage

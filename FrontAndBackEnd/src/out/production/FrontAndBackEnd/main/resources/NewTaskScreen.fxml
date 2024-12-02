@@ -25,6 +25,8 @@
                 <!-- Task Details -->
                 <VBox alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;">
                     <children>
+                        <Label text="Title" styleClass="labelText"/>
+                        <TextField fx:id="titleField" promptText="Title goes here" />
                         <Label text="Description" styleClass="labelText" />
                         <TextArea fx:id="descriptionField" promptText="Enter task description..." />
 
@@ -45,11 +47,8 @@
                 <!-- Task Action Buttons -->
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
-
-                        <Button fx:id="completeButton" onAction="#handleComplete" styleClass="smallButton" text="COMPLETE" />
-                        <Button fx:id="notesButton" onAction="#handleNotes" styleClass="smallButton" text="NOTES" />
-                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
-                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
+                        <Button fx:id="createButton" onAction="#handleCreate" styleClass="smallButton" text="CREATE" />
+                        <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CANCEL" />
                     </children>
                 </HBox>
             </bottom>

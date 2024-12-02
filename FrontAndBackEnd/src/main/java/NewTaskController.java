@@ -6,12 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import main.objects.Project;
+import main.objects.Task;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class NewTaskController {
 
     public Label taskTitleLabel;
+    public Button createButton;
+    public TextField titleField;
     @FXML
     private TextArea descriptionField;
 
@@ -25,28 +33,17 @@ public class NewTaskController {
     private ComboBox<String> priorityDropdown;
 
     @FXML
-    private Button completeButton;
-
-    @FXML
-    private Button notesButton;
-
-    @FXML
-    private Button deleteButton;
-
-    @FXML
     private Button closeButton;
 
     @FXML
     private void initialize() {
         // Example priority levels
         priorityDropdown.getItems().addAll("1", "2", "3", "4", "5");
-
-        // Example users
-        assignedToDropdown.getItems().addAll("User A", "User B", "User C");
-
-        // enforce char limmits
+        // enforce char limits
         enforceCharLimit(descriptionField, 1000);
         enforceCharLimit(dueDateField, 10);
+        enforceCharLimit(titleField, 40);
+
     }
 
     private void enforceCharLimit(javafx.scene.control.TextInputControl textInputControl, int maxChars) {
@@ -59,52 +56,12 @@ public class NewTaskController {
         }));
     }
 
-    public void setTaskDetails(String taskDetails) {
-        // Parse task details and update fields (example logic)
-        String[] details = taskDetails.split(" - Due: ");
-        String taskName = details[0];
-        String dueDate = details[1].split(" \\|")[0];
 
-        // Set task details
-        descriptionField.setText("Details for " + taskName);
-        dueDateField.setText(dueDate);
+    public void setTaskDetails(Project project) {
+        // get list of employees from project
+        ArrayList<Integer> users = project.employees;
 
-        // Example: Populate dropdowns
-        priorityDropdown.getItems().addAll("1", "2", "3", "4", "5");
-        assignedToDropdown.getItems().addAll("User A", "User B", "User C");
-    }
-
-
-    @FXML
-    private void handleComplete() {
-        System.out.println("Complete button clicked!");
-        // Logic to mark task as complete
-    }
-
-    @FXML
-    private void handleNotes() {
-        System.out.println("Notes button clicked!");
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CommentScreen.fxml"));
-            Parent root = loader.load();
-
-            // Pass task details dynamically if needed
-            CommentScreenController controller = loader.getController();
-            // Example: controller.setTaskName("Task N");
-
-            Stage stage = new Stage();
-            stage.setTitle("Task Comments");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void handleDelete() {
-        System.out.println("Delete button clicked!");
-        // Logic to delete the task
+        assignedToDropdown.getItems().addAll(String.valueOf(users));
     }
 
     @FXML
@@ -112,6 +69,28 @@ public class NewTaskController {
         System.out.println("Close button clicked!");
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+    @FXML
+    private void handleCreate() {
+        System.out.println("Create button clicked!");
+        String taskTitle = taskTitleLabel.getText().trim();
+        String dueDate = dueDateField.getText().trim();
+        String description = descriptionField.getText().trim();
+        String priority = priorityDropdown.getSelectionModel().getSelectedItem();
+        Integer intPriority = Integer.parseInt(priority);
+        String assignedTo = assignedToDropdown.getSelectionModel().getSelectedItem();
+        // cast String to Integer
+        Integer intAssignedTo = Integer.parseInt(assignedTo);
+        // chane the dueDate from String to Date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date newDueDate = formatter.parse(dueDate);
+            Task newTask = new Task(taskTitle, newDueDate, description, intPriority, intAssignedTo);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 
     // error screen

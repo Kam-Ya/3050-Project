@@ -16,6 +16,8 @@ import main.client.clientController;
 
 import java.io.IOException;
 
+import static main.java.Main.userID;
+
 public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
     private static final String CreateUser = "/CreateUserScreen.fxml";
@@ -49,18 +51,33 @@ public class CredentialsController {
         clientController.sendMSG(login, "loginRequest", -1);
 
         // Simulate login success with mockUserID
-        showSystemMessage("Please Wait", "Simulating server response...");
+        showSystemMessage("Please Wait", "Awaiting server response...");
+
+//        if(userID != -1){
+//            // let the server load
+//            try {
+//                wait(500);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//            // open the next screen
+            openListOfProjectsScreen();
+//        }
+
     }
 
-
-    public static void openListOfProjectsScreen(Integer userID) {
+    public void openListOfProjectsScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(CredentialsController.class.getClassLoader().getResource(ListOFProjects));
+            //clientController.sendMSG(1,"projectList",Main.userID);
+            clientController.sendMSG(1,"projectList",Main.userID);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListOfProjectsScreen.fxml"));
+
             Parent root = loader.load();
 
             // Pass the mockUserID to ListOfProjectsController
-            ListOfProjectsController controller = loader.getController();
-            controller.setUserID(userID);
+            //ListOfProjectsController controller = loader.getController();
+            //controller.setUserID(userID);
 
             Stage stage = new Stage();
             stage.setTitle("List of Projects");
@@ -72,6 +89,7 @@ public class CredentialsController {
             currentStage.close();
 
             ListOfProjectsController listofController = new ListOfProjectsController();
+            listofController.loadMockProjects();
         } catch (IOException e) {
             e.printStackTrace();
         }

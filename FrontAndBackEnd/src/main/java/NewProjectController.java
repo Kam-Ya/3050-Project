@@ -9,8 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.control.TextFormatter;
+import main.client.clientController;
+import main.objects.Project;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class NewProjectController {
@@ -94,6 +99,16 @@ public class NewProjectController {
             // Show error message or dialog (not implemented here)
             return;
         }
+        // chane the dueDate from String to Date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date newDueDate = formatter.parse(dueDate);
+            Project project=new Project(projectTitle,newDueDate,projectDescription,-1);
+            clientController.sendMSG(project,"createProject",Main.userID);
+      } catch (ParseException e) {
+         e.printStackTrace();
+      }
+
 
         // Process the project creation logic
         System.out.println("Creating/Updating project...");
