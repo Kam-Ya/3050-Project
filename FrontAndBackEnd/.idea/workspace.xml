@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61e3d0b6-b404-46e0-98b8-7e4a4c21423b" name="Changes" comment="made mock ListOfProjectsController" />
+    <list default="true" id="61e3d0b6-b404-46e0-98b8-7e4a4c21423b" name="Changes" comment="trying to move to another branch" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,6 +103,7 @@
       <workItem from="1733069045115" duration="20092000" />
       <workItem from="1733095595492" duration="1287000" />
       <workItem from="1733097329437" duration="27000" />
+      <workItem from="1733097579612" duration="374000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -488,7 +489,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733096295949</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="trying to move to another branch">
+      <option name="closed" value="true" />
+      <created>1733097601322</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1733097601322</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +515,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added char limit to NewProject" />
     <MESSAGE value="Added char limit to CreateUserController" />
     <MESSAGE value="Trying to get TaskScreen to look nice" />
     <MESSAGE value="styled TaskScreen" />
@@ -531,6 +539,7 @@
     <MESSAGE value="made mockMain" />
     <MESSAGE value="fixed ListOfProjectsController" />
     <MESSAGE value="made mock ListOfProjectsController" />
-    <option name="LAST_COMMIT_MESSAGE" value="made mock ListOfProjectsController" />
+    <MESSAGE value="trying to move to another branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to move to another branch" />
   </component>
 </project>
