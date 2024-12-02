@@ -109,6 +109,7 @@ public class User implements Serializable {
     }
 
     public void listProj() {
+        this.setProjs();
         try(
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "project", "123");
                 Statement state = con.createStatement();
@@ -117,14 +118,23 @@ public class User implements Serializable {
             String input = String.format("SELECT projectID, name, date, description FROM project LEFT JOIN projassign ON emp = %d", this.userID);
             ResultSet rs = state.executeQuery(input);
 
+            int count = 1;
+
             while(rs.next()) {
                 SimpleDateFormat form = new SimpleDateFormat("dd/MM/yyyy");
 
+                if (count%2 == 0) {
+                    count++;
+                    continue;
+                }
+
                 try {
-                    this.projs.add(new Project(rs.getString("name"), form.parse(rs.getString("date")), rs.getString("description"), rs.getInt("projectID")));
+                   Project temp = new Project(rs.getString("name"), form.parse(rs.getString("date")), rs.getString("description"), rs.getInt("projectID"));
+                    this.projs.add(temp);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
+                count++;
             }
 
             // close the connection
@@ -171,5 +181,13 @@ public class User implements Serializable {
         } catch(SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
+    }
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setProjs() {
+        this.projs.clear();
     }
 }

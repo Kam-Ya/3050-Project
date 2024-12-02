@@ -10,9 +10,9 @@ public class Project implements Serializable {
     private static final long serialVersionUID=20241130;
     private String projectName;
     public Date projectDueDate;
-    public ArrayList<Integer> employees;
-    public ArrayList<Task> tasks;
-    public ArrayList<ProgressReport> reports;
+    public ArrayList<Integer> employees = new ArrayList<Integer>();
+    public ArrayList<Task> tasks = new ArrayList<Task>();
+    public ArrayList<ProgressReport> reports = new ArrayList<ProgressReport>();
     public String Desc;
     public String manager;
     private int ID;
@@ -83,6 +83,11 @@ public class Project implements Serializable {
 
     public Date getProjectDueDate() {
         return this.projectDueDate;
+    }
+
+    public int showID() {
+        this.getID();
+        return this.ID;
     }
 
     public void updateProjectDueDate(Date newDate) {
