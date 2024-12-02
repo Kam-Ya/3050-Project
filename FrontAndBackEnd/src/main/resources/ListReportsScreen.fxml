@@ -13,15 +13,14 @@
 
     <children>
         <BorderPane fx:id="listReportsScreen" layoutX="115.0" layoutY="91.0" styleClass="borderPane" stylesheets="@style2.css">
-            <!-- Center section with Reports List -->
+
             <center>
                 <VBox alignment="TOP_CENTER" spacing="20.0">
-                    <!-- Title -->
                     <StackPane styleClass="titleStackPane">
                         <Label styleClass="loginTitleLabel" text="REPORTS" />
                     </StackPane>
 
-                    <!-- ListView for Reports -->
+
                     <ListView fx:id="reportsListView" prefHeight="600" styleClass="listViewReports"/>
                 </VBox>
             </center>

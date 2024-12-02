@@ -19,7 +19,7 @@
             </StackPane>
         </top>
 
-        <!-- Center Section: Comment Body -->
+
         <center>
             <VBox alignment="TOP_CENTER" spacing="20.0">
                 <children>
@@ -31,7 +31,7 @@
             </VBox>
         </center>
 
-        <!-- Bottom Section: Buttons -->
+
         <bottom>
             <HBox alignment="CENTER" spacing="20.0">
                 <children>

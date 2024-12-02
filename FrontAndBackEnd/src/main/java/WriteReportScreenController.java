@@ -35,7 +35,6 @@ public class WriteReportScreenController {
         System.out.println("Title: " + title);
         System.out.println("Body: " + body);
 
-        // TODO: Add logic to save and submit the report to the database
     }
 
     // Handles the Cancel button action

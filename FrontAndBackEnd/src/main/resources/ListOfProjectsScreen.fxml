@@ -11,10 +11,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1500.0" styleClass="anchorPane" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.ListOfProjectsController">
     <children>
-        <!-- Centered BorderPane -->
         <BorderPane layoutX="112.0" layoutY="87.0" prefHeight="600.0" prefWidth="800.0" styleClass="borderPane" stylesheets="@style2.css" >
             <top>
-                <!-- Top Buttons -->
                 <HBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
                     <children>
                         <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="smallButton" text="LOGOUT" />
@@ -24,7 +22,6 @@
                 </HBox>
             </top>
             <center>
-                <!-- Welcome Back and Project List -->
                 <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
                     <children>
                         <StackPane styleClass="titleStackPane">

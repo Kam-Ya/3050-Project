@@ -14,14 +14,12 @@
 
 <AnchorPane fx:id="createUserAnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="anchorPane" stylesheets="style2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.CreateUserController">
     <BorderPane fx:id="createUserScreen" layoutX="106.0" layoutY="83.0" prefHeight="437.0" prefWidth="686.0" styleClass="borderPane" stylesheets="@style2.css">
-        <!-- Top Section: Title -->
         <top>
             <StackPane styleClass="titleStackPane">
                 <Label styleClass="loginTitleLabel" text="CREATE USER" />
             </StackPane>
         </top>
 
-        <!-- Center Section: Input Fields -->
         <center>
             <VBox alignment="CENTER" spacing="20.0">
                 <children>
@@ -36,7 +34,7 @@
             </VBox>
         </center>
 
-        <!-- Bottom Section: Buttons -->
+
         <bottom>
             <HBox alignment="CENTER" spacing="20.0">
                 <children>

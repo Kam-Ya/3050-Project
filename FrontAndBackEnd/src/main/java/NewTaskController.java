@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 public class NewTaskController {
 
@@ -51,7 +52,7 @@ public class NewTaskController {
             if (change.getControlNewText().length() <= maxChars) {
                 return change; // Accept the input
             }
-            showSystemMessage("Character Limit Exceeded", "Character Limit Exceeded");
+            showError("Error", "Max characters exceeded" );
             return null; // Reject the input
         }));
     }
@@ -92,22 +93,10 @@ public class NewTaskController {
         }
 
     }
-
-    // error screen
-    private void showSystemMessage(String title, String body) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
-            Parent root = fxmlLoader.load();
-
-            MessageFromSystemController controller = fxmlLoader.getController();
-            controller.setMessage(title, body);
-
-            Stage stage = new Stage();
-            stage.setTitle("System Message");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private Optional<ButtonType> showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        return alert.showAndWait();
     }
 }

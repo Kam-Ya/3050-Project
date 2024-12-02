@@ -101,22 +101,4 @@ public class TaskScreenController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
-    // Error screen
-    private void showSystemMessage(String title, String body) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
-            Parent root = fxmlLoader.load();
-
-            MessageFromSystemController controller = fxmlLoader.getController();
-            controller.setMessage(title, body);
-
-            Stage stage = new Stage();
-            stage.setTitle("System Message");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
