@@ -3,8 +3,7 @@ package main.client;
 
 import java.util.Date;
 
-import Server.src.Project;
-import Server.src.Role;
+import main.objects.*;
 
 
 public class runnableClient extends Thread {
@@ -28,8 +27,8 @@ public class runnableClient extends Thread {
         (new ClientThread(client)).start();
         sleep(5000);
 
-        Project proj=new Project("test",new Date(),"ddd",2);
-        clientController.sendMSG(proj,"createProject",1);
+        //Project proj=new Project("test",new Date(),"ddd",2);
+        //clientController.sendMSG(proj,"createProject",1);
        
        
       } catch (Exception ex) {

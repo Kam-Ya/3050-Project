@@ -14,7 +14,7 @@ public class Main extends Application {
     private static final String CREDENTIALS_SCREEN = "/CredentialsScreen.fxml";
     private static CTMClient client; // Static client instance
     private static CredentialsController credentialsController;
-    public static Integer mockUserID; // Add mockUserID
+    public static Integer userID; // Add mockUserID
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -36,8 +36,10 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        runnableClient.main(args);
         launch(args);
-        runnableClient.main();
+
+
     }
 
     // Provide a way for controllers to access the client
@@ -50,8 +52,6 @@ public class Main extends Application {
         return credentialsController;
     }
 
-    // Provide access to the mockUserID
-    public static Integer getMockUserID() {
-        return mockUserID;
-    }
+
+
 }

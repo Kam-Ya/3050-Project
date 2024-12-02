@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import main.objects.*;
 
 import java.io.IOException;
 import java.util.ArrayList;

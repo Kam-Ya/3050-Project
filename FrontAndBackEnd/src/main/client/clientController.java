@@ -60,7 +60,7 @@ public class clientController {
         public static void handleLogin(Object obj){
             Integer userID=(Integer) obj;
             
-            Main.mockUserID=(Integer) obj;
+            Main.userID=(Integer) obj;
 
             
         }

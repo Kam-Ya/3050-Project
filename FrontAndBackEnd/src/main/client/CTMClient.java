@@ -1,5 +1,5 @@
 package main.client;
-import main.com.format.msgFormat;
+import main.objects.*;
 import main.java.*;
 
 
@@ -33,7 +33,7 @@ public class CTMClient extends AbstractClient{
           case "userAuth":
           clientController.handleLogin(msgObj);
           case "sendProjectInfo":
-          clientController.projectInfo();
+          clientController.projectInfo(msgObj);
           break;
           case "sendTaskInfo":
           clientController.taskInfo();
