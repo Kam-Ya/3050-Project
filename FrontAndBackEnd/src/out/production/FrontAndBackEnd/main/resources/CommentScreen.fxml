@@ -16,9 +16,7 @@
                 <!-- Action Buttons -->
                 <HBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="smallButton" text="DELETE" />
                         <Button fx:id="writeButton" onAction="#handleWrite" styleClass="smallButton" text="WRITE" />
-                        <Button fx:id="editButton" onAction="#handleEdit" styleClass="smallButton" text="EDIT" />
                         <Button fx:id="refreshButton" onAction="#handleRefresh" styleClass="smallButton" text="REFRESH" />
                         <Button fx:id="closeButton" onAction="#handleClose" styleClass="smallButton" text="CLOSE" />
                     </children>

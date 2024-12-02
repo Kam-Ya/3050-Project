@@ -80,21 +80,6 @@ public class clientController {
         }
 
         public static void projectInfo(Object obj){
-//        if(obj.getClass().getName()=="java.lang.Integer"){}
-//        else {
-//
-//
-//            ArrayList <Project> projects=(ArrayList <Project>)obj;
-//            for (Project project : projects) {
-//                System.out.println("Project Name: " + project.getProjectName());
-//            }
-//            while (projects.isEmpty()){
-//                System.out.println("No projects found");
-//            }
-//
-//            ListOfProjectsController.listofProjects=projects;
-//
-//        }
             if (obj instanceof Integer) {
                 // Handle Integer case (likely a status or ID)
                 System.out.println("Received Integer: " + obj);

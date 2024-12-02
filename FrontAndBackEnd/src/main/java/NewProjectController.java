@@ -44,8 +44,7 @@ public class NewProjectController {
 
     // List of available workers (Mock Data)
     private final ObservableList<String> availableWorkers = FXCollections.observableArrayList(
-            "Alice", "Bob", "Charlie", "Diana", "Eve"
-    );
+            "Hunter", "Kam", "Jamie");
 
     /**
      * Initializes the NewProjectScreen.
