@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Project implements Serializable {
+    private static final long serialVersionUID = 69420540;
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;
@@ -59,6 +60,14 @@ public class Project implements Serializable {
 
     public String getProjectName() {
         return this.projectName;
+    }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    public ArrayList<ProgressReport> getReports() {
+        return reports;
     }
 
     public void updateProjectName(String Name) {

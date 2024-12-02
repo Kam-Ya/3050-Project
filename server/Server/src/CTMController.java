@@ -76,9 +76,11 @@ public class CTMController {
 
     public static void createProject(Object obj, Integer userID, ConnectionToClient client){
     Project project=(Project) obj;
+    System.out.println("oui");
     project.addToDB();
     project.addManage(userID);
         sendMSG("Project created","Success",client);
+
     }
     public static void deleteProject(Object obj, ConnectionToClient client){
         Project project=(Project) obj;
