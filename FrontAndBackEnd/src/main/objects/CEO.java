@@ -1,9 +1,8 @@
-package Server.src;
+package main.java;
 
 import java.sql.*;
 
 public class CEO extends Lead {
-    private static final long serialVersionUID=20241130;
 
     // constructor sets permissions
     public CEO() {

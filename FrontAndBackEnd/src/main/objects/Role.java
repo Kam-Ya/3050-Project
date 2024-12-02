@@ -1,7 +1,5 @@
-package Server.src;
+package main.java;
 
-import java.io.Serializable;
-
-public class Role implements Serializable {
+public class Role {
     public int permissions;
 }

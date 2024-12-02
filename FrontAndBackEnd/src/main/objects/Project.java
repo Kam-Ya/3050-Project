@@ -1,4 +1,4 @@
-package Server.src;
+package main.java;
 
 import java.io.Serializable;
 import java.sql.*;
@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Project implements Serializable {
-    private static final long serialVersionUID=20241130;
     private String projectName;
     public Date projectDueDate;
     public ArrayList<Integer> employees;

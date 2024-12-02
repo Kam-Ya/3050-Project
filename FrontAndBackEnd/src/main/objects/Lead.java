@@ -1,4 +1,4 @@
-package Server.src;
+package main.java;
 
 public class Lead extends Role{
     public int addUser(String name, String role) {
