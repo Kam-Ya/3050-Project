@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class aboutProjectController {
 
     @FXML
-    private Label projectDetailsLabel;
+    private Label projectDetailsLabel; // Label to display project details
 
     /**
      * Sets the project details to be displayed in the screen.

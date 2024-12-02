@@ -9,17 +9,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import main.java.TaskScreenController;
-import main.objects.*;
+import main.objects.Project;
+import main.objects.Task;
 
 import java.io.IOException;
 
 public class ProjectScreenController {
 
-    public Label descriptionLabel;
-    public Label projectDueDateLabel;
-    private Project project;
-    private User currentUser;
+    @FXML
+    private Label descriptionLabel;
+
+    @FXML
+    private Label projectDueDateLabel;
+
     @FXML
     private Button writeReportButton;
 
@@ -44,20 +46,24 @@ public class ProjectScreenController {
     @FXML
     private TextArea projectDescriptionArea;
 
-    // Method to set project details
+    private Project project;
+
+    /**
+     * Set project details and populate the UI.
+     */
     public void setProjectDetails(Project project, Integer userID) {
         this.project = project;
-        // Set project details
+
         System.out.println("setProjectDetails called for project: " + project.getProjectName());
 
+        // Set project details
         projectTitleLabel.setText(project.getProjectName());
         projectDueDateLabel.setText(project.getProjectDueDate().toString());
-        projectDescriptionArea.setText(project.Desc);
+        projectDescriptionArea.setText(project.Desc != null ? project.Desc : "No description available.");
 
         // Populate the tasks ListView
         taskListView.getItems().clear();
         for (Task task : project.tasks) {
-            // Check if the currentUser is assigned to the task
             boolean isAssigned = task.getAsignees().contains(userID);
             String taskInfo = String.format(
                     "%s - Due: %s | Priority: %d%s",
@@ -69,58 +75,48 @@ public class ProjectScreenController {
             taskListView.getItems().add(taskInfo);
         }
     }
+
     @FXML
     private void initialize() {
         projectDescriptionArea.setEditable(false);
 
         // Set double-click handler for the ListView
         taskListView.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Detect double-click
+            if (event.getClickCount() == 2) {
                 int selectedIndex = taskListView.getSelectionModel().getSelectedIndex();
-                if (selectedIndex >= 0 && project != null) { // Ensure project is not null
-                    Task selectedTask = project.tasks.get(selectedIndex); // Get Task by index
-                    openTaskScreen(selectedTask); // Pass the Task object
+                if (selectedIndex >= 0 && project != null && selectedIndex < project.tasks.size()) {
+                    Task selectedTask = project.tasks.get(selectedIndex);
+                    openTaskScreen(selectedTask);
                 }
             }
         });
     }
+
     /**
-     * Opens the TaskScreen with detailed task information.
-     *
-     * @param taskDetails A string containing task details in the format:
-     *                    "Task Name - Due: Date | Priority | Assigned User"
+     * Open TaskScreen with the selected task's details.
      */
     private void openTaskScreen(Task selectedTask) {
         try {
-            // Load the TaskScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/TaskScreen.fxml"));
             Parent root = loader.load();
 
-            // Pass the selected Task to the TaskScreenController
             TaskScreenController controller = loader.getController();
             controller.setTaskDetails(
                     selectedTask.getTaskName(),
-                    selectedTask.getDesc(),
+                    selectedTask.getDesc() != null ? selectedTask.getDesc() : "No description available.",
                     selectedTask.getTaskDueDate().toString(),
-                    selectedTask.getAsignees(), // Pass the ArrayList of assigned users
+                    selectedTask.getAsignees(),
                     String.valueOf(selectedTask.getPriority())
             );
 
-            // Create a new stage for the TaskScreen
             Stage stage = new Stage();
-            stage.setTitle("Task Screen - " + selectedTask.getTaskName());
+            stage.setTitle("Task: " + selectedTask.getTaskName());
             stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public void setProjectName(String projectName) {
-        // Set the project name in the title
-        projectTitleLabel.setText(projectName);
     }
 
     @FXML
@@ -131,7 +127,7 @@ public class ProjectScreenController {
             Parent root = loader.load();
 
             WriteReportScreenController controller = loader.getController();
-            controller.setProjectName("Project N"); // Pass project name dynamically
+            controller.setProjectName(project.getProjectName());
 
             Stage stage = new Stage();
             stage.setTitle("Write Report");
@@ -146,16 +142,9 @@ public class ProjectScreenController {
     private void handleReadReport() {
         System.out.println("Read Report button clicked!");
         try {
-            // Load the ListReportsScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListReportsScreen.fxml"));
             Parent root = loader.load();
 
-            // Get the controller for ListReportsScreen (if you need to pass any data)
-            ListReportsController controller = loader.getController();
-            // Example: Pass data to the controller if needed
-            // controller.setSomeData(someData);
-
-            // Create a new stage for ListReportsScreen
             Stage stage = new Stage();
             stage.setTitle("List Reports");
             stage.setScene(new Scene(root));
@@ -164,16 +153,14 @@ public class ProjectScreenController {
             e.printStackTrace();
         }
     }
-//TODO: Make a new class for Creating Task
+
     @FXML
     private void handleNewTask() {
         System.out.println("New Task button clicked!");
         try {
-            // Load the ListReportsScreen FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/NewTaskScreen.fxml"));
             Parent root = loader.load();
 
-            // Create a new stage for ListReportsScreen
             Stage stage = new Stage();
             stage.setTitle("New Task");
             stage.setScene(new Scene(root));
@@ -191,7 +178,7 @@ public class ProjectScreenController {
             Parent root = loader.load();
 
             aboutProjectController aboutController = loader.getController();
-            aboutController.setProjectDetails("Test");
+            aboutController.setProjectDetails(project.getProjectName());
 
             Stage stage = new Stage();
             stage.setTitle("About Project");
@@ -207,23 +194,5 @@ public class ProjectScreenController {
         System.out.println("Close button clicked!");
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
-    }
-
-    // Error screen
-    private void showSystemMessage(String title, String body) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
-            Parent root = fxmlLoader.load();
-
-            MessageFromSystemController controller = fxmlLoader.getController();
-            controller.setMessage(title, body);
-
-            Stage stage = new Stage();
-            stage.setTitle("System Message");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

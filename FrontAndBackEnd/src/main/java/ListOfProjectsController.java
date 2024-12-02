@@ -47,11 +47,12 @@ public class ListOfProjectsController {
             if (event.getClickCount() == 2) { // Detect double-click
                 int selectedIndex = projectListView2.getSelectionModel().getSelectedIndex();
                 if (selectedIndex >= 0) {
-                    openMockProjectScreen(listofProjects.get(selectedIndex)); // Open project screen
+                    openProjectScreen(listofProjects.get(selectedIndex)); // Open project screen
                 }
             }
         });
         handleRefresh();
+        loadListView();
     }
 
     // Setter to initialize projects
@@ -77,9 +78,11 @@ public class ListOfProjectsController {
 
 
     /**
-     * Open the project screen for the selected project.
+     * Opens the ProjectScreen with details of the selected project.
+     *
+     * @param selectedProject The project selected in the ListView.
      */
-    private void openMockProjectScreen(Project selectedProject) {
+    private void openProjectScreen(Project selectedProject) {
         try {
             System.out.println("Opening ProjectScreen for project: " + selectedProject.getProjectName());
 
