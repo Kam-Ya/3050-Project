@@ -1,7 +1,7 @@
 package main.java;
 
 import javafx.application.Platform;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import main.objects.*;
 
 import javafx.event.ActionEvent;
@@ -9,15 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.client.CTMClient;
 import main.client.clientController;
 
 import javax.swing.text.LabelView;
 import java.io.IOException;
+import java.util.Optional;
 
 import static main.java.Main.userID;
 
@@ -47,7 +45,7 @@ public class CredentialsController {
         String password = passwordField.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            showSystemMessage("Empty Fields", "Please enter both username and password.");
+            showError("Empty Fields", "Please enter both username and password.");
             return;
         }
 
@@ -120,6 +118,13 @@ public class CredentialsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Optional<ButtonType> showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        return alert.showAndWait();
     }
 
     public void handleSignup() {

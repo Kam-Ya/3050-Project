@@ -15,10 +15,10 @@ import main.objects.User;
 import main.objects.*;
 
 import java.io.IOException;
+import java.util.Optional;
 
 
 public class CreateUserController {
-    //TODO: Add name field
     @FXML
     private TextField usernameField;
 
@@ -52,7 +52,7 @@ public class CreateUserController {
             if (change.getControlNewText().length() <= maxChars) {
                 return change; // Accept the input
             }
-            showSystemMessage("Character Limit Exceeded", "Character Limit Exceeded");
+            showError("Error", "Char Limit Exceeded");
             return null; // Reject the input
         }));
     }
@@ -102,7 +102,7 @@ public class CreateUserController {
         // Validate input fields
         if (username.isEmpty() || password.isEmpty() || role == null || role.isEmpty() || name.isEmpty()){
             System.out.println("All fields are required!");
-            showSystemMessage("All fields are required!", "All fields are required!");
+            showError("Error", "All fields are required!");
             // Show error message or dialog (not implemented here)
             return;
         }
@@ -113,7 +113,9 @@ public class CreateUserController {
         System.out.println("Username: " + username);
         System.out.println("Password: " + password);
         System.out.println("Role: " + role);
-        showSystemMessage("Account Created Successfully", "Please login with your new account details.");
+
+        // Alert user to change
+        showConfirmation("Account Created Successfully", "Please login with your new account details.");
 
         // Close the screen after user creation
         Stage stage = (Stage) createButton.getScene().getWindow();
@@ -141,22 +143,18 @@ public class CreateUserController {
 
 
     }
-
-    // error screen
-    private void showSystemMessage(String title, String body) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MessageFromSystemScreen.fxml"));
-            Parent root = fxmlLoader.load();
-
-            MessageFromSystemController controller = fxmlLoader.getController();
-            controller.setMessage(title, body);
-
-            Stage stage = new Stage();
-            stage.setTitle("System Message");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private Optional<ButtonType> showError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        return alert.showAndWait();
     }
+    private Optional<ButtonType> showConfirmation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        return alert.showAndWait();
+    }
+
+
 }

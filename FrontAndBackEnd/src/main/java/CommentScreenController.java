@@ -95,6 +95,7 @@ public class CommentScreenController {
         alert.showAndWait();
     }
 
+    // function to handle alert
     private Optional<ButtonType> showConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
