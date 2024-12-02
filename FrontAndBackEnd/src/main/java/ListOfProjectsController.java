@@ -35,7 +35,7 @@ public class ListOfProjectsController {
     /**
      * Simulated projects list for mocking purposes.
      */
-    protected static ArrayList<Project> listofProjects;
+    public static ArrayList<Project> listofProjects;
 
     public void setUserID(Integer userID) {
         this.userID = userID;
