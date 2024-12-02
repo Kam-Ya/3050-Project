@@ -69,7 +69,7 @@ public class CredentialsController {
             Stage currentStage = (Stage) loginButton.getScene().getWindow();
             currentStage.close();
 
-            ListOfProjectsController listofController = new ListOfProjectsController()
+            ListOfProjectsController listofController = new ListOfProjectsController();
         } catch (IOException e) {
             e.printStackTrace();
         }
