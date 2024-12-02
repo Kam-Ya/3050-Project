@@ -68,6 +68,8 @@ public class CredentialsController {
             // Close the current login screen
             Stage currentStage = (Stage) loginButton.getScene().getWindow();
             currentStage.close();
+
+            ListOfProjectsController listofController = new ListOfProjectsController()
         } catch (IOException e) {
             e.printStackTrace();
         }

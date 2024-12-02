@@ -28,14 +28,14 @@ public class ListOfProjectsController {
     private Button newUserButton;
 
     @FXML
-    private ListView<String> projectListView;
+    private static ListView<String> projectListView;
 
     private Integer userID;
 
     /**
      * Simulated projects list for mocking purposes.
      */
-    private ArrayList<Project> mockProjects;
+    protected static ArrayList<Project> listofProjects;
 
     public void setUserID(Integer userID) {
         this.userID = userID;
@@ -52,7 +52,7 @@ public class ListOfProjectsController {
             if (event.getClickCount() == 2) { // Detect double-click
                 int selectedIndex = projectListView.getSelectionModel().getSelectedIndex();
                 if (selectedIndex >= 0) {
-                    openMockProjectScreen(mockProjects.get(selectedIndex)); // Use mocked project
+                    openMockProjectScreen(listofProjects.get(selectedIndex)); // Use mocked project
                 }
             }
         });
@@ -61,28 +61,10 @@ public class ListOfProjectsController {
     /**
      * Mock method to load projects.
      */
-    private void loadMockProjects() {
-        mockProjects = new ArrayList<>();
-
-        // Create mock dates using java.util.Calendar
-        Calendar calendar = Calendar.getInstance();
-
-        calendar.set(2024, Calendar.DECEMBER, 31); // Mock Project 1 due date
-        Date mockDate1 = calendar.getTime();
-
-        calendar.set(2025, Calendar.JANUARY, 15); // Mock Project 2 due date
-        Date mockDate2 = calendar.getTime();
-
-        calendar.set(2025, Calendar.FEBRUARY, 10); // Mock Project 3 due date
-        Date mockDate3 = calendar.getTime();
-
-        // Simulated projects with Date objects
-        mockProjects.add(new Project("Mock Project 1", mockDate1, "A test project 1", 1));
-        mockProjects.add(new Project("Mock Project 2", mockDate2, "A test project 2", 2));
-        mockProjects.add(new Project("Mock Project 3", mockDate3, "A test project 3", 3));
-
+    public static void loadMockProjects() {
+        listofProjects = new ArrayList<>();
         // Populate the ListView with mock data
-        for (Project project : mockProjects) {
+        for (Project project : listofProjects) {
             String projectInfo = String.format(
                     "%s - Due: %s",
                     project.getProjectName(),
