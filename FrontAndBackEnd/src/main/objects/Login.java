@@ -1,4 +1,4 @@
-package main.java;
+package main.objects;
 
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;

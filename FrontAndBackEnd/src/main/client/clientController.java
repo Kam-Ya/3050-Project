@@ -1,8 +1,7 @@
 package main.client;
 import java.util.ArrayList;
-
-import Server.src.Project;
-import Server.src.format.msgFormat;
+import main.java.*;
+import main.objects.*;
 import main.java.CredentialsController;
 
 public class clientController {

@@ -1,4 +1,4 @@
-package main.java;
+package main.objects;
 
 public class Lead extends Role{
     public int addUser(String name, String role) {

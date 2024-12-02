@@ -1,4 +1,4 @@
-package main.java;
+package main.objects;
 
 public class Employee extends Role{
 
