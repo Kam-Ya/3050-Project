@@ -12,18 +12,13 @@ import javafx.stage.Stage;
 import main.client.CTMClient;
 import main.client.clientController;
 
-import java.io.Console;
 import java.io.IOException;
-
-import static main.java.Main.client;
 
 public class CredentialsController {
     private static final String ListOFProjects = "/ListOfProjectsScreen.fxml";
     private static final String CreateUser = "/CreateUserScreen.fxml";
 
-
-
-    public Button loginButton;
+    public static Button loginButton;
     @FXML
     public Button registerButton;
     @FXML
@@ -31,6 +26,8 @@ public class CredentialsController {
 
     @FXML
     private PasswordField passwordField;
+
+    private final Integer mockUserID = 123; // Mock userID for testing
 
     @FXML
     private void handleLogin() {
@@ -42,27 +39,26 @@ public class CredentialsController {
             return;
         }
 
-
         System.out.println("Username: " + username + ", Password: " + password);
-        // Add actual login logic here
-        // Create a Login object
-        Login loginRequest = new Login(username, password);
 
-         // OCSF Stuff
-        // Send the Login object to the server using OCSF
-        clientController.sendMSG(loginRequest, "loginRequest", client);
-//        CTMClient client = Main.getClient(); // Get the OCSF client instance
 
+
+        Login login = new Login(username, password);
+        clientController.sendMSG(login, "loginRequest", -1);
+
+        // Simulate login success with mockUserID
+        showSystemMessage("Please Wait", "Simulating server response...");
     }
-    public void openListOfProjectsScreen(User user) {
-        try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ListOFProjects));
+
+    public static void openListOfProjectsScreen(Integer userID) {
+        try {
+            FXMLLoader loader = new FXMLLoader(CredentialsController.class.getClassLoader().getResource(ListOFProjects));
             Parent root = loader.load();
 
-            // Pass the User object to ListOfProjectsController
+            // Pass the mockUserID to ListOfProjectsController
             ListOfProjectsController controller = loader.getController();
-            controller.setCurrentUser(user);
+            controller.setUserID(userID);
 
             Stage stage = new Stage();
             stage.setTitle("List of Projects");
@@ -72,6 +68,8 @@ public class CredentialsController {
             // Close the current login screen
             Stage currentStage = (Stage) loginButton.getScene().getWindow();
             currentStage.close();
+
+            ListOfProjectsController listofController = new ListOfProjectsController()
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +106,7 @@ public class CredentialsController {
             stage.setScene(new Scene(root));
             stage.show();
 
-           // Close the current login window
+            // Close the current login window
             Stage currentStage = (Stage) registerButton.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {

@@ -14,18 +14,10 @@ public class Main extends Application {
     private static final String CREDENTIALS_SCREEN = "/CredentialsScreen.fxml";
     private static CTMClient client; // Static client instance
     private static CredentialsController credentialsController;
+    public static Integer mockUserID; // Add mockUserID
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Initialize the OCSF client
-        try {
-            client = new CTMClient("localhost", 12345); // Adjust host and port as necessary
-            client.openConnection(); // Establish connection to the server
-        } catch (Exception e) {
-            System.err.println("Failed to connect to server: " + e.getMessage());
-            e.printStackTrace();
-        }
-
         // Load the FXML file
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(CREDENTIALS_SCREEN)));
@@ -56,5 +48,10 @@ public class Main extends Application {
     // Provide access to the CredentialsController
     public static CredentialsController getCredentialsController() {
         return credentialsController;
+    }
+
+    // Provide access to the mockUserID
+    public static Integer getMockUserID() {
+        return mockUserID;
     }
 }

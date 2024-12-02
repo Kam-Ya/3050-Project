@@ -27,7 +27,7 @@ public class CTMController {
             operation="Error";
             break;
         }
-        msgFormat message=new msgFormat(operation,obj);
+        msgFormat message=new msgFormat(operation,obj, -1);
             try{
                 client.sendToClient(message);
             } catch(java.io.IOException e){
